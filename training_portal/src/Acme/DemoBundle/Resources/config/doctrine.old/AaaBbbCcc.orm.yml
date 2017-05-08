@@ -1,0 +1,29 @@
+## AaaBbbCcc.orm.yml 
+Acme\DemoBundle\Entity\AaaBbbCcc: 
+    type: entity 
+    table: aaa_bbb_ccc
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+            strategy: AUTO
+    manyToOne:
+        aaaAaa:
+            targetEntity: AaaAaa
+            inversedBy: aaaBbbCccCollection
+            joinColumn:
+                name: aaa_aaa_id
+                referencedColumnName: id
+        bbbBbb:
+            targetEntity: BbbBbb
+            inversedBy: aaaBbbCccCollection
+            joinColumn:
+                name: bbb_bbb_id
+                referencedColumnName: id
+        cccCcc:
+            targetEntity: CccCcc
+            inversedBy: aaaBbbCccCollection
+            joinColumn:
+                name: ccc_ccc_id
+                referencedColumnName: id

@@ -1,0 +1,148 @@
+Tatweer\TrainingBundle\Entity\Users:
+    properties:
+        employeeGrade:
+            - NotBlank: { message: "Field is required" }
+        userroles[]: 
+            - Count:
+                min: 1
+                minMessage: "You must select at least one role"
+            
+Tatweer\TrainingBundle\Entity\Groups:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [idGroup,name,parent]
+            repositoryMethod : findIfUniqueName
+            message: 'This name already in use'
+            ignoreNull: false
+            
+    
+    properties:
+        name:
+            - NotBlank: { message: "Field is required" }
+            - Length: 
+                min: 3
+                minMessage:  "Minimum 3 characters" 
+                max: 45 
+                maxMessage:  "Maximum 45 characters" 
+            - Regex:
+                pattern: "/[\'^$%&*()}{@#~?><>,|=_+-]/"
+                match:   false
+                message: "Special characters not allowed"
+        #parent:
+            #- NotBlank: { message: "Select parent" }
+
+Tatweer\TrainingBundle\Entity\EvaluationPeriods:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: name
+            message: 'This name already used'
+        - Tatweer\TrainingBundle\Validator\Constraints\PeriodsOverlapping: 
+            message: "There is overlapping between periods"
+    properties:
+        name:
+            - NotBlank: { message: "Field is required" }
+            - Length: 
+                min: 3
+                minMessage:  "Minimum 3 characters" 
+                max: 100 
+                maxMessage:  "Maximum 100 characters" 
+            - Regex:
+                pattern: "/[\'^$%&*()}{@#~?><>,|=_+-]/"
+                match:   false
+                message: "Special characters not allowed"
+        startDate:
+            - NotBlank: { message: "Field is required" }
+        endDate:
+            - NotBlank: { message: "Field is required" }
+        reminderDate:
+            - NotBlank: { message: "Field is required" }
+        trainingNeedsStartDate:
+            - NotBlank: { message: "Field is required" }
+        trainingNeedsEndDate:
+            - NotBlank: { message: "Field is required" }
+        trainingNeedsReminderDate:
+            - NotBlank: { message: "Field is required" }
+    getters:
+        evalPeriodStartDateGreaterThanEnd:
+            - "False": { message: "Evaluation period start date Shouldn't be greater than end date" }
+        traningNeedsPeriodStartDateGreaterThanEnd:
+            - "False": { message: "Training needs period start date Shouldn't be greater than end date" }
+        traningNeedsStartBeforeEvalPeriodEnd:
+            - "False": { message: "Training needs period start date shouldn't precede evaluation period end date" }
+            
+Tatweer\TrainingBundle\Entity\Departments:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [idGroup,name]
+            repositoryMethod : findIfUniqueName
+            message: 'This name already in use'
+            ignoreNull: false
+            
+    properties:
+        name:
+            - NotBlank: { message: "Field is required" }
+            - Length: 
+                min: 3
+                minMessage:  "Minimum 3 characters" 
+                max: 45 
+                maxMessage:  "Maximum 45 characters" 
+            - Regex:
+                pattern: "/[\'^$%&*()}{@#~?><>,|=_+-]/"
+                match:   false
+                message: "Special characters not allowed"
+
+
+Tatweer\TrainingBundle\Entity\TrainingExpensesClasses:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [idClass,name]
+            repositoryMethod : findIfUniqueName
+            message: 'This name already in use'
+            ignoreNull: false
+            
+    properties:
+        name:
+            - NotBlank: { message: "Field is required" }
+            - Length: 
+                min: 3
+                minMessage:  "Minimum 3 characters" 
+                max: 100 
+                maxMessage:  "Maximum 100 characters" 
+            - Regex:
+                pattern: "/[\'^$%&*()}{@#~?><>,|=_+-]/"
+                match:   false
+                message: "Special characters not allowed"
+        active:
+            - NotBlank: { message: "Field is required" }
+            
+
+                       
+
+Tatweer\TrainingBundle\Entity\Budgets:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [idBudget,name]
+            repositoryMethod : findIfUniqueName
+            message: 'This name already in use'
+            ignoreNull: false
+            
+    properties:
+        name:
+            - NotBlank: { message: "Field is required" }
+            - Length: 
+                min: 3
+                minMessage:  "Minimum 3 characters" 
+                max: 100 
+                maxMessage:  "Maximum 100 characters" 
+            - Regex:
+                pattern: "/[\'^$%&*()}{@#~?><>,|=_+-]/"
+                match:   false
+                message: "Special characters not allowed"
+
+                       
+Tatweer\TrainingBundle\Entity\Preferences:
+    properties:
+        evaluationDuration:
+            - NotBlank: { message: "Field is required" }
+            - GreaterThan:
+                value: 0

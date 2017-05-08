@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Training details review</source>
+                <target>مراجعة بيانات تفاصيل برامج التدريب </target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Dear Mr./MS</source>
+                <target>عزيزي/تي </target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Kindly review your training details in employee training system</source>
+                <target>يرجي مراجعة تفاصيل بيانات التدريب المحددة لكم في نظام إدارة التدريب.</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Kindly review your employees training details in employee training system</source>
+                <target>يرجي مراجعة تفاصيل بيانات التدريب للموظفين التابعون لكم في نظام إدارة التدريب.</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Your training request has been rejected in employee training system</source>
+                <target>تم رفض طلبات التدريب المحددة لكم في نظام إدارة التدريب.</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Training request rejected</source>
+                <target>رفض طلب التدريب </target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Training requests review</source>
+                <target>مراجعة تفاصيل طلبات التدريب </target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Kindly review the employees training request in employee training system</source>
+                <target>يرجي مراجعة تفاصيل بيانات التدريب المرسلة اليكم في نظام إدارة التدريب.</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Training needs rejected</source>
+                <target>رفض طلب التدريب </target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Your employees training request have been rejected in employee training system</source>
+                <target>تم رفض طلبات التدريب للموظفين التابعون لكم في نظام إدارة التدريب</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Training requests have been rejected in employee training system</source>
+                <target>تم رفض طلبات التدريب التابعة لكم في نظام إدارة التدريب</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>You are not allowed to send training request now in employee training system</source>
+                <target>تم إيقاف إمكانية إرسال طلبات تدريب لكم في نظام إدارة التدريب</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>You are allowed to send training request now in employee training system</source>
+                <target>تم تفعيل إمكانية إرسال طلبات تدريب لكم في نظام إدارة التدريب</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Training requests Availability</source>
+                <target>إمكانية تقديم طلب تدريب </target>
+            </trans-unit>
+            
+            
+            <trans-unit id="15">
+                <source>Employees evaluation reminder</source>
+                <target>تذكير باستكمال بيانات تقييم الموظفين </target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Kindly make sure that you have finished your employees evaluation data</source>
+                <target>يرجي التأكد من إنهاء كافة تقييمات الموظفين التابعون لكم في نظام إدارة التدريب</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="17">
+                <source>Employees training needs reminder</source>
+                <target>تذكير باستكمال بيانات تقييم الموظفين </target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Kindly make sure that you have finished your employees training needs data in employee training system</source>
+                <target>يرجي التأكد من تحديد المتطلبات التدريبية للموظفين التابعون لكم في نظام إدارة التدريب</target>
+            </trans-unit>
+            
+            
+            
+            <trans-unit id="19">
+                <source>Employees training evaluation reminder</source>
+                <target>تذكير بتقييم الموظفين الحاصلين على تدريب</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Kindly make sure that you have finished your employees training courses evaluation in employee training system</source>
+                <target>يرجي التأكد من تقييم الموظفين التابعون لكم والحاصلين على تدريب في نظام إدارة التدريب</target>
+            </trans-unit>
+            
+            
+        </body>
+    </file>
+</xliff>

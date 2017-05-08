@@ -1,0 +1,26 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Department edit'|trans({}, 'departments') }}</div></div>
+     <div class="wrapper2">
+    {#{% if ack_msg is defined and ack_type == 'success' %}
+        {{ ack_msg }} 
+        <script> 
+            setTimeout(function () {
+                window.location.href=window.location.href; 
+            }, 3000); //will call the function after 3 secs.
+        </script> 
+    {% endif %} #}
+    
+    {{ form(edit_form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+      {#  <ul class="record_actions">
+    <li>
+        <a href="{{ path('departments') }}">
+            Back to the list
+        </a>
+    </li>#}
+    {# <li>{{ form(delete_form) }}</li></ul> #} 
+     </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

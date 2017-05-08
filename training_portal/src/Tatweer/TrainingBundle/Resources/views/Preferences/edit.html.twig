@@ -1,0 +1,12 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+        <div class="titlepage"><div class="maintitlenews">{{ 'Preferences'|trans({}, 'preferences') }}</div></div>
+        <div class="wrapper2">
+
+
+          {{ form(edit_form) }}
+
+        </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

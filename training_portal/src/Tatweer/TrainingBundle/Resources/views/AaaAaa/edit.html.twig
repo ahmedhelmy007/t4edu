@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>AaaAaa edit</h1>
+
+    {#{ form(edit_form) }#}
+    
+    
+    {% for bbbBbbEntity in bbbBbbEntities %}
+        {% set myvalue="" %}
+        {% set myid=bbbBbbEntity.id %}
+        {% for aaaBbbCcc in entity.aaaBbbCccCollection %}
+            {% if aaaBbbCcc.bbbBbb.id== bbbBbbEntity.id %}
+                {% set myvalue=aaaBbbCcc.value %} 
+            {% endif %} 
+        {% endfor %}
+        {{bbbBbbEntity.name}}: <span>{{myvalue}}</span><br />
+    {% endfor %}
+<br />
+<br />
+
+
+    {% set x=0 %}
+    {% for bbbBbbEntity in bbbBbbEntities %}
+        {% set myvalue="" %}
+        {% set myid=bbbBbbEntity.id %}
+        {% for aaaBbbCcc in entity.aaaBbbCccCollection %}
+            {% if aaaBbbCcc.bbbBbb.id== bbbBbbEntity.id %}
+                {% set myvalue=aaaBbbCcc.value %}
+            {% endif %} 
+        {% endfor %}
+
+
+        <div>
+            <input type="text" value="{{entity.id}}" name="tatweer_trainingbundle_aaaaaatype[aaaBbbCccCollection][{{x}}][stores]" id="acme_demobundle_storestype_storesRentalperiods_{{x}}_store" class="short_input">
+            <input type="text" value="{{myid}}" name="tatweer_trainingbundle_aaaaaatype[aaaBbbCccCollection][{{x}}][period]" id="acme_demobundle_storestype_storesRentalperiods_{{x}}_period" class="short_input">
+            <input type="text" value="{{myvalue}}" name="tatweer_trainingbundle_aaaaaatype[aaaBbbCccCollection][{{x}}][price]" id="acme_demobundle_storestype_storesRentalperiods_{{x}}_price" class="short_input">
+        </div>
+
+
+        {% set x=x+1 %}   
+    {% endfor %}
+    
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('aaaaaa') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

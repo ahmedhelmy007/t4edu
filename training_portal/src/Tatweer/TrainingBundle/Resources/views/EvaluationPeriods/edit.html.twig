@@ -1,0 +1,120 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="wrapper2">
+        <div class="barsearch">{{ 'Evaluation period main data'|trans({}, 'periods') }}</div>
+        {{ form_start(edit_form) }}
+
+        {{ form_errors(edit_form) }}
+
+        <div>
+            {{ form_label(edit_form.name) }}
+            {{ form_widget(edit_form.name) }}
+            {{ form_errors(edit_form.name) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.startDate) }}
+            {{ form_widget(edit_form.startDate, {'id': 'startDate'} ) }}
+            {{ form_errors(edit_form.startDate) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.endDate) }}
+            {{ form_widget(edit_form.endDate, {'id': 'endDate'} ) }}
+            {{ form_errors(edit_form.endDate) }}
+        </div>
+        <div>{{ 'Evaluation duration in months'|trans({}, 'periods') }} : 
+         <span id="duration_in_month" >0</span>  {% trans %} Months {% endtrans %} 
+        </div>
+        <div>
+            {{ form_label(edit_form.reminderDate) }}
+            {{ form_widget(edit_form.reminderDate) }}
+            {{ form_errors(edit_form.reminderDate) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.active) }}
+            {{ form_widget(edit_form.active) }}
+            {{ form_errors(edit_form.active) }}
+        </div>
+
+        <div class="barsearch">{{ 'Training needs period'|trans({}, 'periods') }}</div>
+
+        <div>
+            {{ form_label(edit_form.trainingNeedsStartDate) }}
+            {{ form_widget(edit_form.trainingNeedsStartDate) }}
+            {{ form_errors(edit_form.trainingNeedsStartDate) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.trainingNeedsEndDate) }}
+            {{ form_widget(edit_form.trainingNeedsEndDate) }}
+            {{ form_errors(edit_form.trainingNeedsEndDate) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.trainingNeedsReminderDate) }}
+            {{ form_widget(edit_form.trainingNeedsReminderDate) }}
+            {{ form_errors(edit_form.trainingNeedsReminderDate) }}
+        </div>
+
+
+        {{ form_end(edit_form) }}
+
+      
+    </div>
+
+{% endblock %}
+
+
+<script src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.plugin.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.js') }}"></script>
+
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars-ar-EG.js') }}">
+    //important for week days & months localization
+</script>
+<script  type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.plus.js') }}" ></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.lang.js') }}">
+    //important for navigation links localization
+</script>
+<link rel="stylesheet" href="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.css') }}">
+
+<script>
+    $(function() {
+        //define an instance of calrendars
+        var calendar = $.calendars.instance('gregorian', 'ar-EG');
+        //set regionalOptions to arabic (to display arabic navigation links)
+        $.calendarsPicker.setDefaults($.calendarsPicker.regionalOptions['ar-EG']);
+        //pass calendars instance to calendarsPicker and set some options
+        $(".date_picker").calendarsPicker({calendar: calendar, onSelect: setDuration , dateFormat: 'yyyy-mm-dd'});
+        //another way to set regionalOptions to arabic by extending calendarsPicker options
+        //$(".date_picker").calendarsPicker('option', $.extend( {}, $.calendarsPicker.regionalOptions['ar-EG']));
+        //set some specific options to one of the calendars
+        $(".future").calendarsPicker('option', {yearRange: '-0:+20', defaultDate: '-0y', minDate: '+0d'});
+    });
+    
+function setDuration() { 
+  
+    var startDate = $("#startDate").val().split("-");
+    var endDate = $("#endDate").val().split("-");
+ 
+    var deff_months = monthDiff(
+    new Date(startDate[0], startDate[1], startDate[2]), 
+    new Date(endDate[0], endDate[1], endDate[2])  
+    );
+    $("#duration_in_month").html(deff_months);
+
+}
+
+function monthDiff(d1, d2) {
+    var months = d2.getMonth() - d1.getMonth() 
+    + (12 * (d2.getFullYear() - d1.getFullYear()));
+
+    if(d2.getDate() < d1.getDate()){
+    months--;
+    }
+    return months;
+}
+
+setDuration()
+</script>
+
+
+{% include "TatweerTrainingBundle::footer.html.twig" %}

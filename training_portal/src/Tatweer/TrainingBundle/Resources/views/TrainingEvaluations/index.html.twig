@@ -1,0 +1,46 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'Training Evaluations list'|trans({}, 'trainingevaluation') }}</div></div>
+    <div class="wrapper2">
+       
+        
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Request ID'|trans({}, 'individuatraining') }}</th>
+                <th>{{ 'Request status'|trans({}, 'individuatraining') }}</th>
+                <th>{{ 'Last updated'|trans({}, 'individuatraining') }}</th>
+                <th>{{ 'Last updated by'|trans({}, 'individuatraining') }}</th>
+                <th>{% trans %} Actions {% endtrans %} </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.idTraining }}</td>
+                <td>{% if entity.action %} {{ entity.action }} {% else %} - {% endif %}</td>
+                <td>{% if entity.modifiedDate %}{{ entity.modifiedDate|date('Y-m-d H:i:s') }} {% else %} - {% endif %}</td>
+                <td>{% if entity.modifiedBy %} {% if app.request.getLocale() == 'ar' %} {{ entity.arabic_fullname }} {% else %} {{ entity.english_fullname }} {% endif %}   {% else %} - {% endif %}</td>
+
+                <td>
+                <ul>
+                    <li>
+                        {% if entity.isEvaluated %}
+                        <a href="{{ path('trainingevaluations_show', { 'id': entity.isEvaluated }) }}">Training evaluation</a>
+                        {% else %}
+                        <a href="{{ path('trainingevaluations_new', { 'training_id': entity.idTraining }) }}">Training evaluation</a>
+                        {% endif %}
+                    </li>
+ 
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

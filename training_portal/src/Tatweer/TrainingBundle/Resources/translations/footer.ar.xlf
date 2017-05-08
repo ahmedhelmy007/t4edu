@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>All Rights Reserved</source>
+                <target>جميع الحقوق محفوظة</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Development Corporation Educational Services</source>
+                <target>لشركة تطوير للخدمات التعليمية </target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Contact Us</source>
+                <target>اتصل بنا</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>For Managment Traning</source>
+                <target>عن إدارة التدريب</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Privacy Policy</source>
+                <target>سياسة الخصوصية</target>
+            </trans-unit>
+
+
+        </body>
+    </file>
+</xliff>

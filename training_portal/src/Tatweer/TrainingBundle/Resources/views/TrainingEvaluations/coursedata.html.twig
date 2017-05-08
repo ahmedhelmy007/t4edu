@@ -1,0 +1,42 @@
+    <table width="100%">
+        <tr>
+        <th width="4%"  align="center">2</th>
+        <th colspan="2"  width="46%" align="left" >{{ 'TRAINING PROGRAM DETAILS'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <th colspan="2" width="46%" align="right" dir="rtl" > {{ 'TRAINING PROGRAM DETAILS'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        <th width="4%"  align="center">2</th>
+        </tr>
+    </table>
+    <table width="100%">
+        <tr>
+        <th  align="left" colspan="2" >{{ 'Program Name'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <td align="center">{{ courseentity.name }}</td> 
+        <th align="right" dir="rtl" >{{ 'Program Name'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        
+        <th  align="left" colspan="2" >{{ 'Starting Date'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <td align="center">{{courseentity.startDate}}</td> 
+        <th align="right" dir="rtl" >{{ 'Starting Date'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        </tr>
+        
+        <tr>
+        <th align="left" colspan="2" >{{ 'Provider Name'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <td align="center">{{courseentity.providerName}}</td> 
+        <th align="right" dir="rtl" >{{ 'Provider Name'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        
+        <th align="left"  colspan="2">{{ 'Ending Date'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <td align="center">{{courseentity.endDate}}</td> 
+        <th  align="right" dir="rtl" >{{ 'Ending Date'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        </tr>
+        
+        <tr>
+        <th align="left" colspan="2" >{{ 'Program Location'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <td align="center">{% if app.request.getLocale() == 'ar' %} {{courseentity.countryAr}}  {% else %} {{courseentity.countryEn}} {% endif %}  , {{courseentity.city}} </td> 
+        <th align="right" dir="rtl" >{{ 'Program Location'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        
+        <th align="left" colspan="2" >{{ 'Duration'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <td align="center">{{courseentity.duration}}</td> 
+        <th align="right" dir="rtl" >{{ 'Duration'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        </tr>
+        
+        
+
+    </table>

@@ -1,0 +1,35 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Training expenses classes view'|trans({}, 'trainingexpensesclasses') }}</div></div>
+    <div class="wrapper2">
+
+    <table class="records_list" id="mydataTable">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ entity.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('trainingexpensesclasses') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('trainingexpensesclasses_edit', { 'id': entity.idClass }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

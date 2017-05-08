@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Evaluation Periods list</source>
+                <target>فترات التقييم</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Period name</source>
+                <target>اسم الفترة</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Add new evaluation period</source>
+                <target>إنشاء فترة تقييم جديدة</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Evaluation period main data</source>
+                <target>البيانات الأساسية لفترة التقييم</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Evaluation duration in months</source>
+                <target>مدة التقييم بالأشهر</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Reminder date</source>
+                <target>تاريخ التذكير بالبريد الإلكتروني</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Training needs period</source>
+                <target>فترة الاحتياجات التدريبية</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Training needs start date</source>
+                <target>تاريخ البداية</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Training needs end date</source>
+                <target>تاريخ النهاية</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Training needs reminder date</source>
+                <target>تاريخ التذكير</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Are you sure you want to delete selected period?</source>
+                <target>هل أنت متأكد من حذف الفترة المختارة</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Selected evaluation period has evaluations for employees, you couldn’t delete it.</source>
+                <target>لا يمكن حذف الفترة المختارة حيث يوجد بها تقييمات للموظفين.</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

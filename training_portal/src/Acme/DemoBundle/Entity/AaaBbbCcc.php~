@@ -1,0 +1,115 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AaaBbbCcc
+ */
+class AaaBbbCcc
+{
+
+    /**
+     * @var smallint
+     *
+     * @ORM\Column(name="id", type="smallint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+	
+    /**
+     * @var \Acme\DemoBundle\Entity\AaaAaa
+     */
+    private $aaaAaa;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\BbbBbb
+     */
+    private $bbbBbb;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\CccCcc
+     */
+    private $cccCcc;
+
+
+    /**
+     * Set aaaAaa
+     *
+     * @param \Acme\DemoBundle\Entity\AaaAaa $aaaAaa
+     * @return AaaBbbCcc
+     */
+    public function setAaaAaa(\Acme\DemoBundle\Entity\AaaAaa $aaaAaa = null)
+    {
+        $this->aaaAaa = $aaaAaa;
+
+        return $this;
+    }
+
+    /**
+     * Get aaaAaa
+     *
+     * @return \Acme\DemoBundle\Entity\AaaAaa 
+     */
+    public function getAaaAaa()
+    {
+        return $this->aaaAaa;
+    }
+
+    /**
+     * Set bbbBbb
+     *
+     * @param \Acme\DemoBundle\Entity\BbbBbb $bbbBbb
+     * @return AaaBbbCcc
+     */
+    public function setBbbBbb(\Acme\DemoBundle\Entity\BbbBbb $bbbBbb = null)
+    {
+        $this->bbbBbb = $bbbBbb;
+
+        return $this;
+    }
+
+    /**
+     * Get bbbBbb
+     *
+     * @return \Acme\DemoBundle\Entity\BbbBbb 
+     */
+    public function getBbbBbb()
+    {
+        return $this->bbbBbb;
+    }
+
+    /**
+     * Set cccCcc
+     *
+     * @param \Acme\DemoBundle\Entity\CccCcc $cccCcc
+     * @return AaaBbbCcc
+     */
+    public function setCccCcc(\Acme\DemoBundle\Entity\CccCcc $cccCcc = null)
+    {
+        $this->cccCcc = $cccCcc;
+
+        return $this;
+    }
+
+    /**
+     * Get cccCcc
+     *
+     * @return \Acme\DemoBundle\Entity\CccCcc 
+     */
+    public function getCccCcc()
+    {
+        return $this->cccCcc;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+}

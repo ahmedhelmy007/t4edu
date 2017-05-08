@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Fill Department name</source>
+                <target>اسم القسم مطلوب</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Department name should be more than 3 characters</source>
+                <target>إسم القسم يجب أن لا يقل عن 3 أحرف </target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Department name max length is 45</source>
+                <target>إسم القسم يجب أن لا يزيد عن 45 حرف</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Department name cannot contain a special characters</source>
+                <target>إسم القسم يجب أن لا يحتوي على رموز</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Department name already exists</source>
+                <target>إسم القسم موجود مسبقا</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Field is required</source>
+                <target>الحقل مطلوب</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Minimum 3 characters</source>
+                <target>يجب إدخال 3 أحرف على الأقل</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Maximum 100 characters</source>
+                <target>أقصى عدد للأحرف 100 حرف</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Special characters not allowed</source>
+                <target>لا يسمح بإدخال رموز خاصة</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>This name already used</source>
+                <target>هذا الاسم مستخدم مسبقا</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Evaluation period start date Shouldn't be greater than end date</source>
+                <target>تاريخ بداية فترة التقييم يجب ألا يكون أكبر من تاريخ نهايتها</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Training needs period start date Shouldn't be greater than end date</source>
+                <target>تاريخ بداية فترة الاحتياجات التدريبية يجب ألا يكون أكبر من تاريخ نهايتها</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Training needs period start date shouldn't precede evaluation period end date</source>
+                <target>يجب ألا يسبق تاريخ بداية فترة الاحتياجات التدريبية تاريخ نهاية فترة التقييم</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>There is overlapping between periods</source>
+                <target>يوجد تداخل بين الفترات</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Maximum 45 characters</source>
+                <target>أقصى عدد للأحرف 45 حرف</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Please fill out this field.</source>
+                <target>يرجى تعبئة الحقل</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>This name already in use</source>
+                <target>الإسم موجود مسبقا</target>
+            </trans-unit>
+            
+        </body>
+    </file>
+</xliff>

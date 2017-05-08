@@ -1,0 +1,96 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+<script>
+    function addFields(trname)
+    {
+        
+        if(document.getElementById('userchk_'+trname).checked)
+        {
+            var content ="";
+            
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "{{ path('departments') }}"+trname+"/json1",
+              }).done(function( data ) {
+                   $( "#row_"+trname ).append( '<td></td><td>{{ 'Assign role(s)'|trans({}, 'departments') }}</td>' );
+                 $.each(data , function(key, val){
+
+                   $( "#row_"+trname ).append( '<td><input type="checkbox" name="role_'+trname+'[]" value="'+val['idRole']+'">'+val['name{{ app.request.getLocale()|capitalize }}']+'</td>' );
+
+                   });
+                    $( "#row_"+trname ).append( '<td>{{ 'Employee Grade'|trans({}, 'departments') }} </td><td><input type="text" name="grade['+trname+']"></td>' );
+         }); 
+         
+      
+        }
+        else 
+        {
+        $( "#row_"+trname ).html( "" );
+        }
+    }
+</script>
+{% block body -%}
+    <h1>{{ entity.name }} / Assign Users</h1>
+    {% if ack_msg is defined %} {{ ack_msg }} {% endif %} 
+ 
+      {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+
+{% if search_result != false %}     
+    <form  method="post" >
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>&nbsp</th>
+                <th>{{ 'Domain user name'|trans({}, 'departments') }}</th>
+                <th>{{ 'Arabic Full Name'|trans({}, 'departments') }}</th>
+                <th>{{ 'English Full Name'|trans({}, 'departments') }}</th>
+                <th>{{ 'Employee Grade'|trans({}, 'departments') }}</th>
+                <th>{{ 'Mail'|trans({}, 'departments') }}</th>
+            </tr>
+        </thead>
+        <tbody>				
+
+            
+{% for key, user in search_result %}
+    <tr>
+        <td><input type="checkbox" name="username" id="userchk_{{ user.UserName }}" name="users[]" onclick="addFields('{{ user.UserName }}')" value="{{ user.UserName }}" ></td>
+        <td> {{ user.UserName }} </td> 
+        <td> {{ user.FullArabicName }} </td> 
+        <td> {{ user.DisplayName }} </td> 
+        <td> - </td> 
+        <td> {{ user.Email }} </td> 
+    </tr>
+    <tr id="row_{{ user.UserName }}" style="background-color:#f6f6f6" ></tr>
+{% endfor %}
+        </tbody>
+    </table>
+	<input type="submit" name="assignusers" value="Save" />		
+	</form>	  
+{% endif %}      
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('departments') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('departments_edit', { 'id': entity.idGroup }) }}">
+            Edit
+        </a>
+    </li>
+    {# <li>{{ form(delete_form) }}</li> #}
+</ul>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

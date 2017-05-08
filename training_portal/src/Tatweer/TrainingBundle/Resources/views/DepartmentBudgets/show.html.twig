@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>DepartmentBudgets</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Iddeptbudget</th>
+                <td>{{ entity.idDeptBudget }}</td>
+            </tr>
+            <tr>
+                <th>Originalvalue</th>
+                <td>{{ entity.originalValue }}</td>
+            </tr>
+            <tr>
+                <th>Remainingvalue</th>
+                <td>{{ entity.remainingValue }}</td>
+            </tr>
+            <tr>
+                <th>Createddate</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Modifieddate</th>
+                <td>{{ entity.modifiedDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('departmentbudgets') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('departmentbudgets_edit', { 'id': entity.idDeptBudget }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

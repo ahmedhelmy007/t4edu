@@ -1,0 +1,166 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    
+     {% if export_pdf  is defined %}  
+         {% include "TatweerTrainingBundle:Forms:pdf_header.html.twig" %}
+     {% endif %} 
+     <div class="titlepage"><div class="maintitlenews">{{ 'Performance and Potentials Measurement Form'|trans({}, 'evaluation' , 'en') }} - {{ 'Performance and Potentials Measurement Form'|trans({}, 'evaluation' , 'ar') }}</div></div>
+     <div class="wrapper2">
+  
+     {% if export_pdf  is not defined %}  
+         
+     {% if not currentActivePeriod %}  
+                {{ 'There are no available active evaluation period'|trans({}, 'messages') }} <br/>
+     {% endif %} 
+     
+         <a href="{{ path('_export', { 'groupid': groupid , 'userid' : userentity.idUser }) }}" target="_blank" >{{ 'Export PDF'|trans({}) }}</a>
+     {% endif %}     
+ 
+    {# user data section #}   
+    {% include "TatweerTrainingBundle:Forms:userinfo.html.twig" %}
+    <form  method="post" id="evaluationForm" >
+    {# form header section #}
+    <table width="100%">
+        <tr>
+            <th width="4%" align="center">2</th>
+            <th align="left" width="46%">{{ 'PERFORMANCE AND POTENTIALS NETWORK'|trans({}, 'evaluation' , 'en') }}</th>
+            <th align="right" width="46%" dir="rtl">{{ 'PERFORMANCE AND POTENTIALS NETWORK'|trans({}, 'evaluation' , 'ar') }}</th>
+            <th width="4%" align="center">2</th>
+        </tr>
+        <tr>
+ 
+            <td align="left" colspan="2" >{{ 'The Performance and Potentials Network helps to determine the mechanism of employees’ development by linking it with the Training Needs Assessments of the employee during the course of the development of a matrix of cells of a particular performance, according to current and expected future value for the company (not related to the annual Performance Appraisal of the employees).'|trans({}, 'evaluation' , 'en') }}</td>
+            <td align="right" dir="rtl" colspan="2">{{ 'The Performance and Potentials Network helps to determine the mechanism of employees’ development by linking it with the Training Needs Assessments of the employee during the course of the development of a matrix of cells of a particular performance, according to current and expected future value for the company (not related to the annual Performance Appraisal of the employees).'|trans({}, 'evaluation' , 'ar') }}</td>
+        </tr>
+    </table>
+    
+    {# evaluation form section #}
+    <table width="100%">
+    {% set section_counter = 3 %}
+    {% for sections in form_sections %}
+        <tr>
+            <th width="4%" align="center">{{ section_counter }}</th>
+            <th align="left" width="45%" >{{ sections.nameEn }}</th>
+                    {% for options in form_options %}
+                        {% if options.section == sections.idSection %}
+                        <th width="5%"></th>
+                        {% endif %}
+                    {% endfor %}
+            <th align="right" width="45%" dir="rtl" >{{ sections.nameAr }}</th>
+            <th width="4%" align="center">{{ section_counter }}</th>
+        </tr>
+        <tr>
+            <td align="left" width="45%" colspan="2" >{{ sections.descriptionEn }}</td>
+                    {% for options in form_options %}
+                        {% if options.section == sections.idSection %}
+                        <td width="5%"></td>
+                        {% endif %}
+                    {% endfor %}
+            <td align="right" width="45%" dir="rtl" colspan="2" >{{ sections.descriptionAr }}</td>
+        </tr>
+        
+        
+        <tr>
+            <th align="left" colspan="2" >{{ 'Questionnaire'|trans({}, 'evaluation' , 'en') }}</th>
+                    {% for options in form_options %}
+                        {% if options.section == sections.idSection %}
+                        <th align="center">{{ options.nameEn }} <br/> {{ options.nameAr }} </th>
+                        {% endif %}
+                    {% endfor %}
+            <th align="right" colspan="2" >{{ 'Questionnaire'|trans({}, 'evaluation' , 'ar') }}</th>
+        </tr>
+         {% set counter = 1 %}
+            {% for criterias in form_criterias %}
+                
+                 {% if criterias.section == sections.idSection %}
+                  
+                  <tr>
+                    <td width="4%" align="center">{{ counter }}</td>
+                    <td align="left" width="40%">{{ criterias.nameEn }}</td>
+                    {% for options in form_options %}
+                        {% if options.section == sections.idSection %}
+                            <td align="center" width="6%"><input type="radio" value="{{options.idOption}}" 
+                                                      name="e_values[{{criterias.idCriteria}}]"  required  minlength="1"
+                                                      
+                                                      {% if  criterias.selectedOption  is defined  %}
+                                                          {% if criterias.selectedOption == options.idOption%} 
+                                                              checked="checked"
+                                                          {% endif %}
+                                                      {% endif %}
+                                                      
+                                                      
+                                                      />
+
+                            
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                    <td align="right" dir="rtl" width="40%">{{ criterias.nameAr }}</td>
+                    <td width="4%" align="center">{{ counter }}</td>
+                  </tr>
+                   {% set counter = counter + 1 %}
+                {% endif %}
+                {% endfor %}
+                
+                 {% set section_counter = section_counter + 1 %}
+    {% endfor %}
+    </table>
+    
+    {# signature and approval section #}
+    <table width="100%">
+        <tr><th width="4%" align="center">5</th><th align="left">{{ 'MANAGER APPROVAL'|trans({}, 'evaluation' , 'en') }}</th><th align="right" dir="rtl" width="20%">{{ 'MANAGER APPROVAL'|trans({}, 'evaluation' , 'ar') }}</th><th width="4%" align="center">5</th></tr>
+        <tr><td align="left" colspan="2">{{ 'Name/Signature'|trans({}, 'evaluation' , 'en') }}  {{ 'Name/Signature'|trans({}, 'evaluation' , 'ar') }}</td><td align="center" dir="rtl" colspan="2">
+            <table width="100%" class="no-border"><tr><td align="left" >/</td><td></td><td align="right" >/</td></tr></table>
+            </td></tr>
+    </table>
+    <table width="100%">
+        <tr><th width="4%" align="center">6</th><th align="left">{{ 'TRAINING AND DEVELOPMENT'|trans({}, 'evaluation' , 'en') }}</th><th align="right" dir="rtl" width="20%">{{ 'TRAINING AND DEVELOPMENT'|trans({}, 'evaluation' , 'ar') }}</th><th width="4%" align="center">6</th></tr>
+        <tr><td align="left" colspan="2">{{ 'Name/Signature'|trans({}, 'evaluation' , 'en') }}  {{ 'Name/Signature'|trans({}, 'evaluation' , 'ar') }}</td><td align="center" dir="rtl" colspan="2">
+            <table width="100%" class="no-border"><tr><td align="left" >/</td><td></td><td align="right" >/</td></tr></table>
+            
+            </td></tr>
+    </table>
+    
+    <table width="100%">
+        <tr><th width="4%" align="center">7</th><th align="left">{{ 'HR DEPARTMENT APPROVAL'|trans({}, 'evaluation' , 'en') }}</th><th align="right" dir="rtl" width="20%">{{ 'HR DEPARTMENT APPROVAL'|trans({}, 'evaluation' , 'ar') }}</th><th width="4%" align="center">7</th></tr>
+        <tr><td align="left" colspan="2">{{ 'Name/Signature'|trans({}, 'evaluation' , 'en') }} {{ 'Name/Signature'|trans({}, 'evaluation' , 'ar') }}</td><td align="center" dir="rtl" colspan="2">
+            <table width="100%" class="no-border"><tr><td align="left" >/</td><td></td><td align="right" >/</td></tr></table>
+            </td></tr>
+    </table>
+    
+    <input type="hidden" name="user_id" value="{{userentity.idUser}}" />
+    
+    {% if currentActivePeriod %}
+    <input type="hidden" name="period_id" value="{{currentActivePeriod[0].idPeriod}}" />
+    {% endif %}
+    
+    {% if currentEvaluationId is defined and currentEvaluationId %}
+    <input type="hidden" name="evaluation_id" value="{{currentEvaluationId}}" />
+    {% endif %}
+
+    </form>
+</div> 
+    {% include "TatweerTrainingBundle:Forms:performancenet.html.twig" %}
+
+{% if export_pdf  is not defined %}
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('') }}">
+            Back
+        </a>
+    </li>
+</ul>
+{% endif %}        
+
+
+<script type="text/javascript">   
+$( document ).ready(function() {
+$("#evaluationForm input:radio").attr('disabled',true);   
+});
+</script>
+
+
+
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

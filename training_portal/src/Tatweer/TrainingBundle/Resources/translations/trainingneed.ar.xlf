@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>PERSONAL INFORMATION</source>
+                <target> البيانات الشخصية</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Employee Name</source>
+                <target>اسم الموظف</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Grade</source>
+                <target>الدرجة الوظيفية</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Job Title</source>
+                <target>المسمى الوظيفي</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Dept. / Project</source>
+                <target>الإدارة / البرنامج </target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Employee No.</source>
+                <target>الرقم الوظيفي</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Extension No.</source>
+                <target>رقم التحويلة</target>
+            </trans-unit>
+
+            <trans-unit id="8">
+                <source>Appraisal Period</source>
+                <target>فترة التقييم</target>
+            </trans-unit>
+            
+            <trans-unit id="9">
+                <source>FINANCIAL AND ADMINISTRATIVE AFFAIRS</source>
+                <target>الشؤون المالية والادارية</target>
+            </trans-unit>
+            
+            <trans-unit id="10">
+                <source>HUMAN RESOURCES DEPARTMENT</source>
+                <target> إدارة الموارد البشرية</target>
+            </trans-unit>
+            
+            <trans-unit id="11">
+                <source>TRAINING NEEDS ASSESSMENTS FORM</source>
+                <target> نموذج تحليل الاحتياجات التدريبية</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>JOB OBJECTIVES</source>
+                <target>الأهداف الوظيفية</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Please write down the top five Job Objectives for the employee and rate his performance to them.</source>
+                <target>الرجاء كتابة اهم خمس مهام وظيفية للموظف وتقييم أداءه لها.</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>OBJECTIVES</source>
+                <target>المهام</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>MANAGER APPROVAL</source>
+                <target>موافقة المدير</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Name/Signature/Date</source>
+                <target>الاسم / التوقيع / التاريخ</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>TRAINING AND DEVELOPMENT</source>
+                <target>التدريب والتطوير</target>
+            </trans-unit>
+
+            <trans-unit id="18">
+                <source>HR DEPARTMENT APPROVAL</source>
+                <target>موافقة إدارة الموارد البشرية</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>TRAINING BASED ON PERFORMANCE EVALUATION</source>
+                <target>البرامج التدريبية وفق تقييم الأداء السنوي</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Please find the suggested training program collected from the annual Performance Evaluation for the year {year}, kindly, rate them and you can add additional programs on Table (4).</source>
+                <target>الرجاء الاطلاع على برامج التدريب المقترحة ضمن تقييم الأداء السنوي لعام {year} م، وتقييمها حسب الأهمية ويمكن اقتراح برامج إضافية في حقل رقم (4).</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>TRAINING PROGRAMS</source>
+                <target>البرامج التدريبية</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>ADDITIONALTRAINING PROGRAMS</source>
+                <target>برامج تدريبية إضافية</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>You may suggest more training programs that were not included in the annual Performance Evaluation for {year}</source>
+                <target>يمكنكم اقتراح المزيد من البرامج التدريبية التي لم يتم ذكرها خلال التقييم السنوي لعام {year} م.</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>SUGGESTED TRAINING PROGRAMS (From HR)</source>
+                <target>البرامج التدريبية المقترحة (من الموارد البشرية)</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>The suggested training program from HR/Training and Development based on the employee Job Objectives and responsibilities.</source>
+                <target>التدريبية المقترحة من إدارة الموارد البشرية/التدريب والتطوير بناء على المهام الوظيفية للموظف ومسؤولياته. </target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Training Programs are suitable</source>
+                <target>البرامج مناسبة </target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Training Programs are not suitable</source>
+                <target>البرامج غير مناسبة </target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Comment</source>
+                <target>تعليق</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Request history</source>
+                <target>سجل الطلب</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>User data</source>
+                <target>معلومات المستخدم</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Created</source>
+                <target>Created</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Status changes</source>
+                <target>التغيرات</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Created by</source>
+                <target>أنشئت بواسطة</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Request ID</source>
+                <target>رقم الطلب</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Request status</source>
+                <target>حالة الطلب</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Last updated</source>
+                <target>اخر تعديل</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Last updated by</source>
+                <target>التعديل بواسطه</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>Actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>Created</source>
+                <target>معلومات الانشاء</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Status changes</source>
+                <target>التغيرات</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>Send to</source>
+                <target>مرسل الى</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>by</source>
+                <target>بواسطة</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Accept by</source>
+                <target>مقبول بواسطة </target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Group Leader</source>
+                <target>مدير مجموعة </target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>Approved by</source>
+                <target>موافق بواسطة </target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>Rejected by</source>
+                <target>مرفوض بواسطة</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
+
+ 

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Training program</source>
+                <target> البرنامج التدريبي</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Course name</source>
+                <target>اسم البرنامج</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Provider</source>
+                <target>جهة التدريب</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Start date</source>
+                <target>تاريخ البداية</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>End date</source>
+                <target>تاريخ النهاية</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Duration</source>
+                <target>المدة</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Location</source>
+                <target>مكان الانعفاد</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Country</source>
+                <target>الدولة</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>City</source>
+                <target>المدينة</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Language</source>
+                <target>لغة البرنامج</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Cost (in Saudi Riyals)</source>
+                <target>التكاليف ( بالريال السعودي )</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>course fees</source>
+                <target>رسوم البرنامج</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Perdiem</source>
+                <target>بدل انتداب</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Flight</source>
+                <target>التذكرة</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Other</source>
+                <target>اخرى</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Value</source>
+                <target>القيمة</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Training courses details</source>
+                <target>تفاصيل البرنامج التدريبي</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Training needs program</source>
+                <target> البرنامج التدريبي</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

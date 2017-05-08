@@ -1,0 +1,93 @@
+ 
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'Request history'|trans({}, 'trainingneed' ) }}</div></div>
+    <div class="wrapper2">
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+              
+                <th>{{ 'Created'|trans({}, 'trainingneed') }}</th>
+                <th>{{ 'Status changes'|trans({}, 'trainingneed') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+{# { dump(actionlog_history) } #}
+
+
+{% if actionlog_history  is defined  %}  
+    {% for key,value in actionlog_history %}
+ 
+           <tr>
+              
+                <td>  {{ 'Created by'|trans({}, 'trainingneed') }}  {% if app.request.getLocale() == 'ar' %} {{ value.nameAr }} {% else %} {{ value.nameEn }} {% endif %}
+                   
+                    (  {% if app.request.getLocale() == 'ar' %} {{ value.FullArabicName }} {% else %} {{ value.DisplayName }} {% endif %}  )  ({{ value.createdDate|date('Y-m-d h:i ')  }}) </td>
+                 <td> 
+                     {% if  value.action == 'feedback' %} 
+                       
+                         {{ 'Send to'|trans({}, 'trainingneed') }} 
+                         
+                         {% if value.assignedToGroup %}
+                             {{ 'Group Leader'|trans({}, 'trainingneed') }}
+                             ( {{ value.groupName }} ) 
+                         {% elseif value.assignedToRole %}
+                             {% if app.request.getLocale() == 'ar' %} {{value.groupRoleAr}} {% else %} {{value.groupRoleEn}} {% endif %} 
+                         {% endif %} 
+                         ({{ value.createdDate|date('Y-m-d h:i ')  }} ) 
+                        <br/>
+                         {% if value.actorComment %} {{ 'Comment'|trans({}, 'trainingneed') }}: {{ value.actorComment }} {% endif %}
+                     {% elseif  value.action == 'forward' %}  
+                         
+                         {{ 'Send to'|trans({}, 'trainingneed') }}
+                         {% if value.forwardedToUser ==  value.requestedForEmployee %}
+                             
+                             {% if app.request.getLocale() == 'ar' %} {{value.employeeRoleAr}} {% else %} {{value.employeeRoleEn}} {% endif %}
+                             ( {% if app.request.getLocale() == 'ar' %} {{ value.requestedForEmployeeFullArabicName }} {% else %} {{ value.requestedForEmployeeDisplayName }} {% endif %}  )
+                            
+                         {% else %} 
+                             
+                         {% if app.request.getLocale() == 'ar' %} {{value.tSpecialistRoleAr}} {% else %} {{value.tSpecialistRoleEn}} {% endif %}  
+                        ( {% if app.request.getLocale() == 'ar' %} {{ value.trainingSpecialistFullArabicName }} {% else %} {{ value.trainingSpecialistDisplayName }} {% endif %}  )
+                        
+                         {% endif %}
+                         
+                        ({{ value.createdDate|date('Y-m-d h:i ')  }} ) 
+                        , {{ 'by'|trans({}, 'trainingneed') }} {% if app.request.getLocale() == 'ar' %} {{ value.nameAr }} {% else %} {{ value.nameEn }} {% endif %} 
+                       ( {% if app.request.getLocale() == 'ar' %} {{ value.FullArabicName }} {% else %} {{ value.DisplayName }} {% endif %}  ) ({{ value.createdDate|date('Y-m-d h:i ')  }} ) 
+                         
+                         
+                        <br/>
+                         {% if value.actorComment %} {{ 'Comment'|trans({}, 'trainingneed') }}: {{ value.actorComment }} {% endif %}
+                     {% elseif  value.action == 'approve' %}  
+                         
+                         
+                         {% if value.actor == value.requestedForEmployee %}
+                         {{ 'Accept by'|trans({}, 'trainingneed') }} 
+                         {% else %}
+                         {{ 'Approved by'|trans({}, 'trainingneed') }}    
+                         {% endif %}
+                          
+                         {% if app.request.getLocale() == 'ar' %} {{ value.nameAr }} {% else %} {{ value.nameEn }} {% endif %} 
+                       ( {% if app.request.getLocale() == 'ar' %} {{ value.FullArabicName }} {% else %} {{ value.DisplayName }} {% endif %}  ) ({{ value.createdDate|date('Y-m-d h:i ')  }} ) 
+                       <br/>
+                         {% if value.actorComment %} {{ 'Comment'|trans({}, 'trainingneed') }}: {{ value.actorComment }} {% endif %}
+                         
+                     {% elseif  value.action == 'reject' %}  
+                         {{ 'Rejected by'|trans({}, 'trainingneed') }}
+                         {% if app.request.getLocale() == 'ar' %} {{ value.nameAr }} {% else %} {{ value.nameEn }} {% endif %} 
+                       ( {% if app.request.getLocale() == 'ar' %} {{ value.FullArabicName }} {% else %} {{ value.DisplayName }} {% endif %}  ) ({{ value.createdDate|date('Y-m-d h:i ')  }} ) 
+                       <br/>
+                         {% if value.actorComment %} {{ 'Comment'|trans({}, 'trainingneed') }}: {{ value.actorComment }} {% endif %}
+                     {% endif %} 
+                </td>
+
+            </tr> 
+ 
+   {% endfor %} 
+{% endif %}  
+
+        </tbody>
+    </table>
+ </div>
+ 

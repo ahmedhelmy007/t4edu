@@ -1,0 +1,170 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+		<script type="text/javascript">
+                        $(function() {
+                         $("#save_btn").click(function(){
+                            
+                           valid = true;
+
+ 
+ 
+                           $('#selected_program_error').html('');
+                           if (!$("input[name='selected_program']:checked").val()) {
+                              $('#selected_program_error').html('<span class="error error-span">'+SelectAnOption+'</span> ');
+                              valid = false;
+                           } 
+
+                            return valid;
+
+ 
+                       
+                          });
+                          
+                         $("#sendback_btn,#reject_btn").click(function(){
+                              $("#form12").find(".error-span").remove();
+                           valid = true;
+                                    if (!$('#comment').val()) {
+                                          valid = false;
+                                         $('<span class="error error-span">'+EmptyFields+'</span> ').
+                                          insertBefore('#comment');
+                                    }
+                                    return valid;
+ 
+                       
+                          });
+                          
+                          
+                         $("#hr_approve_btn").click(function(){
+                          valid = true;
+                          $("#form12").find(".error-span").remove();
+                           var selected_value = $('#selected_budget').val(); 
+                                    if (selected_value == "0" ) {
+                                          valid = false;
+                                         $('<span class="error error-span">'+SelectAnOption+'</span>').
+                                          insertAfter('#selected_budget');
+                                  
+                                    }
+                                    return valid;
+                       
+                          });
+                          
+                          $( "#selected_budget" ).change(function() {
+                              $('#departments_budget').html('');
+                              $("#form12").find(".error-span").remove();
+                              var selected_value = $('#selected_budget').val(); 
+                              if(selected_value != "0" )
+                              {
+                                  var oraiginal_value   = $('#original_'+selected_value).val();
+                                  var remaining_value   = $('#remaining_'+selected_value).val();
+                                  var totalSelectedCost = $('#totalSelectedCost').val();
+                                  $('#departments_budget').html('{{ 'Original Value'|trans({}, 'budget') }} : ' +oraiginal_value +' , {{ 'Remaining Value'|trans({}, 'budget') }} : '+  remaining_value );
+                                  if((1*totalSelectedCost) > (1*oraiginal_value) || (1*remaining_value) < (1*totalSelectedCost) )
+                                     $("#hr_approve_btn").attr('disabled','disabled'); 
+                                  else 
+                                     $("#hr_approve_btn").removeAttr('disabled');
+                              }
+               
+                          });
+
+
+                          });
+                </script>
+                
+                
+{% block body -%}
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'User data'|trans({}, 'trainingneed' ) }}</div></div>
+        <br/>
+    <div>
+    
+    <b>{{ 'Employee Name'|trans({}, 'evaluation' ) }} </b> : {% if app.request.getLocale() == 'ar' %} {{ userentity.FullArabicName }} {% else %} {{ userentity.DisplayName }} {% endif %} 
+    <br/>
+    <b>{{ 'Job Title'|trans({}, 'evaluation' ) }} </b> : {{userentity.Title}}
+    
+    </div>
+    
+    
+
+    
+    
+        <form method="post" id="form12">
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'Training courses details'|trans({}, 'trainingdetails') }}</div></div>
+    <div class="wrapper2">
+        
+    {% if canManage is defined and canManage == TRUE %}
+    <a href="{{ path('trainings_new', {'groupid': groupid , 'userid': userid }) }}">{% trans %} Add New {% endtrans %}</a>
+    {% endif %}
+    
+    <span id='selected_program_error' ></span>
+
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th> </th>
+                <th>{{ 'Training program'|trans({}, 'trainingdetails') }}</th>
+                <th>{{ 'Course name'|trans({}, 'trainingdetails') }}</th>
+                <th>{{ 'Provider'|trans({}, 'trainingdetails') }}</th>
+                <th>{{ 'Start date'|trans({}, 'trainingdetails') }}</th>
+                <th>{{ 'End date'|trans({}, 'trainingdetails') }}</th>
+                <th>{{ 'Location'|trans({}, 'trainingdetails') }}</th>
+                <th>{{ 'Language'|trans({}, 'trainingdetails') }}</th>
+                {% if canManage is defined and canManage == TRUE %}
+                <th>{{ 'Cost'|trans({}, 'trainingdetails') }}</th>
+                <th></th>
+                {% endif %} 
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+
+        {% if data_result  %}  
+
+          {% for key,data in data_result %}
+              
+            {% if selectedTrainingProgram is defined and selectedTrainingProgram == data.idTraining  %} 
+           <tr style="background-color: red" >
+            {% else %} 
+           <tr> 
+            {% endif %}
+            
+                    {% if isEmployee is defined and isEmployee == true and selectedTrainingProgram == 'canSelect' %}
+                    <td> <input type='radio' id='selected_program' name='selected_program' value='{{ data.idTraining }}'  />  </td>
+                    {% else %} 
+                    <td></td>
+                    {% endif %} 
+                    
+              
+                <td>  <a href="{{ path('trainings_show', {'id': data.idTraining}) }}">{% if app.request.getLocale() == 'ar' %} {{ data.valueAr }} {% else %} {{ data.valueEn }} {% endif %}</a>   </td>
+                <td>  {{ data.name }}  </td>
+                <td>  {{ data.providerName }}  </td>
+                <td>  {{ data.startDate|date('Y-m-d')   }}  </td>
+                <td>  {{ data.endDate|date('Y-m-d')   }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ data.countryAr }} {% else %} {{ data.countryEn }} {% endif %}   , {{ data.city }}   </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ data.langAr }} {% else %} {{ data.langEn }} {% endif %}  {{ data.languageOther }}   </td>
+                {% if canManage is defined and canManage == TRUE %}
+                <td>  {{ data.totalCost }} SAR </td>
+                
+                <td>
+                   <a  id="trainings_{{ data.idTraining }}" href="{{ path('trainings_delete', {'id': data.idTraining}) }}" class="confirmLink" >{% trans %} Delete {% endtrans %}</a> 
+                </td>
+                {% endif %} 
+            </tr> 
+          {% endfor %}
+  
+        {% endif %}
+        
+ 
+
+        </tbody>
+    </table>
+
+</div>
+   {% include "TatweerTrainingBundle::TrainingNeeds/action_log_history.html.twig" %}
+    
+   {% include "TatweerTrainingBundle::TrainingNeeds/actions.html.twig" %} 
+</form>   
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

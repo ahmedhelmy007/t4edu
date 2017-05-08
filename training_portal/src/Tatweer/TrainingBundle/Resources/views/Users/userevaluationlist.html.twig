@@ -1,0 +1,67 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Users list'|trans({}, 'users') }}</div></div>
+    <div class="wrapper2">
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+                <th>{{ 'Actions'|trans({}, 'messages') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+{% if data_result  is defined  %}  
+    {% for key1,value1 in data_result %}
+     {% for key,value in value1 %}
+        {% if  value.idGroup is not null and  value.idGroup is not empty  %}  
+        
+        {% if value.users  is defined  %}  
+          {% for key1,user in value.users %}
+           <tr>
+                <td> {{ user.UserName }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ user.FullArabicName }} {% else %} {{ user.DisplayName }} {% endif %}  </td>
+                <td>  {{ user.Title }}  </td>
+                <td>  {{ user.Email }}  </td>
+                <td>
+                <ul>
+                     <a href="{{ path('_evaluate', {'groupid': value.idGroup , 'userid': user.idUser }) }}">evaluate</a> 
+                     {# <a href="{{ path('_requesttrainingneed', {'groupid': value.idGroup , 'userid': user.idUser }) }}">request training need</a> 
+                     <a href="{{ path('_trainingneedsactions', {'groupid': value.idGroup , 'userid': user.idUser }) }}">Training needs actions</a> #} 
+                </ul>
+                </td>
+            </tr> 
+         {% endfor %}
+        {% endif %}
+        
+        {% endif %}
+    {% endfor %}
+   {% endfor %} 
+{% endif %}  
+ {#{% if data_result  is defined  %}               
+        {% for key, user in data_result %}
+           <tr>
+                <td> {{ user.UserName }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ user.FullArabicName }} {% else %} {{ user.DisplayName }} {% endif %}  </td>
+                <td>  {{ user.Title }}  </td>
+                <td>  {{ user.Email }}  </td>
+                <td>
+                <ul>
+                     <a href="{{ path('_show', { 'id': user.idUser }) }}">evaluate</a> 
+                </ul>
+                </td>
+            </tr> 
+        {% endfor %}
+{% endif %}   #}
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

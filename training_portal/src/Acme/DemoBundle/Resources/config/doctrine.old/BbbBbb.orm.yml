@@ -1,0 +1,14 @@
+## BbbBbb.orm.yml 
+Acme\DemoBundle\Entity\BbbBbb: 
+    type: entity 
+    table: bbb_bbb
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+            strategy: AUTO
+    oneToMany:
+        aaaBbbCccCollection:
+            targetEntity: AaaBbbCcc
+            mappedBy: bbbBbb

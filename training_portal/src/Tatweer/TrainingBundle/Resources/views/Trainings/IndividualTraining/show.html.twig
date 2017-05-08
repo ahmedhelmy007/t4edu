@@ -1,0 +1,210 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+		<script type="text/javascript">
+                    
+                    function validate_before_take_action()
+                    {
+                        valid = true;
+                        $( "input[type='text']" ).each(function() {
+                            if(!$( this ).val())
+                                valid = false;
+                        }); 
+                        if(! valid)
+                        {
+                        $('<span class="error error-span">'+FillTrainingDetailesACKMSG+'</span> ').
+                        insertBefore('#comment');
+                        }  
+                        return valid;
+                    }
+                    
+                    
+                    
+                    
+                    $(function() {
+                            
+                         $("#save_btn").click(function(){
+                           valid = true;
+                           $('#selected_program_error').html('');
+                           if (!$("input[name='selected_program']:checked").val()) {
+                              $('#selected_program_error').html('<span class="error error-span">'+SelectAnOption+'</span> ');
+                              valid = false;
+                           } 
+                            return valid;
+                          });
+                          
+                          
+                         $("#approve_btn").click(function(){
+                            $("#form12").find(".error-span").remove();
+                            valid = true;  
+                           {% if canManage is defined and canManage == TRUE  %}  
+                            valid = validate_before_take_action();
+                           {% endif %}     
+                            return valid;
+                          });
+                          
+                          
+                         $("#sendback_btn,#reject_btn").click(function(){
+                            $("#form12").find(".error-span").remove();
+                            valid = true;  
+                           {% if canManage is defined and canManage == TRUE  %}  
+                            valid = validate_before_take_action();
+                           {% endif %}     
+                                if (valid && !$('#comment').val()) {
+                                    valid = false;
+                                    $('<span class="error error-span">'+EmptyFields+'</span> ').
+                                    insertBefore('#comment');
+                                    }
+                                return valid;
+                          });
+                          
+                          
+                          $("#assignto_btn").click(function(){
+                           $("#form12").find(".error-span").remove();  
+                           valid = true;
+                           {% if canManage is defined and canManage == TRUE  %}  
+                            valid = validate_before_take_action();
+                           {% endif %}    
+                           var selected_value = $('#training_specialist').val(); 
+                                    if (valid && selected_value == "0" ) {
+                                          valid = false;
+                                         $('<span class="error">'+SelectUserError+'</span>').
+                                          insertAfter('#training_specialist');
+                                    }
+                                    return valid;
+                              });
+                              
+                              
+                         $("#hr_approve_btn").click(function(){
+                          valid = true;
+                          $("#form12").find(".error-span").remove();
+                           var selected_value = $('#selected_budget').val(); 
+                                    if (selected_value == "0" ) {
+                                          valid = false;
+                                         $('<span class="error error-span">'+SelectAnOption+'</span>').
+                                          insertAfter('#selected_budget');
+                                    }
+                            return valid;
+                          });
+                          
+                          $( "#selected_budget" ).change(function() {
+                              $('#departments_budget').html('');
+                              $("#form12").find(".error-span").remove();
+                              var selected_value = $('#selected_budget').val(); 
+                              if(selected_value != "0" )
+                              {
+                                 
+                                  var oraiginal_value   = $('#original_'+selected_value).val();
+                                  var remaining_value   = $('#remaining_'+selected_value).val();
+                                  var totalSelectedCost = $('#totalSelectedCost').val();
+                                  $('#departments_budget').html('{{ 'Original Value'|trans({}, 'budget') }} : ' +oraiginal_value +' , {{ 'Remaining Value'|trans({}, 'budget') }} : '+  remaining_value );
+                                  
+                                  
+                                  if((1*totalSelectedCost) > (1*oraiginal_value) || (1*remaining_value) < (1*totalSelectedCost) )
+                                     $("#hr_approve_btn").attr('disabled','disabled'); 
+                                  else 
+                                     $("#hr_approve_btn").removeAttr('disabled');
+                              }
+                          });
+
+
+                          });
+                </script>
+                
+                
+                
+                
+{% block body -%}
+    
+    
+    {% include "TatweerTrainingBundle::Trainings/IndividualTraining/userinfo.html.twig" %}
+    {% if  canManage is defined and canManage == TRUE  %} 
+           {% include "TatweerTrainingBundle::Trainings/IndividualTraining/show_edit.html.twig" %}
+   
+       {% else %} 
+        
+    <div class="titlepage"><div class="maintitlenews">{{ 'Training courses details'|trans({}, 'trainingdetails') }}</div></div>
+    <div class="wrapper2">
+    <table  class="records_list" width="100%" >
+        <tbody>
+            <tr>
+                <th>{{ 'Course name'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Provider'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.providerName }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Start date'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.startDate|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'End date'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.endDate|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Duration'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.duration }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Country'|trans({}, 'trainingdetails') }}</th>
+                <td>{% if app.request.getLocale() == 'ar' %} {{ entity.countryAr }} {% else %} {{ entity.countryEn }} {% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{ 'City'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+ 
+            <tr>
+                <th>{{ 'Language'|trans({}, 'trainingdetails') }}</th>
+                <td>{% if app.request.getLocale() == 'ar' %} {{ entity.langAr }} {% else %} {{ entity.langEn }} {% endif %}    {{ entity.languageOther }}</td>
+            </tr>
+            
+            <tr>
+                <th>{{ 'Related Tasks'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.relatedTasks }}</td>
+            </tr>
+            
+         {% if trainingExpenses  and canManage is defined and canManage == TRUE  %}  
+
+          {% for key,data in trainingExpenses %}
+            <tr>
+                <th>{{ data.name }}</th>
+                <td>{{ data.value }} SAR </td>
+            </tr>
+          {% endfor %}
+  
+        {% endif %}
+        
+    
+           
+         {% if trainingExpenses  and isTrainierHr is defined and isTrainierHr == TRUE  %}  
+
+          {% for key,data in trainingExpenses %}
+            <tr>
+                <th>{{ data.name }}</th>
+                <td>{{ data.value }} SAR </td>
+            </tr>
+          {% endfor %}
+  
+        {% endif %}
+        
+            
+     
+        </tbody>
+    </table>
+    </div>
+    {% endif %} 
+    
+
+
+    
+    
+   {% include "TatweerTrainingBundle::TrainingNeeds/action_log_history.html.twig" %}
+   <form method="post" id="form12" action="{{ url('selftrainings_update_actionlog' , { 'id': entity.idTraining })  }}">
+   {% include "TatweerTrainingBundle::TrainingNeeds/actions.html.twig" %} 
+   </form>  
+   
+   
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

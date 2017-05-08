@@ -1,0 +1,2 @@
+
+ALTER TABLE `budgets` CHANGE `id_budget` `id_budget` TINYINT( 3 ) UNSIGNED NOT NULL AUTO_INCREMENT ;

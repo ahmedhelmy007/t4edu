@@ -1,0 +1,29 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body %}
+
+    <div class="section">
+        <div class="bartitle">
+            <div class="maintitlenews">{% trans %} Login {% endtrans %}</div>
+
+        </div>
+            <br/>
+        <div>
+            <form action="login" method="post" >
+            <div>
+                <label>{% trans %} Username {% endtrans %}</label>
+                <input type="input" name="username" />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="_password" />
+            </div>
+                <input type="submit" name="login_btn" value="{% trans %} Login {% endtrans %}" />
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

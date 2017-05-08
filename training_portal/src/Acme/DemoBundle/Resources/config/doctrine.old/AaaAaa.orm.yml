@@ -1,0 +1,14 @@
+## AaaAaa.orm.yml 
+Acme\DemoBundle\Entity\AaaAaa: 
+    type: entity 
+    table: aaa_aaa
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+            strategy: AUTO
+    oneToMany:
+        aaaBbbCccCollection:
+            targetEntity: AaaBbbCcc
+            mappedBy: aaaAaa

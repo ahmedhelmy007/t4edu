@@ -1,0 +1,49 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+		<script type="text/javascript">
+                        $(function() {
+                         $("#sendback_btn,#reject_btn").click(function(){
+                             // $("#form12").find("span").remove();
+                           valid = true;
+                                    if (!$('#comment').val()) {
+                                          valid = false;
+                                         $('<span class="error">'+EmptyFields+'</span><br/>').
+                                          insertBefore('#comment');
+                                    }
+                                    return valid;
+ 
+                       
+                          });
+                          
+                          $("#assignto_btn").click(function(){
+                             
+                           valid = true;
+                       
+                           var selected_value = $('#training_specialist').val(); 
+                                    if (selected_value == "0" ) {
+                                          valid = false;
+                                         $('<span class="error">'+SelectUserError+'</span>').
+                                          insertAfter('#training_specialist');
+                                  
+                                    }
+                                    return valid;
+                              });
+                         
+                           });
+                </script>
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'User data'|trans({}, 'trainingneed' ) }}</div></div>
+        <br/>
+    <div>
+    
+    <b>{{ 'Employee Name'|trans({}, 'evaluation' ) }} </b> : {% if app.request.getLocale() == 'ar' %} {{ userentity.FullArabicName }} {% else %} {{ userentity.DisplayName }} {% endif %} 
+    <br/>
+    <b>{{ 'Job Title'|trans({}, 'evaluation' ) }} </b> : {{userentity.Title}}
+    
+    </div>
+    
+     {% include "TatweerTrainingBundle::TrainingNeeds/action_log_history.html.twig" %}
+<form method="post" id="form12">
+    {% include "TatweerTrainingBundle::TrainingNeeds/actions.html.twig" %}
+</form>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

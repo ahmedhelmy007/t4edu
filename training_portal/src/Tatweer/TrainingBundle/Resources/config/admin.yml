@@ -1,0 +1,11 @@
+services:
+    sonata.admin.post:
+        class: Tatweer\TrainingBundle\Admin\PostAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
+        arguments:
+            - ~
+            - Tatweer\TrainingBundle\Admin
+            - ~
+        calls:
+            - [ setTranslationDomain, [TatweerTrainingBundle]]

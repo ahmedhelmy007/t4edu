@@ -1,0 +1,1 @@
+ALTER TABLE `trainings` CHANGE `related_tasks` `related_tasks` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL ;

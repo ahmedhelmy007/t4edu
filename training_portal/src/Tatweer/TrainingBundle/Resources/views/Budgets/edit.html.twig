@@ -1,0 +1,95 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="wrapper2">
+        <div class="barsearch">{{ 'Edit budget'|trans({}, 'budgets') }}</div>
+ {{ form_start(edit_form) }}
+ {{ form_errors(edit_form) }}
+        <div>
+            {{ form_label(edit_form.name) }}
+            {{ form_widget(edit_form.name) }}
+            {{ form_errors(edit_form.name) }}
+        </div>
+
+        <div> 
+            
+            {{ form_label(edit_form.startDate) }}
+            {{ form_widget(edit_form.startDate, {'id': 'startPicker'} ) }}
+            {{ form_errors(edit_form.startDate) }}
+        </div>{{ edit_form.vars.value.startDate }}
+
+        <div>
+            {{ form_label(edit_form.endDate) }}
+            {{ form_widget(edit_form.endDate, {'id': 'endPicker'}) }}
+            {{ form_errors(edit_form.endDate) }}
+        </div>
+
+        <div>
+            {{ form_label(edit_form.active) }}
+            {{ form_widget(edit_form.active) }}
+            {{ form_errors(edit_form.active) }}
+        </div>
+        
+ {{ form_end(edit_form) }}
+      {#  <ul class="record_actions">
+    <li>
+        <a href="{{ path('budgets') }}">
+            Back to the list
+        </a>
+    </li>
+</ul> #}
+      
+      </div>
+{% endblock %}
+
+
+
+<script src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.plugin.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.js') }}"></script>
+
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars-ar-EG.js') }}">
+    //important for week days & months localization
+</script>
+<script  type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.plus.js') }}" ></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.lang.js') }}">
+    //important for navigation links localization
+</script>
+<link rel="stylesheet" href="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.css') }}">
+
+<script>
+    $(function() {
+        //define an instance of calrendars
+        var calendar = $.calendars.instance('gregorian', 'ar-EG');
+        //set regionalOptions to arabic (to display arabic navigation links)
+        $.calendarsPicker.setDefaults($.calendarsPicker.regionalOptions['ar-EG']);
+        //pass calendars instance to calendarsPicker and set some options
+        $(".date_picker").calendarsPicker({calendar: calendar, onSelect: customRange , dateFormat: 'yyyy-mm-dd'});
+        //another way to set regionalOptions to arabic by extending calendarsPicker options
+        //$(".date_picker").calendarsPicker('option', $.extend( {}, $.calendarsPicker.regionalOptions['ar-EG']));
+        //set some specific options to one of the calendars
+        $(".future").calendarsPicker('option', {yearRange: '-0:+20', defaultDate: '-0y', minDate: '+0d'});
+        
+        if( $('#startPicker').val() )
+        $('#endPicker').calendarsPicker('option', 'minDate', $('#startPicker').val() || null);
+        if( $('#endPicker').val() )
+        $('#startPicker').calendarsPicker('option', 'maxDate', $('#endPicker').val() || null);    
+});
+
+function customRange(dates) { 
+
+    if (this.id == 'startPicker') { 
+        $('#endPicker').calendarsPicker('option', 'minDate', dates[0] || null);
+	 
+    } 
+    else { 
+        $('#startPicker').calendarsPicker('option', 'maxDate', dates[0] || null);
+
+    } 
+}
+
+ 
+</script>
+
+
+{% include "TatweerTrainingBundle::footer.html.twig" %}

@@ -1,0 +1,59 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+ 
+        <div class="titlepage"><div class="maintitlenews">{{ 'Budgets list'|trans({}, 'budgets') }}</div></div>
+    <div class="wrapper2">
+    
+    
+<a href="{{ path('budgets_new') }}">{{ 'Create new budget'|trans({}, 'budgets') }}</a>
+
+
+
+    <table class="records_list" id="mydataTable">
+        
+        <thead>
+            <tr>
+                <th>{{ 'Budget name'|trans({}, 'budgets') }}</th>
+                <th>{% trans %} Start date {% endtrans %}</th>
+                <th>{% trans %} End date {% endtrans %}</th>
+                <th>{{ 'Status'|trans({}, 'messages') }}</th>
+                <th>{% trans %} View {% endtrans %}</th>
+                <th>{% trans %} Update {% endtrans %}</th>
+                <th>{% trans %} Delete {% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if entities %}
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.startDate %}{{ entity.startDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.endDate %}{{ entity.endDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.active %} {% trans %} Active {% endtrans %} {% else %} {% trans %} Inactive {% endtrans %} {% endif %} </td>
+      
+                <td><a href="{{ path('budgets_show', { 'id': entity.idBudget }) }}">{% trans %} View details {% endtrans %}</a></td>
+                <td><a href="{{ path('budgets_edit', { 'id': entity.idBudget }) }}">{% trans %} Update {% endtrans %}</a></td>
+                <td>
+                    <a id="budgets_{{ entity.idBudget }}" href="{{ path('budgets_delete', { 'id': entity.idBudget }) }}" class="confirmLink" >{% trans %} Delete {% endtrans %}</a>
+ 
+                    {#<form action="{{ path('budgets_delete', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ form_widget(deleteForms[entity.id]) }}
+                    </form>#}
+                </td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+       {#  {% else %}
+           <tbody><tr class="odd"><td class="dataTables_empty" valign="top">
+                        <label class="error">{{ 'There are no budgets created yet' |trans({}, 'budgets') }}</label>
+                    </td></tr></tbody> #}
+        
+    </table> 
+
+
+    </div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

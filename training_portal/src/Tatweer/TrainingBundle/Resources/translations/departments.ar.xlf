@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Departments List</source>
+                <target>قائمة الأقسام</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Name</source>
+                <target>الإسم</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Department Moderator</source>
+                <target>مدير القسم</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Department Structure Responsible</source>
+                <target>مسؤول انشاء هيكل تنظيمي</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Department creation</source>
+                <target> إنشاء قسم</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Description</source>
+                <target>الوصف</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Department edit</source>
+                <target>تحديث القسم</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Related groups</source>
+                <target>المجموعات الفرعية</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Department employees</source>
+                <target>موظفي القسم</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Employee name</source>
+                <target>اسم الموظف</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Employee No</source>
+                <target>الرقم الوظيفي</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Employee Grade</source>
+                <target>الدرجة الوظيفية</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Employee mail</source>
+                <target>البريد الالكتروني</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Employee role</source>
+                <target>دور الموظف</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Group name</source>
+                <target>اسم المجموعة</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Group moderator</source>
+                <target>المدير المباشر</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

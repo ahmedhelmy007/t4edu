@@ -1,0 +1,1 @@
+ALTER TABLE `groups` ADD `description` TINYTEXT NOT NULL AFTER `name` ;

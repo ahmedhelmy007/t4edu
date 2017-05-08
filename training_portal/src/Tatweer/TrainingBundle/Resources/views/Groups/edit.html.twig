@@ -1,0 +1,19 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Group edit'|trans({}, 'groups') }}</div></div>
+    <div class="wrapper2">
+
+    {{ form(edit_form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {#    <ul class="record_actions">
+    <li>
+        <a href="{{ path('groups') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>#}
+    </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

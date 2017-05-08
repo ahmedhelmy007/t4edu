@@ -1,0 +1,158 @@
+<?php
+
+namespace Tatweer\TrainingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TrainingEvaluationOptions
+ *
+ * @ORM\Table(name="training_evaluation_options", indexes={@ORM\Index(name="training_evaluation_options_sectionid_fk_idx", columns={"section_id"})})
+ * @ORM\Entity
+ */
+class TrainingEvaluationOptions
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="id_option", type="boolean", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idOption;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_ar", type="string", length=100, nullable=true)
+     */
+    private $nameAr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_en", type="string", length=100, nullable=true)
+     */
+    private $nameEn;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=true)
+     */
+    private $active;
+
+    /**
+     * @var \TrainingEvaluationSections
+     *
+     * @ORM\ManyToOne(targetEntity="TrainingEvaluationSections")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="section_id", referencedColumnName="id_section")
+     * })
+     */
+    private $section;
+
+
+
+    /**
+     * Get idOption
+     *
+     * @return boolean 
+     */
+    public function getIdOption()
+    {
+        return $this->idOption;
+    }
+
+    /**
+     * Set nameAr
+     *
+     * @param string $nameAr
+     * @return TrainingEvaluationOptions
+     */
+    public function setNameAr($nameAr)
+    {
+        $this->nameAr = $nameAr;
+
+        return $this;
+    }
+
+    /**
+     * Get nameAr
+     *
+     * @return string 
+     */
+    public function getNameAr()
+    {
+        return $this->nameAr;
+    }
+
+    /**
+     * Set nameEn
+     *
+     * @param string $nameEn
+     * @return TrainingEvaluationOptions
+     */
+    public function setNameEn($nameEn)
+    {
+        $this->nameEn = $nameEn;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEn
+     *
+     * @return string 
+     */
+    public function getNameEn()
+    {
+        return $this->nameEn;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return TrainingEvaluationOptions
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Tatweer\TrainingBundle\Entity\TrainingEvaluationSections $section
+     * @return TrainingEvaluationOptions
+     */
+    public function setSection(\Tatweer\TrainingBundle\Entity\TrainingEvaluationSections $section = null)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Tatweer\TrainingBundle\Entity\TrainingEvaluationSections 
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+}

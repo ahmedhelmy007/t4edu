@@ -1,0 +1,44 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Trainings requests list'|trans({}, 'individuatraining') }}</div></div>
+    <div class="wrapper2">
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+                <th>{{ 'Actions'|trans({}, 'messages') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+{% if data_result  is defined  %}  
+    {% for key,value in data_result %}
+
+           <tr>
+                <td> {{ value.username }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ value.arabic_fullname }} {% else %} {{ value.english_fullname }} {% endif %}  </td>
+                <td>  {{ value.Title }}  </td>
+                <td>  {{ value.Email }}  </td>
+                <td>
+                <ul>
+                     <a href="{{ path('selftrainings_show', {'id': value.idTraining }) }}">Training requests</a> 
+                </ul>
+                </td>
+            </tr> 
+
+
+   {% endfor %} 
+{% endif %}  
+
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

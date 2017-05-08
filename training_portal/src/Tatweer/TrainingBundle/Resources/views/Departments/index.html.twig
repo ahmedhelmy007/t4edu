@@ -1,0 +1,51 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Departments List'|trans({}, 'departments') }}</div></div>
+    <div class="wrapper2">
+        <div>
+            {% if not app.session.get('roles') %} 
+            <a href="{{ path('departments_new') }}">
+                {% trans %} Add New {% endtrans %} 
+            </a>
+            {% endif %}
+            
+        </div>
+    
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Name'|trans({}, 'departments') }}</th>
+                <th>{{ 'Department Moderator'|trans({}, 'departments') }}</th>
+                <th>{{ 'Department Structure Responsible'|trans({}, 'departments') }}</th>
+                <th>{% trans %} View {% endtrans %} </th>
+                {% if not app.session.get('roles') %} 
+                <th>{% trans %} Update {% endtrans %}  </th>
+                <th>{% trans %} Delete {% endtrans %} </th>
+                {% endif %}
+                 
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('departments_show', { 'id': entity.idGroup }) }}">{{ entity.name }}</a></td>
+                <td>{% if dep_managerUsers[entity.idGroup]  is defined  %} {{ dep_managerUsers[entity.idGroup]|join(',') }}  {% endif %}  </td>
+                <td>{% if dep_structure_respons[entity.idGroup]  is defined  %} {{ dep_structure_respons[entity.idGroup]|join(',') }}  {% endif %}  </td>
+                <td><a href="{{ path('departments_show', { 'id': entity.idGroup }) }}">{% trans %} View {% endtrans %}</a></td>
+                
+                {% if not app.session.get('roles') %} 
+                <td><a href="{{ path('departments_edit', { 'id': entity.idGroup }) }}">{% trans %} Update {% endtrans %}</a></td>
+                <td><a id="departments_{{ entity.idGroup }}" href="{{ path('departments_delete', { 'id': entity.idGroup }) }}" class="confirmLink" >{% trans %} Delete {% endtrans %}</a></td>
+                {% endif %}
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}
+

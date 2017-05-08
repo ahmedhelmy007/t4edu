@@ -1,0 +1,51 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'Training expenses classes list'|trans({}, 'trainingexpensesclasses') }}</div></div>
+    <div class="wrapper2">
+        
+    <a href="{{ path('trainingexpensesclasses_new') }}">
+        {% trans %} Add New {% endtrans %} 
+    </a>
+    
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                
+                <th>{{ 'Name'|trans({}, 'trainingexpensesclasses') }}</th>
+                <th>{{ 'Status'|trans({}, 'messages') }}</th>
+                <th>{% trans %} Actions {% endtrans %} </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            {% if  entity.manageable %}
+            <tr>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.active %} {% trans %} Active {% endtrans %} {% else %} {% trans %} Inactive {% endtrans %} {% endif %} </td>
+      
+                <td>
+                <ul>
+                    
+                    {% if entity.canDeleted %} 
+
+                        <a id="expensesclasses_{{ entity.idClass }}" href="{{ path('trainingexpensesclasses_delete', { 'id': entity.idClass }) }}" class="confirmLink" >delete</a>
+                    
+                    {% endif %} 
+                    
+                    
+                   
+                        <a href="{{ path('trainingexpensesclasses_edit', { 'id': entity.idClass }) }}">edit</a>
+                    
+                </ul>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+                </div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

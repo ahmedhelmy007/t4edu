@@ -1,0 +1,41 @@
+<div class="titlepage"><div class="maintitlenews">{{ 'Performance and Potentials Net'|trans({}, 'evaluation' , 'en' ) }} - {{ 'Performance and Potentials Net'|trans({}, 'evaluation' , 'ar' ) }}</div></div>
+<div class="wrapper2">
+<div class="net-grid" >
+
+
+<div class="net-div">
+    <div {% if performancePotentialsNet == 3 %} class="green" {% else %} class="dark-grey" {% endif %} >3</div>
+    <div {% if performancePotentialsNet == 2 %} class="green" {% else %} class="dark-grey" {% endif %} >2</div>
+    <div {% if performancePotentialsNet == 1 %} class="green" {% else %} class="grey" {% endif %} >1</div>
+    <div class="div-noborder">{{ 'High'|trans({}, 'evaluation' ) }}</div>
+    
+    <div {% if performancePotentialsNet == 6 %} class="green" {% else %} class="grey" {% endif %} >6</div>
+    <div {% if performancePotentialsNet == 5 %} class="green" {% else %} class="grey" {% endif %} >5</div>
+    <div {% if performancePotentialsNet == 4 %} class="green" {% else %} class="grey" {% endif %} >4</div>
+    <div class="div-noborder">{{ 'Average'|trans({}, 'evaluation' ) }}</div>
+    
+    <div {% if performancePotentialsNet == 9 %} class="green" {% else %} class="light-grey" {% endif %} >9</div>
+    <div {% if performancePotentialsNet == 8 %} class="green" {% else %} class="light-grey" {% endif %} >8</div>
+    <div {% if performancePotentialsNet == 7 %} class="green" {% else %} class="light-grey" {% endif %} >7</div>
+    <div class="div-noborder">{{ 'Low'|trans({}, 'evaluation' ) }}</div>
+    
+    <div class="div-noborder">{{ 'High'|trans({}, 'evaluation' ) }}</div>
+    <div class="div-noborder">{{ 'Average'|trans({}, 'evaluation' ) }}</div>
+    <div class="div-noborder">{{ 'Low'|trans({}, 'evaluation' ) }}</div>
+    <div class="div-noborder"></div>
+</div>
+    <div class="net-div y-text-div ">{{ 'Performance'|trans({}, 'evaluation') }}</div>
+    <div class="net-div x-text-div">{{ 'Potentials'|trans({}, 'evaluation' ) }}</div>
+    
+    
+</div>
+    <div class="clr"></div> 
+<div class="net-explanation-grid" >
+    <b>{{ 'Explanation'|trans({}, 'evaluation' ) }}</b>
+    <table class="no-border">
+        <tr><td><div class="inner-div net-explanation-desc dark-grey"> </div></td><td> <div class="inner-div"> {{ 'Employee with High Performance'|trans({}, 'evaluation') }}</div></td></tr>
+        <tr><td><div class="inner-div net-explanation-desc grey"> </div></td><td><div class="inner-div"> {{ 'Employee with Average Performance'|trans({}, 'evaluation') }}</div></td></tr>
+        <tr><td><div class="inner-div net-explanation-desc light-grey"> </div></td><td> <div class="inner-div"> {{ 'Employee is underperforming'|trans({}, 'evaluation') }}</div></td></tr>
+    </table>
+</div>
+    </div>

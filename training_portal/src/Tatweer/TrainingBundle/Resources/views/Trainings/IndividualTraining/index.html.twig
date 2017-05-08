@@ -1,0 +1,45 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'Trainings requests list'|trans({}, 'individuatraining') }}</div></div>
+    <div class="wrapper2">
+        <a href="{{ url('_newindividualtraining') }}"> {% trans %} Add {% endtrans %} </a>
+        
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Request ID'|trans({}, 'individuatraining') }}</th>
+                <th>{{ 'Request status'|trans({}, 'individuatraining') }}</th>
+                <th>{{ 'Last updated'|trans({}, 'individuatraining') }}</th>
+                <th>{{ 'Last updated by'|trans({}, 'individuatraining') }}</th>
+                <th>{% trans %} Actions {% endtrans %} </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.idTraining }}</td>
+                <td>{% if entity.action %} {{ entity.action }} {% else %} - {% endif %}</td>
+                <td>{% if entity.modifiedDate %}{{ entity.modifiedDate|date('Y-m-d H:i:s') }} {% else %} - {% endif %}</td>
+                <td>{% if entity.modifiedBy %} {% if app.request.getLocale() == 'ar' %} {{ entity.arabic_fullname }} {% else %} {{ entity.english_fullname }} {% endif %}   {% else %} - {% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('selftrainings_show', { 'id': entity.idTraining }) }}">Training request details</a>
+                    </li>
+                    {% if not entity.canNotCancel %}
+                    <li>
+                       <a id="selftrainings_{{ entity.idTraining }}" href="{{ path('selftrainings_delete', { 'id': entity.idTraining }) }}" class="confirmLink" >{% trans %} Cancel {% endtrans %}</a>
+                    </li>
+                    {% endif %} 
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

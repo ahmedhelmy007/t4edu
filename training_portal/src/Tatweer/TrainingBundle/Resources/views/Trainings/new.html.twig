@@ -1,0 +1,303 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+<script>
+    other_value_counter = 2;
+    $(document).ready(function () {
+        
+    $("select").prepend("<option value='' selected='selected'>{% trans %}Select{% endtrans %}</option>");
+    //$("#languages").append(new Option("other", "-1"));
+    
+    $("#languages").change(function() {
+    if($( "#languages" ).val() == 3 )
+    {
+        $( "#other_languages" ).html("<label></label>{{ 'Other'|trans({}, 'trainingdetails') }}<input type='text' name='languageOther' required maxlength='100' class='isArabicAndEnglishletters' />");
+    $('.isArabicAndEnglishletters').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z\u0600-\u06FF \b]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+
+    e.preventDefault();
+    return false;
+    });
+    }
+    else 
+    {
+       // $( "#other_language_input" ).val('');
+        $( "#other_languages" ).html('');
+    }
+        
+    });
+
+
+    
+    
+});
+
+    function onchangethis(obj) {
+ 
+       var current_id = obj.id;
+       var result = current_id.split("_");
+    if(obj.value)
+    {
+      document.getElementById('other_value_'+result[1]).required = true;
+   }
+   else 
+   {
+      document.getElementById('other_value_'+result[1]).required = false;
+   }
+
+    }
+</script>
+
+{% block body -%}
+    <div class="wrapper2">
+        <div class="barsearch">{{ 'Evaluation period main data'|trans({}, 'periods') }}</div>
+        
+        {{ form_start(form, {'attr': {'id': 'detailes_form'}}) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.trainingNeedsProgram) }}
+            {{ form_widget(form.trainingNeedsProgram, {'id': 'training_need_program'}) }}
+            {{ form_errors(form.trainingNeedsProgram) }}
+        </div>
+        <div>
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        <div>
+            {{ form_label(form.providerName) }}
+            {{ form_widget(form.providerName) }}
+            {{ form_errors(form.providerName) }}
+        </div>
+        <div> 
+            {{ form_label(form.startDate) }}
+            {{ form_widget(form.startDate, {'id': 'startPicker'} ) }}
+            {{ form_errors(form.startDate) }}
+        </div>
+        <div>
+            {{ form_label(form.endDate) }}
+            {{ form_widget(form.endDate, {'id': 'endPicker'}) }}
+            {{ form_errors(form.endDate) }}
+        </div>
+        <div>
+            {{ form_label(form.duration) }}
+            {{ form_widget(form.duration) }} ({% trans %}Days{% endtrans %})
+            {{ form_errors(form.duration) }}
+        </div>
+        <div>
+            {{ form_label(form.country) }}
+            {{ form_widget(form.country, {'id': 'country'}) }}
+            {{ form_errors(form.country) }}
+        </div>
+        <div>
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+            {{ form_errors(form.city) }}
+        </div>
+        <div>
+            {{ form_label(form.language) }}
+            {{ form_widget(form.language, {'id': 'languages'}) }}
+            {{ form_errors(form.language) }}
+        </div>
+        <div id="other_languages" >
+        </div>
+        <div>
+            <label><b>{{ 'Cost (in Saudi Riyals)'|trans({}, 'trainingdetails') }}</b></label>
+        </div>
+        
+            {%if nonManagableCostItems is defined %}
+        {% for entity in nonManagableCostItems %}
+        <div>
+            <label>{{ entity.name }}</label>
+            <input type="hidden" name="other[]" value="{{ entity.idClass }}" />
+            <input type="text" name="other_values[]" maxlength="10" required class="isfloat" />
+        </div>
+        {% endfor %}
+            {% endif %}
+        <div>
+            <label><b>{{ 'other'|trans({}, 'trainingdetails') }}</b></label>
+        </div>
+        
+        <div id="other_costs">
+            {%if managableCostItems is defined %}  
+        <div>
+            <select name="other[]" id="other_1" class="otherCosts" onchange="onchangethis(this)">
+            {% for entity in managableCostItems %}
+            <option value="{{ entity.idClass }}" >{{ entity.name }}</option>
+            {% endfor %}
+            </select>
+             <input type="text" name="other_values[]" maxlength="10" id="other_value_1" class="isfloat otherCostsValues" />
+             <a id="add" href="javascript:void(0);" class="addCF">{% trans %}Add{% endtrans %}</a>
+        </div>
+            {% endif %}
+            
+        </div>
+          
+        {{ form_end(form) }}
+    </div> 
+        
+        
+        
+        
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('trainings') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+
+<script src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.plugin.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.js') }}"></script>
+
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars-ar-EG.js') }}">
+    //important for week days & months localization
+</script>
+<script  type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.plus.js') }}" ></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.lang.js') }}">
+    //important for navigation links localization
+</script>
+<link rel="stylesheet" href="{{ asset('bundles/tatweertraining/js/jquery.calendars.package-2.0.0/jquery.calendars.picker.css') }}">
+
+<script>
+    $(function() {
+        //define an instance of calrendars
+        var calendar = $.calendars.instance('gregorian', 'ar-EG');
+        //set regionalOptions to arabic (to display arabic navigation links)
+        $.calendarsPicker.setDefaults($.calendarsPicker.regionalOptions['ar-EG']);
+        //pass calendars instance to calendarsPicker and set some options
+        $(".date_picker").calendarsPicker({calendar: calendar, onSelect: customRange , dateFormat: 'yyyy-mm-dd'});
+        //another way to set regionalOptions to arabic by extending calendarsPicker options
+        //$(".date_picker").calendarsPicker('option', $.extend( {}, $.calendarsPicker.regionalOptions['ar-EG']));
+        //set some specific options to one of the calendars
+        $(".future").calendarsPicker('option', {yearRange: '-0:+20', defaultDate: '-0y', minDate: '+0d'});
+        
+        if( $('#startPicker').val() )
+        $('#endPicker').calendarsPicker('option', 'minDate', $('#startPicker').val() || null);
+        if( $('#endPicker').val() )
+        $('#startPicker').calendarsPicker('option', 'maxDate', $('#endPicker').val() || null);   
+
+        $( "#detailes_form" ).submit(function( event ) {
+         $("#detailes_form").find("span").remove();
+         
+        var valid = true;   
+        var allcosts  = [];
+        var temp = [];
+        
+        
+            if (!$('#training_need_program').val()) {
+                valid = false;
+                $('<span id="error-span" class="error">'+SelectAnOption+'</span>').
+                insertAfter('#training_need_program');
+                }
+                
+            if (!$('#country').val()) {
+                valid = false;
+                $('<span id="error-span" class="error">'+SelectAnOption+'</span>').
+                insertAfter('#country');
+                }
+                
+            if (!$('#languages').val()) {
+                valid = false;
+                $('<span id="error-span" class="error">'+SelectAnOption+'</span>').
+                insertAfter('#languages');
+                }
+        
+           /* if (!$('.otherCosts').val() && $('.otherCostsValues').val()  ) {
+                valid = false;
+                $('<span id="error-span" class="error">'+SelectAnOption+'</span>').
+                insertAfter('.otherCosts');
+                }*/
+
+        $( ".otherCosts" ).each(function() {
+             var current_id = this.id;
+             var result = current_id.split("_");
+        
+             
+             if( !$('#'+current_id).val() && $('#other_value_'+result[1]).val() )
+             {
+                $('<span id="error-span" class="error">'+SelectAnOption+'</span>').
+                insertAfter('#'+current_id);
+             }
+        });
+        
+        
+        $( ".otherCosts" ).each(function() {
+            if($( this ).val())
+        allcosts.push($( this ).val());
+        });
+ 
+        
+     for(var i=0; i<allcosts.length; i++)
+     {
+         if($.inArray(allcosts[i], temp) === -1) {
+          temp.push(allcosts[i]);
+         }else{
+               $('<span id="error-span" class="error">{{ 'Can not accept dublicate data'|trans({}, 'errors') }}</span>').
+                insertAfter('#other_costs');
+             valid = false;
+         }
+     }
+
+        
+        if(!valid)
+            event.preventDefault();
+ 
+                       
+                          });
+                          
+                          
+    $("#detailes_form").on('click','.addCF',function(){
+       $divNew = $( "#other_costs" ).children().last().clone();
+       $divNew = $divNew.find("select").attr('id', 'other_'+other_value_counter).end();
+       $divNew = $divNew.find("input:text").val("").end();
+       $divNew = $divNew.find("a").html('{% trans %}Remove{% endtrans %}').end();
+       $divNew = $divNew.find("a").attr('class', 'remCF').end();
+       $divNew = $divNew.find("input:text").attr('id', 'other_value_'+other_value_counter).end();
+       $divNew = $divNew.find("input:text").removeAttr('required').end();
+       $divNew = $divNew.find("span").remove().end();
+       other_value_counter++
+       $divNew.appendTo( "#other_costs" );
+       $('.isfloat').keypress(function (e) {
+           var regex = new RegExp("^[0-9.\b]+$");
+           var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+           if (regex.test(str)) {
+               return true;
+           }
+
+           e.preventDefault();
+           return false;
+       });
+
+
+    });
+    
+    $("#detailes_form").on('click','.remCF',function(){
+        $(this).parent().remove();
+        
+    });
+
+
+});
+
+function customRange(dates) { 
+   
+    if (this.id == 'startPicker') { 
+        $('#endPicker').calendarsPicker('option', 'minDate', dates[0] || null);
+	 
+    } 
+    else { 
+        $('#startPicker').calendarsPicker('option', 'maxDate', dates[0] || null);
+	 
+	
+    } 
+}
+   
+</script>
+
+{% include "TatweerTrainingBundle::footer.html.twig" %}

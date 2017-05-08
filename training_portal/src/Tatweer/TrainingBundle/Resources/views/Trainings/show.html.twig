@@ -1,0 +1,65 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    
+    <div class="titlepage"><div class="maintitlenews">{{ 'Training courses details'|trans({}, 'trainingdetails') }}</div></div>
+    <div class="wrapper2">
+    <table  class="records_list" id="mydataTable">
+        <tbody>
+            <tr>
+                <th>{{ 'Training program'|trans({}, 'trainingdetails') }}</th>
+                <td>{% if app.request.getLocale() == 'ar' %} {{ entity.valueAr }} {% else %} {{ entity.valueEn }} {% endif %} </td>
+            </tr>
+            <tr>
+                <th>{{ 'Course name'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Provider'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.providerName }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Start date'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.startDate|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'End date'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.endDate|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Duration'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.duration }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Country'|trans({}, 'trainingdetails') }}</th>
+                <td>{% if app.request.getLocale() == 'ar' %} {{ entity.countryAr }} {% else %} {{ entity.countryEn }} {% endif %}</td>
+            </tr>
+            <tr>
+                <th>{{ 'City'|trans({}, 'trainingdetails') }}</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+ 
+            <tr>
+                <th>{{ 'Language'|trans({}, 'trainingdetails') }}</th>
+                <td>{% if app.request.getLocale() == 'ar' %} {{ entity.langAr }} {% else %} {{ entity.langEn }} {% endif %}    {{ entity.languageOther }}</td>
+            </tr>
+       
+         {% if trainingExpenses  and canManage is defined and canManage == TRUE  %}  
+
+          {% for key,data in trainingExpenses %}
+            <tr>
+                <th>{{ data.name }}</th>
+                <td>{{ data.value }} SAR </td>
+            </tr>
+          {% endfor %}
+  
+        {% endif %}
+   
+        </tbody>
+    </table>
+
+ 
+    
+    </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

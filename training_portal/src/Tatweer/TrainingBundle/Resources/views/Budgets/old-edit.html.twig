@@ -1,0 +1,42 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <h1>Budgets edit</h1>
+
+    {#{ form(edit_form) }#}
+    
+    {% set x=0 %}
+    {% for department in departments %}
+        {% set myvalue="" %}
+        {% set myid=department.idGroup %}
+        {% for key,budgetDepartment in edit_form.budgetDepartments %}
+            
+<pre>{{ budgetDepartment.originalValue.vars.value }}$$$</pre>
+<pre>{{ dump(budgetDepartment.department.vars.value) }}</pre>
+
+            {% if budgetDepartment.department.vars.value == department.idGroup %}
+                {% set myvalue=budgetDepartment.originalValue.vars.value %}
+            {% endif %}
+        {% endfor %}
+        <td>
+            <input type="hidden" value="{{entity.id}}" name="tatweer_trainingbundle_budgettype[budgetDepartments][{{x}}][budget]" id="tatweer_trainingbundle_budgettype_storesRentalperiods_{{x}}_budget" class="short_input">
+            <input type="hidden" value="{{myid}}" name="tatweer_trainingbundle_budgettype[budgetDepartments][{{x}}][department]" id="tatweer_trainingbundle_budgettype_storesRentalperiods_{{x}}_department" class="short_input">
+            <input type="text" value="{{myvalue}}" name="tatweer_trainingbundle_budgettype[budgetDepartments][{{x}}][originalValue]" id="tatweer_trainingbundle_budgettype_storesRentalperiods_{{x}}_originalValue" class="short_input">
+        </td>
+        {% set x=x+1 %}
+    {% endfor %}
+
+    <td colspan="2"><div align="center" ><button class="btn btn-success" type="submit">Edit</button></div></td>
+    
+    
+    
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('budgets') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

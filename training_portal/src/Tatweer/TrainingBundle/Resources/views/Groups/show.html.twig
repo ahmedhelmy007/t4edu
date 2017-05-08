@@ -1,0 +1,72 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+
+    <div class="titlepage"><div class="maintitlenews">
+    {{ 'Name'|trans({}, 'groups') }} : {{ entity.name }}
+     </div></div>      
+         <br/>   
+            
+            
+        <div class="titlepage"><div class="maintitlenews">{{ 'Related groups'|trans({}, 'groups') }} </div></div>
+        <div class="wrapper2">
+            
+    <a href="{{ path('groups_new', { 'parent_id': entity.idGroup }) }}">{% trans %} Add New {% endtrans %}</a>
+    <table class="records_list" id="mydataTable2">
+        <thead>
+            <tr>
+                <th>{{ 'Group name'|trans({}, 'groups') }}</th>
+                <th>{{ 'Group moderator'|trans({}, 'groups') }}</th>
+                <th>{% trans %} View {% endtrans %} </th>
+                <th>{% trans %} Update {% endtrans %} </th>
+                <th>{% trans %} Delete {% endtrans %} </th>
+
+            </tr>
+        </thead>
+        <tbody>	   
+{% if group_result  is defined  %}               
+{% for key, group in group_result %}
+    <tr>
+        <td> {{ group.name }} </td>
+        <td> {% if group_leaderUsers[group.idGroup]  is defined  %} {{ group_leaderUsers[group.idGroup]|join(',') }} {% endif %} </td>
+        <td> <a href="{{ path('groups_show', { 'id': group.idGroup }) }}">view</a> </td> 
+        <td> <a href="{{ path('groups_edit', { 'id': group.idGroup }) }}">update</a>  </td> 
+        <td> <a  id="groups_{{ group.idGroup }}"  href="{{ path('groups_delete', { 'id': group.idGroup }) }}" class="confirmLink" >delete</a> </td> 
+    </tr>
+{% endfor %}
+{% endif %}     
+        </tbody>
+    </table>  
+        </div>
+        
+        
+<div class="titlepage"><div class="maintitlenews">{{ 'Group employees'|trans({}, 'groups') }} </div></div>
+<div class="wrapper2">
+    
+    <a href="{{ path('groups_assign', { 'id': entity.idGroup }) }}">{% trans %} Assign new users {% endtrans %}</a>
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Employee name'|trans({}, 'groups') }}</th>
+                <th>{{ 'Employee role'|trans({}, 'groups') }}</th>
+                <th>{{ 'Update user'|trans({}, 'groups') }}</th>
+                <th>{{ 'Delete user'|trans({}, 'groups') }}</th>
+            </tr>
+        </thead>
+        <tbody>	   
+{% if data_result  is defined  %}               
+{% for key, user in data_result %}
+    <tr>
+        <td> {% if app.request.getLocale() == 'ar' %} {{ user.FullArabicName }} {% else %} {{ user.DisplayName }} {% endif %} </td>
+        <td> {{ user.employeeRoles }} </td> 
+        <td>  <a href="{{ path('_editassign',  { 'groupid': entity.idGroup , 'userid': user.idUser }  ) }}">update</a> </td> 
+        <td>  <a  id="users_{{ user.idUser }}"  href="{{ path('_remove',  { 'groupid': entity.idGroup , 'userid': user.idUser }  ) }}" class="confirmLink" >delete</a> </td> 
+    </tr>
+{% endfor %}
+{% endif %}     
+        </tbody>
+    </table>   
+</div>     
+
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

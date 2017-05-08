@@ -1,0 +1,93 @@
+<?php
+
+namespace Tatweer\TrainingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AaaAaa
+ * 
+ * @ORM\Entity
+ * @ORM\Table(name="aaa_aaa")
+ * 
+ */
+
+class AaaAaa
+{
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $aaaBbbCccCollection;
+
+    /**
+     * @var smallint
+     *
+     * @ORM\Column(name="id", type="smallint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+	
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aaaBbbCccCollection = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add aaaBbbCccCollection
+     *
+     * @param \Tatweer\TrainingBundle\Entity\AaaBbbCcc $aaaBbbCccCollection
+     * @return AaaAaa
+     */
+    public function addAaaBbbCccCollection(\Tatweer\TrainingBundle\Entity\AaaBbbCcc $aaaBbbCccCollection)
+    {
+        $this->aaaBbbCccCollection[] = $aaaBbbCccCollection;
+
+        return $this;
+    }
+
+    /**
+     * Remove aaaBbbCccCollection
+     *
+     * @param \Tatweer\TrainingBundle\Entity\AaaBbbCcc $aaaBbbCccCollection
+     */
+    public function removeAaaBbbCccCollection(\Tatweer\TrainingBundle\Entity\AaaBbbCcc $aaaBbbCccCollection)
+    {
+        $this->aaaBbbCccCollection->removeElement($aaaBbbCccCollection);
+    }
+
+    /**
+     * Get aaaBbbCccCollection
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAaaBbbCccCollection()
+    {
+        return $this->aaaBbbCccCollection;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return AaaAaa
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+}

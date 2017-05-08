@@ -1,0 +1,125 @@
+<?php
+
+namespace Tatweer\TrainingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TrainingNeedsOptions
+ *
+ * @ORM\Table(name="training_needs_options")
+ * @ORM\Entity
+ */
+class TrainingNeedsOptions
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="id_option", type="boolean", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idOption;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_ar", type="string", length=45, nullable=true)
+     */
+    private $nameAr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_en", type="string", length=45, nullable=true)
+     */
+    private $nameEn;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="deleted", type="boolean", nullable=true)
+     */
+    private $deleted;
+
+
+
+    /**
+     * Get idOption
+     *
+     * @return boolean 
+     */
+    public function getIdOption()
+    {
+        return $this->idOption;
+    }
+
+    /**
+     * Set nameAr
+     *
+     * @param string $nameAr
+     * @return TrainingNeedsOptions
+     */
+    public function setNameAr($nameAr)
+    {
+        $this->nameAr = $nameAr;
+
+        return $this;
+    }
+
+    /**
+     * Get nameAr
+     *
+     * @return string 
+     */
+    public function getNameAr()
+    {
+        return $this->nameAr;
+    }
+
+    /**
+     * Set nameEn
+     *
+     * @param string $nameEn
+     * @return TrainingNeedsOptions
+     */
+    public function setNameEn($nameEn)
+    {
+        $this->nameEn = $nameEn;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEn
+     *
+     * @return string 
+     */
+    public function getNameEn()
+    {
+        return $this->nameEn;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return TrainingNeedsOptions
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+}

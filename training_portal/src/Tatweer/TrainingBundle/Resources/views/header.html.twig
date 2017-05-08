@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{% block head %}  
+ {% if export_pdf  is not defined %}  
+ <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
+ <title>{% trans %} Employees Training Portal {% endtrans %} {% if pageSubTitle is defined %} - {{ pageSubTitle }} {% endif %} </title>
+ {# To reload CSS modifications in Symfony2 http://stackoverflow.com/a/19372256/4197233 #}
+
+ 
+ {% block stylesheets %}
+ <link rel="stylesheet" href="{{ asset('bundles/tatweertraining/css/'~ app.request.getLocale()  ~'/style.css') }}" />
+ <link rel="stylesheet" href="{{ asset('bundles/tatweertraining/css/'~ app.request.getLocale()  ~'/jquery.dataTables.css') }}" />
+ {% endblock %}
+
+<!-- jQuery -->
+ <script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/localization/messages_'~ app.request.getLocale()  ~'.js') }}"></script>
+
+ <script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/form-validate/lib/jquery.js') }}"></script>
+
+ {% javascripts '@TatweerTrainingBundle/Resources/public/js/*' %}
+ <script type="text/javascript" src="{{ asset_url }}"></script>
+ {% endjavascripts %}
+
+
+ <script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/form-validate/dist/jquery.validate.js') }}"></script>
+ <script type="text/javascript" charset="utf8" src="{{ asset('bundles/tatweertraining/js/form-validate/dist/localization/messages_'~ app.request.getLocale()  ~'.js') }}"></script>
+
+ <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/3cfcc339e89/sorting/natural.js"></script>
+
+		<script type="text/javascript">
+
+   
+  
+		$(document).ready(function(){
+                $("#form1").validate();
+		// validate form
+		$("#commentForm").validate();
+                $('#mydataTable,#mydataTable2').DataTable({
+	          "paginate": true,
+	          "sort": false
+	        } );
+  
+		     
+                
+                
+                  $(".confirmLink").click(function(e) {
+                      e.preventDefault();
+                      var targetUrl = $(this).attr("href");
+                      var dataid = $(this).attr("id");
+                      var mydata = dataid.split("_");
+ 
+                       
+                      if (!confirm(DeleteDataACKMSG)) e.preventDefault();
+                      else
+                      {
+                          if(mydata[0] == 'departments' )
+                          var url = "{{ path('departments') }}"+mydata[1]+"/hasOpenRequest";
+                          else if(mydata[0] == 'groups' )
+                          var url = "{{ path('groups') }}"+mydata[1]+"/hasOpenRequest";
+                          else if(mydata[0] == 'users' )
+                          var url = "{{ path('users') }}"+mydata[1]+"/hasOpenRequest";
+                          else if(mydata[0] == 'budgets' )
+                          var url = "{{ path('budgets') }}"+mydata[1]+"/deductedTrainingRequest";
+                          else if(mydata[0] == 'trainingmember' )
+                          var url = "{{ path('users') }}"+mydata[1]+"/trainingMemberHasOpenRequest";
+                          else if(mydata[0] == 'trainings' || mydata[0] == 'expensesclasses' )
+                          window.location.href = targetUrl;
+    
+                         $.ajax({
+                           type: "GET",
+                           dataType: "json",
+                           url: url ,
+                         }).done(function( data ) {
+           
+                             if(data == true)
+                             {
+                                 if(mydata[0] == 'budgets' )
+                                 alert(DeleteBudgetFailACKMSG);
+                                 else
+                                 alert(DeleteDataFailACKMSG);
+                             }
+                             else 
+                                 window.location.href = targetUrl;
+                         }); 
+
+                      }
+                      
+                    });
+                    
+        
+                }); 
+                
+                
+
+		</script>
+ 
+                          {% endif %} 
+{% endblock %}
+</head>
+
+<body>
+    
+<div id="wrapper"> 
+ {% if export_pdf  is not defined %}  
+<!--FIRST HEADER-->
+   <div class="header">
+     <div class="lang_user">
+         
+         
+     {# to change locale of current page #}
+     {% set params = app.request.attributes.get('_route_params')|merge(app.request.query.all()) %}
+     {% set arParams = params|merge({'_locale': 'ar'}) %}
+     {% set enParams = params|merge({'_locale': 'en'}) %}
+          {%if app.request.locale == "en"%}
+              <div class="lang"> <a href="{{ path(app.request.attributes.get('_route'), arParams) }}"  class="linklang" >عربي</a></div>
+          {%else%}
+              <div class="lang"> <a href="{{ path(app.request.attributes.get('_route'), enParams) }}" class="linklang" >English</a></div>
+          {%endif%}
+         
+         
+         
+ 
+     <div class="user">
+         {% if app.session.get('validated') %} 
+         <a href="{{ url('_logout') }}"> <img src="{{ asset('bundles/tatweertraining/images/'~ app.request.getLocale()  ~'/exit.png') }}"  /></a>
+         
+         <strong>{% trans %} WELCOME {% endtrans %} </strong> 
+        {% if app.request.getLocale() == 'ar' %}
+            {{ app.session.get('arabic_full_name') }} 
+         {% else %} 
+            {{ app.session.get('english_full_name') }} 
+         {% endif %} 
+         
+         {% else %}
+             <a href="{{ url('login_route') }}"> {% trans %} Login {% endtrans %} </a>  
+         {% endif %} 
+     
+     </div>
+     </div>
+    {% include "TatweerTrainingBundle::navbar.html.twig" %}
+   </div>
+   <!--FIRST CONTENT-->
+   <div class="content">
+    
+     {% for label, flashes in app.session.flashbag.all %}
+        <div  class="alert {{ label }}" >
+            {% for flash in flashes %}
+                {{ flash|nl2br }}<br />
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+ {% endif %}

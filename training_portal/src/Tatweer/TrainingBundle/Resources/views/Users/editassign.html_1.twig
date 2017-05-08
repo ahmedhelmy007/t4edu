@@ -1,0 +1,30 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <h1>Users edit</h1>
+ 
+            
+            
+   {{ form(edit_form, {'attr': {'novalidate': 'novalidate'}}) }} 
+    
+  {#   
+{% for index, player in edit_form.roleUserGroup %}
+   
+        {{ form_row(player.role, { 'label' : 'Your email address' }) }}
+
+{% spaceless %}
+    <label><input type="checkbox" {{ block('widget_attributes') }}{% if player.role.value is defined %} value="{{ player.role.value }}"{% endif %} checked="checked" /></label>
+{% endspaceless %}
+{% endfor %}
+  #}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('') }}">
+            Back to the list
+        </a>
+    </li>
+ 
+</ul>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

@@ -1,0 +1,22 @@
+
+                    var NoCreatedItemsYet = 'There are no items created yet';
+                    var DeleteDataACKMSG ='Are you sure you want to delete this data?';
+                    var DeleteDataFailACKMSG = 'Selected data has opened training requests, you could not delete it';
+                    var AssignUserNotChekedACKMSG =  'Please select at least one user';
+                    var EmptyFields = 'This field doesnot accept null values';
+                    var SelectUserError = 'Please select user';
+                    var SelectAnOption = 'Please select at least one option';
+                    var DeleteBudgetFailACKMSG = 'Training requests have been deducted from the selected budget, you could not delete it';
+                    var FillTrainingDetailesACKMSG = 'Please fill out the training cost form and save data before taking actions';
+                    var Resulttable_Showing = 'Showing';
+                    var Resulttable_entries = 'entries';
+                    var Resulttable_to = 'to';
+                    var Resulttable_of = 'of';
+                    var Resulttable_Show = "Show";
+                    var Resulttable_Showentries = 'entries';
+                    var Resulttable_Search = 'Search';
+                    var Resulttable_NoMatchingRecord = "No matching records found";
+                    var Resulttable_First = "First";
+                    var Resulttable_Last = "Last";
+                    var Resulttable_Next = "Next";
+                    var Resulttable_Previous = "Previous";

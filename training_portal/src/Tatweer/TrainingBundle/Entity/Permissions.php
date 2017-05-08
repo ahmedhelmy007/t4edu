@@ -1,0 +1,251 @@
+<?php
+
+namespace Tatweer\TrainingBundle\Entity;
+
+
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Permissions
+ *
+ * @ORM\Table(name="permissions", indexes={@ORM\Index(name="userid_idx", columns={"user_id"}), @ORM\Index(name="roleid_idx", columns={"role_id"}), @ORM\Index(name="createdby_idx", columns={"created_by"}), @ORM\Index(name="permissions_groupid_fk_idx", columns={"group_id"})})
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ */
+class Permissions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_permission", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idPermission;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="commissioned", type="boolean", nullable=true)
+     */
+    private $commissioned = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_date", type="datetime", nullable=true)
+     */
+    private $createdDate;
+
+    /**
+     * @var \Users
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id_user", nullable=true)
+     * })
+     */
+    private $createdBy;
+
+    /**
+     * @var \Groups
+     *
+     * @ORM\ManyToOne(targetEntity="Groups", inversedBy="roleUserGroup", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id_group")
+     * })
+     */
+    private $group;
+
+    /**
+     * @var \Roles
+     *
+     * @ORM\ManyToOne(targetEntity="Roles", inversedBy="roleUserGroup", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="role_id", referencedColumnName="id_role")
+     * })
+     */
+    private $role;
+
+    /**
+     * @var \Users
+     *
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="roleUserGroup", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id_user")
+     * })
+     */
+    private $user;
+
+
+    /** ////@ORM\OneToMany(targetEntity="Permissions", mappedBy="role") */
+   // private $roleUserGroup;
+    
+    public function __construct()
+    {
+         
+    }
+    
+    
+    
+    /**
+     * Get idPermission
+     *
+     * @return integer 
+     */
+    public function getIdPermission()
+    {
+        return $this->idPermission;
+    }
+
+    /**
+     * Set commissioned
+     *
+     * @param boolean $commissioned
+     * @return Permissions
+     */
+    public function setCommissioned($commissioned)
+    {
+        $this->commissioned = $commissioned;
+
+        return $this;
+    }
+
+    /**
+     * Get commissioned
+     *
+     * @return boolean 
+     */
+    public function getCommissioned()
+    {
+        return $this->commissioned;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Permissions
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Tatweer\TrainingBundle\Entity\Users $createdBy
+     * @return Permissions
+     */
+    public function setCreatedBy(\Tatweer\TrainingBundle\Entity\Users $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Tatweer\TrainingBundle\Entity\Users 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Tatweer\TrainingBundle\Entity\Groups $group
+     * @return Permissions
+     */
+    public function setGroup(\Tatweer\TrainingBundle\Entity\Groups $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Tatweer\TrainingBundle\Entity\Groups 
+     */
+    public function getGroup()
+    {
+        return $this->group->toArray();
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Tatweer\TrainingBundle\Entity\Roles $role
+     * @return Permissions
+     */
+    public function setRole(\Tatweer\TrainingBundle\Entity\Roles $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Tatweer\TrainingBundle\Entity\Roles 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Tatweer\TrainingBundle\Entity\Users $user
+     * @return Permissions
+     */
+    public function setUser(\Tatweer\TrainingBundle\Entity\Users $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Tatweer\TrainingBundle\Entity\Users 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedValue()
+    {
+        $this->createdDate = new \DateTime();
+    }
+ 
+}

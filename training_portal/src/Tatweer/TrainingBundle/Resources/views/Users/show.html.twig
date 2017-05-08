@@ -1,0 +1,53 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <h1>Users</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ entity.idUser }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Employeegrade</th>
+                <td>{{ entity.employeeGrade }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ entity.active }}</td>
+            </tr>
+            <tr>
+                <th>Abletorequesttraining</th>
+                <td>{{ entity.ableToRequestTraining }}</td>
+            </tr>
+            <tr>
+                <th>Createddate</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Modifieddate</th>
+                <td>{{ entity.modifiedDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('_edit', { 'id': entity.idUser }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

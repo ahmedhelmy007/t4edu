@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Domain user name</source>
+                <target>اسم المستخدم</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Fullname</source>
+                <target>الاسم بالكامل</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Employee Title</source>
+                <target>المسمى الوظيمي</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Mail</source>
+                <target>البريد الالكتروني</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Users list</source>
+                <target>قائمة المستخدمين</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Employee No.</source>
+                <target>الرقم الوظيفي</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Arabic Fullname</source>
+                <target>اسم الموظف بالعربي</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>English Fullname</source>
+                <target>اسم الموظف بالانجليزي</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Assign Users</source>
+                <target>اسناد مستخدمين</target>
+            </trans-unit>
+           <trans-unit id="10">
+                <source>Assign role(s)</source>
+                <target>اسناد أدوار</target>
+            </trans-unit>
+           <trans-unit id="11">
+                <source>Employee grade</source>
+                <target>الدرجة الوظيفية</target>
+            </trans-unit>
+           <trans-unit id="12">
+                <source>Employee roles</source>
+                <target>أدوار الموظف</target>
+            </trans-unit>
+           <trans-unit id="13">
+                <source>Edit user</source>
+                <target>تحديث بيانات المستخدم</target>
+            </trans-unit>
+           <trans-unit id="14">
+                <source>User roles</source>
+                <target>أدوار المستخدم</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
+
+ 

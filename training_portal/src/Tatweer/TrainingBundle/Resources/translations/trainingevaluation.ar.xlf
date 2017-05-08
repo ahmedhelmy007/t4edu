@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Training Evaluations list</source>
+                <target>قائمة التقييمات</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>TRAINING PROGRAM DETAILS</source>
+                <target>معلومات البرنامج التدريبي</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Starting Date</source>
+                <target>تاريخ البدء</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Ending Date</source>
+                <target>تاريخ الانتهاء</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Duration</source>
+                <target>مدة البرنامج</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Program Name</source>
+                <target>اسم البرنامج</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Provider Name</source>
+                <target>جهة التدريب</target>
+            </trans-unit>        
+            <trans-unit id="8">
+                <source>Program Location</source>
+                <target>مكان الانعقاد</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Evaluation Scale</source>
+                <target>درجة التقييم</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>COMMENTS</source>
+                <target>التعليقات</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>SIGNATURE</source>
+                <target>التوقيع</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Name/Signature /Date</source>
+                <target>الاسم / التوقيع / التاريخ</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>EVALUATION</source>
+                <target>التقييم</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Please choose the appropriate number that reflects your opinion, (1) Poor – (5) Excellent</source>
+                <target>الرجاء اختيار الرقم الذي يعكس انطباعك الشخصي، حيث ان التقييم من (1) إلى (5)، الرقم (1) يعتبر غير مرضي والرقم (5) يعتبر متميز</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Comment</source>
+                <target>التعليق</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>TRAINING EVALUATION FORM</source>
+                <target>نموذج تقييم التدريب</target>
+            </trans-unit>
+
+        
+        </body>
+    </file>
+</xliff>

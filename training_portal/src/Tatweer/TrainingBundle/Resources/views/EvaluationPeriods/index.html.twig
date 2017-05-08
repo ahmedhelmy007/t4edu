@@ -1,0 +1,57 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Evaluation Periods list'|trans({}, 'periods') }}</div></div>
+    <div class="wrapper2">
+        <a href="{{ path('_new') }}" >{{ 'Add new evaluation period'|trans({}, 'periods') }}</a>
+    <table class="records_list" id="mydataTable">
+       
+        <thead>
+            <tr>
+                <th>{{ 'Period name'|trans({}, 'periods') }}</th>
+                <th>{% trans %} Start date {% endtrans %}</th>
+                <th>{% trans %} End date {% endtrans %}</th>
+                <th>{% trans %} View {% endtrans %}</th>
+                <th>{% trans %} Update {% endtrans %}</th>
+                <th>{% trans %} Delete {% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% if entities %}
+        {% for entity in entities %}
+            <tr>
+                {#<td><a href="{{ path('_show', { 'id': entity.idPeriod }) }}">{{ entity.idPeriod }}</a></td>#}
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.startDate %}{{ entity.startDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.endDate %}{{ entity.endDate|date('Y-m-d') }}{% endif %}</td>
+                <td><a href="{{ path('_show', { 'id': entity.idPeriod }) }}">{% trans %} View details {% endtrans %}</a></td>
+                <td><a href="{{ path('_edit', { 'id': entity.idPeriod }) }}">{% trans %} Update {% endtrans %}</a></td>
+                <td><form action="{{ path('_delete', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ form_widget(deleteForms[entity.id]) }}
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+       {# {% else %}
+            <tbody><tr class="odd"><td class="dataTables_empty" valign="top">{% trans %} There are no created items {% endtrans %}</td></tr></tbody>
+        #}
+    </table>
+
+
+</div>
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $(".delete-item").click(function(){
+                var confirmed=confirm('{{ "Are you sure you want to delete selected period?"|trans({}, 'periods') }}');
+                if(!confirmed){
+                    return false;
+                }
+            });
+        });
+    </script>
+
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

@@ -1,0 +1,50 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <h1>Groups list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idgroup</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Createddate</th>
+                <th>Modifieddate</th>
+                <th>Deleted</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('groups_show', { 'id': entity.idGroup }) }}">{{ entity.idGroup }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.modifiedDate %}{{ entity.modifiedDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.deleted }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('groups_show', { 'id': entity.idGroup }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('groups_edit', { 'id': entity.idGroup }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('groups_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

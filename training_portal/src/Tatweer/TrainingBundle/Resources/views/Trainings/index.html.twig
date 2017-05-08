@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Trainings list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idtraining</th>
+                <th>Name</th>
+                <th>Providername</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Duration</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Approvedbyhr</th>
+                <th>Languageother</th>
+                <th>Chosenbyemployee</th>
+                <th>Trainingcontent</th>
+                <th>Traineeattendancereport</th>
+                <th>Employeeroles</th>
+                <th>Hrrecommendations</th>
+                <th>Tna</th>
+                <th>Createddate</th>
+                <th>Modifieddate</th>
+                <th>Trainingscol</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('trainings_show', { 'id': entity.idTraining }) }}">{{ entity.idTraining }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.providerName }}</td>
+                <td>{% if entity.startDate %}{{ entity.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.endDate %}{{ entity.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.duration }}</td>
+                <td>{{ entity.country }}</td>
+                <td>{{ entity.city }}</td>
+                <td>{{ entity.approvedByHr }}</td>
+                <td>{{ entity.languageOther }}</td>
+                <td>{{ entity.chosenByEmployee }}</td>
+                <td>{{ entity.trainingContent }}</td>
+                <td>{{ entity.traineeAttendanceReport }}</td>
+                <td>{{ entity.employeeRoles }}</td>
+                <td>{{ entity.hrRecommendations }}</td>
+                <td>{{ entity.tna }}</td>
+                <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.modifiedDate %}{{ entity.modifiedDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.trainingscol }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('trainings_show', { 'id': entity.idTraining }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('trainings_edit', { 'id': entity.idTraining }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('trainings_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

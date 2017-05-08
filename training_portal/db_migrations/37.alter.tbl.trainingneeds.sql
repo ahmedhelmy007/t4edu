@@ -1,0 +1,2 @@
+ALTER TABLE `training_needs` CHANGE `employee_group_id` `employee_group_id` INT( 10 ) UNSIGNED NULL ;
+ALTER TABLE `training_needs` CHANGE `trainingneed_period_id` `trainingneed_period_id` TINYINT( 3 ) UNSIGNED NULL ;

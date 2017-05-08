@@ -1,0 +1,12 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Department creation'|trans({}, 'departments') }}</div></div>
+    <div class="wrapper2">
+
+    {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+  
+    </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

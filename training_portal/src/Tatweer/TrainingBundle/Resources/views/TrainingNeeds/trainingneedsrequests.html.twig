@@ -1,0 +1,62 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+
+
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Request ID'|trans({}, 'trainingneed') }}</th>
+                <th>{{ 'Request status'|trans({}, 'trainingneed') }}</th>
+                <th>{{ 'Last updated'|trans({}, 'trainingneed') }}</th>
+                <th>{{ 'Last updated by'|trans({}, 'trainingneed') }}</th>
+                <th>{{ 'Actions'|trans({}, 'messages') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+{% if data_result  is defined  %}  
+    {% if ( data_result and hasTrainingDetails is defined and hasTrainingDetails )  or  ( data_result and hasTrainingDetails is not defined ) %}  
+    
+    {% for key,value in data_result %}
+        
+
+
+        
+      
+   
+           <tr>
+                <td> {{ value.idNeed }} </td>
+                <td> {{ value.status }} </td>
+                <td> {{ value.modifiedDate|date('Y-m-d h:i ')  }} </td>
+                <td> {{ value.modifiedByUser }} </td>
+                <td>
+                <ul>
+                    {%if isTrainingDetailspage is defined and isTrainingDetailspage %}
+                     <a href="{{ path('_usertrainingdetails', {'groupid': value.employeeGroup , 'userid': value.requestedForEmployee }) }}">training details </a> 
+
+                        {% else %} 
+                     <a href="{{ path('_requesttrainingneed', {'groupid': value.employeeGroup , 'userid': value.requestedForEmployee }) }}">training need</a> 
+                     <a href="{{ path('_trainingneedsactions', {'groupid': value.employeeGroup , 'userid': value.requestedForEmployee }) }}">Training needs actions</a>
+                     {% endif %}
+                </ul>
+                </td>
+            </tr> 
+
+      
+        
+
+   
+   {% endfor %} 
+   {% endif %}  
+{% endif %}  
+
+        </tbody>
+    </table>
+
+
+
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

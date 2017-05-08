@@ -1,0 +1,106 @@
+
+body{
+	font-size:9pt;
+	font-weight:normal;
+	margin:0;
+        text-align: center;
+}
+img
+{
+	border:0px;
+}
+
+table {
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+}
+table td , table th {
+    border: 1px solid #000;
+
+}
+.no-border , .no-border tr , .no-border td , .no-border th
+{
+    border: 0px;
+}
+
+
+/* Perfomance Net */
+.net-grid{
+    width: 300px;
+
+    margin: 0 auto;
+}
+
+.net-div {
+    width: 250px;
+    float: left;
+}
+.y-text-div{ 
+    width: 50px; 
+    text-align: center;
+ 
+}
+.x-text-div{ 
+    width: 55px; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+.net-div div {
+    width: 50px;
+    height: 30px;
+    outline: 1px solid;
+    float: left;
+    text-align: center;
+}
+.green
+{
+    background-color: #6b9311;
+}
+
+.light-grey
+{
+    background-color: #EEEEEE;
+}
+
+.grey
+{
+    background-color: #d8d8d8;
+}
+
+.dark-grey
+{
+    background-color: #bfbfc0;
+}
+
+.div-noborder
+{
+    outline: 0px none !important;
+    border: 0px;
+}
+.net-explanation-grid
+{
+       width: 350px;
+    margin: 0 auto; 
+}
+
+.inner-div
+{
+    display: inline-block;
+}
+.net-explanation-desc
+{
+    width: 20px;
+    height: 30px;
+    outline: 1px solid;
+}
+.clr
+{
+    clear: both;
+}
+.titlepage
+{ 
+    font-size: 20px;
+font-weight: bold;
+}

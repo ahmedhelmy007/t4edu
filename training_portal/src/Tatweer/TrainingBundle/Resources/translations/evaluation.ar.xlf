@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>PERSONAL INFORMATION</source>
+                <target> البيانات الشخصية</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Employee Name</source>
+                <target>اسم الموظف</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Grade</source>
+                <target>الدرجة الوظيفية</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Job Title</source>
+                <target>المسمى الوظيفي</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Dept. / Project</source>
+                <target>الإدارة / البرنامج </target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Employee No.</source>
+                <target>الرقم الوظيفي</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Extension No.</source>
+                <target>رقم التحويلة</target>
+            </trans-unit>
+
+            <trans-unit id="8">
+                <source>Appraisal Period</source>
+                <target>فترة التقييم</target>
+            </trans-unit>
+            
+            <trans-unit id="9">
+                <source>FINANCIAL AND ADMINISTRATIVE AFFAIRS</source>
+                <target>الشؤون المالية والادارية</target>
+            </trans-unit>
+            
+            <trans-unit id="10">
+                <source>HUMAN RESOURCES DEPARTMENT</source>
+                <target> إدارة الموارد البشرية</target>
+            </trans-unit>
+            
+            <trans-unit id="11">
+                <source>Performance and Potentials Measurement Form</source>
+                <target>نموذج قياس الأداء والإمكانات</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>PERFORMANCE AND POTENTIALS NETWORK</source>
+                <target>شبكة الأداء والإمكانات</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>The Performance and Potentials Network helps to determine the mechanism of employees’ development by linking it with the Training Needs Assessments of the employee during the course of the development of a matrix of cells of a particular performance, according to current and expected future value for the company (not related to the annual Performance Appraisal of the employees).</source>
+                <target>إن شبكة الأداء والإمكانات تساعد في تحديد آلية تطوير الموظفين عن طريق ربطها بالاحتياجات التدريبية من خلال وضع الموظف طبعاً لمصفوفة مؤلفة من خلايا معينة بحسب أدائه الحالي وقيمته المستقبلية المتوقعة للشركة (وليس لها علاقة بالتقييم السنوي للموظفين).</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Questionnaire</source>
+                <target>الاستبيان</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>MANAGER APPROVAL</source>
+                <target>موافقة المدير</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Name/Signature</source>
+                <target>الاسم / التوقيع</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>TRAINING AND DEVELOPMENT</source>
+                <target>التدريب والتطوير</target>
+            </trans-unit>
+
+            <trans-unit id="18">
+                <source>HR DEPARTMENT APPROVAL</source>
+                <target>موافقة إدارة الموارد البشرية</target>
+            </trans-unit>
+
+            <trans-unit id="19">
+                <source>High</source>
+                <target>مرتفع</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Average</source>
+                <target>متوسط</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Low</source>
+                <target>منخفض</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Performance</source>
+                <target>الأداء</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Potentials</source>
+                <target>الإمكانات</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Performance and Potentials Net</source>
+                <target>شبكة الأداء والإمكانات</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Employee with High Performance</source>
+                <target>موظف ذو مستوى مرتفع</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Employee with Average Performance</source>
+                <target>موظف ذو مستوى متوسط، وموثوق يمكن الاعتماد عليه</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Employee is underperforming</source>
+                <target>موظف ذو مستوى منخفض</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Explanation</source>
+                <target>الشرح</target>
+            </trans-unit>
+            
+        </body>
+    </file>
+</xliff>
+
+ 

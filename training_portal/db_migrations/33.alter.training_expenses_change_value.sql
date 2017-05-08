@@ -1,0 +1,1 @@
+ALTER TABLE `training_expenses` CHANGE `value` `value` DECIMAL( 11, 2 ) NULL DEFAULT NULL ;

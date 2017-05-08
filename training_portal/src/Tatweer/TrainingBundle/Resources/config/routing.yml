@@ -1,0 +1,72 @@
+tatweer_training_homepage:
+    path:     /
+    defaults: { _controller: TatweerTrainingBundle:Default:index }
+    
+#_login:
+#    path:     /login
+#    defaults: { _controller: TatweerTrainingBundle:Default:login }
+#    prefix:   /
+    
+#_logout:
+#    path:     /logout
+#    defaults: { _controller: TatweerTrainingBundle:Default:logout }
+#    prefix:   /
+
+_security:
+    resource: "@TatweerTrainingBundle/Controller/SecurityController.php"
+    type:     annotation
+
+
+_budgets:
+    resource: "@TatweerTrainingBundle/Controller/BudgetsController.php"
+    type:     annotation
+
+_users:
+    resource: "@TatweerTrainingBundle/Controller/UsersController.php"
+    type:     annotation
+    
+_groups:
+    resource: "@TatweerTrainingBundle/Controller/GroupsController.php"
+    type:     annotation
+    
+_departments:
+    resource: "@TatweerTrainingBundle/Controller/DepartmentsController.php"
+    type:     annotation
+    
+_evaluation:
+    resource: "@TatweerTrainingBundle/Controller/EvaluationController.php"
+    type:     annotation
+      
+_trainingneeds:
+    resource: "@TatweerTrainingBundle/Controller/TrainingneedsController.php"
+    type:     annotation    
+    
+    
+_trainings:
+    resource: "@TatweerTrainingBundle/Controller/TrainingsController.php"
+    type:     annotation
+    
+_individualtrainings:
+    resource: "@TatweerTrainingBundle/Controller/IndividualTrainingsController.php"
+    type:     annotation
+
+_periods:
+    resource: "@TatweerTrainingBundle/Controller/EvaluationPeriodsController.php"
+    type:     annotation
+    
+_trainingexpensesclasses:
+    resource: "@TatweerTrainingBundle/Controller/TrainingExpensesClassesController.php"
+    type:     annotation
+    
+_preferences:
+    resource: "@TatweerTrainingBundle/Controller/PreferencesController.php"
+    type:     annotation
+    
+_trainingevaluations:
+    resource: "@TatweerTrainingBundle/Controller/TrainingEvaluationsController.php"
+    type:     annotation
+ 
+send_reminder:
+    path:     /sendreminder
+    defaults: { _controller: TatweerTrainingBundle:Taskscheduler:sendReminder }
+    

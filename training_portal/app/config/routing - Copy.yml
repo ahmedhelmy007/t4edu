@@ -1,0 +1,12 @@
+tatweer_training:
+    resource: "@TatweerTrainingBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

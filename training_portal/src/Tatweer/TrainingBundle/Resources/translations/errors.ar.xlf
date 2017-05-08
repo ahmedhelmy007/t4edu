@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>This field doesnot accept null values</source>
+                <target>لا يمكن ترك الحقل فارغ</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Please select user</source>
+                <target>يرجى اختيار مستخدم</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Please select at least one option</source>
+                <target>يرجى تحديد خيار واحد</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Can not accept dublicate data</source>
+                <target>لا يمكن قبول مدخلات متكرره</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>The provided budget amount is lower  than the total amount of the deducted training requests in the selected department</source>
+                <target>الميزانية المحددة أقل من قيمة إجمالي طلبات التدريب المخصومة في الإدارة المحددة</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Please fill out the training cost form and save data before taking actions</source>
+                <target>ادخل تكاليف الدورة و قم بحفظ البيانات قبل إتخاذ أي إجراء</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>There are no items created yet</source>
+                <target>لا توجد  منشأة في النظام بعد</target>
+            </trans-unit>
+     
+        </body>
+    </file>
+</xliff>
+
+ 

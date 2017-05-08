@@ -1,0 +1,44 @@
+parameters:
+    webservice_user_provider.class: Tatweer\TrainingBundle\Security\User\WebserviceUserProvider
+
+services:
+    webservice_user_provider:
+        class: "%webservice_user_provider.class%"
+#    tatweer_training.example:
+#        class: Tatweer\TrainingBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    form.serivce:
+        class: Tatweer\TrainingBundle\Form\EvaluationPeriodsType
+        arguments:    ["@service_container"]
+
+    periods_overlapping_validator:
+        class: Tatweer\TrainingBundle\Validator\Constraints\PeriodsOverlappingValidator
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            -
+                name: validator.constraint_validator
+                alias: periods_overlapping
+                
+
+    mail.serivce:
+        class:     Tatweer\TrainingBundle\Services\MailClass
+        arguments: ["@mailer"]
+                   
+
+    ad.serivce:
+        class:     Tatweer\TrainingBundle\Services\ActiveDirectoryClass
+        
+    auth.serivce:
+        class:     Tatweer\TrainingBundle\Services\AuthorizationClass
+        arguments: ["@session"]
+        
+    training_action.service:
+        class: Tatweer\TrainingBundle\Controller\TrainingActionController
+        arguments: 
+            - "@doctrine.orm.entity_manager"
+            - "@service_container"
+            - "@mail.serivce"
+            - "@ad.serivce"
+            - "@translator"
+            - "@templating"

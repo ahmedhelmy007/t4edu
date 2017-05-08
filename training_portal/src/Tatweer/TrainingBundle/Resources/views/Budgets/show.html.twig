@@ -1,0 +1,256 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+	<script type="text/javascript">
+        $(function() {
+
+        $("#department_budget_form").validate({
+            ignore: ".ignore, :hidden",
+            errorContainer: "#errorbox",
+            errorLabelContainer: "#errorbox ul",
+            wrapper: "span",
+            rules: {
+                {% for department in departments %}
+                          "department_budget[{{ department.idGroup }}]" : { maxlength: 10, digits: true , checkDepartmentBudget: true},
+                {% endfor %}
+            }
+            
+
+        });
+        
+ 
+        
+        jQuery.validator.addMethod("checkDepartmentBudget", function(value, element) {
+            var isSuccess = false;
+            var current_id = element.id;
+            var value = element.value;
+            var value_parts = current_id.split("_");
+            //alert(current_id)
+            var url = "{{ url('check_department_budget', {'id': 'budget_id' , 'department_id': 'dep_id' , 'value': 'value' }) }}";
+            url = url.replace("budget_id", value_parts[3]);
+            url = url.replace("dep_id", value_parts[2]);
+            url = url.replace("value", value);
+            
+              $.ajax({
+            type: "POST",
+            async: false,
+            url: url,
+            success:   function(msg) { 
+               // alert(msg)
+                isSuccess = msg == 0 ? false : true ;
+            }
+    
+        });return isSuccess;
+        },  "{{'The provided budget amount is lower  than the total amount of the deducted training requests in the selected department'|trans({}, 'errors')}}");
+        
+        
+        
+        
+        
+        });
+                            
+                   /* var valid_inputs = new Array(); 
+                    
+                     function validate_all_inputs()
+                     {
+                        
+                             $( ".department_budget_input" ).each(function( index, element ) {
+                                         var current_id = element.id;
+                                         var value = this.value;
+                                         var value_parts = current_id.split("_");
+                         
+                                         var url = "{{ url('check_department_budget', {'id': 'budget_id' , 'department_id': 'dep_id' , 'value': 'value' }) }}";
+                                         url = url.replace("budget_id", value_parts[3]);
+                                         url = url.replace("dep_id", value_parts[2]);
+                                         url = url.replace("value", value);
+                                         $("#department_tr_"+value_parts[2]).find("span").remove();
+                                         $.ajax({
+                                               type: "GET",
+                                               dataType: "json",
+                                               url: url ,
+                                             }).done(function( data , valid) {
+             
+                                                 if(data == false)
+                                                 {  
+                                                     
+                                                   $('<span class="error" id="error_span" >{{'The provided budget amount is lower  than the total amount of the deducted training requests in the selected department'|trans({}, 'errors')}}</span>').
+                                                    insertAfter("#"+current_id);
+                                                   valid_inputs[value_parts[2]] = false;    
+                                                 }else 
+                                                     valid_inputs[value_parts[2]] = true;
+                                          
+                                           
+                                             });  
+                             });
+                             }
+                             
+                             
+                   $(function() {
+                   $('.department_budget_input').blur(function () { 
+                                       
+                                         var current_id = this.id;
+                                         var value = this.value;
+                                         var value_parts = current_id.split("_");
+                         
+                                         var url = "{{ url('check_department_budget', {'id': 'budget_id' , 'department_id': 'dep_id' , 'value': 'value' }) }}";
+                                         url = url.replace("budget_id", value_parts[3]);
+                                         url = url.replace("dep_id", value_parts[2]);
+                                         url = url.replace("value", value);
+                                         $("#department_tr_"+value_parts[2]).find("span").remove();
+                                         $.ajax({
+                                               type: "GET",
+                                               dataType: "json",
+                                               url: url ,
+                                             }).done(function( data ) {
+             
+                                                 if(data == false)
+                                                 {  
+                                                   $('<span class="error" id="error_span" >{{'The provided budget amount is lower  than the total amount of the deducted training requests in the selected department'|trans({}, 'errors')}}</span>').
+                                                    insertAfter("#"+current_id);
+                                                    valid_inputs[value_parts[2]] = false;   
+                                                 }
+                                                 else 
+                                                     valid_inputs[value_parts[2]] = true;
+                                          
+                                           
+                                             });  
+                                         
+                
+                     });
+        
+                         $("#save_department_budget_btn").click(function(){
+                           validate_all_inputs()
+                           if(jQuery.inArray(false,valid_inputs) == -1){
+                               // the element is not in the array
+                              // return true;
+                               alert(1)
+                           };
+                        
+                          return false;
+                           });*/
+                           
+                         /*    var valid = true;
+                           $("#department_budget_form").find("span").remove();
+                           
+                                     $(".department_budget_input").each(function() {
+                                         //if (! $('#'+this.id).is(':empty')){
+                                        // if($.trim($('#'+this.id).html()) !='')
+                                 
+                                        // if(this.value)
+                                        // {
+                                       // alert(this.value);
+                                         var current_id = this.id;
+                                         var value = this.value;
+                                         var value_parts = current_id.split("_");
+                         
+                                         var url = "{{ url('check_department_budget', {'id': 'budget_id' , 'department_id': 'dep_id' , 'value': 'value' }) }}";
+                                         url = url.replace("budget_id", value_parts[3]);
+                                         url = url.replace("dep_id", value_parts[2]);
+                                         url = url.replace("value", value);
+                     
+                                         $.ajax({
+                                               type: "GET",
+                                               dataType: "json",
+                                               url: url ,
+                                             }).done(function( data , valid) {
+                //alert(data)
+                                                 if(data == false)
+                                                 {  
+                                                   $('<span class="error" id="error_span" >{{'The provided budget amount is lower  than the total amount of the deducted training requests in the selected department'|trans({}, 'errors')}}</span>').
+                                                    insertAfter("#"+current_id);
+                                           // valid = false;
+                                            //alert('kkk'+valid)
+                                            return false;
+                                               
+                                                 }
+                                          
+                                          // alert(valid)
+                                             }); 
+                                    
+                                         //} 
+
+                                    });
+                                    alert(3)
+                                    return false;
+ 
+                       
+                          });*/
+                         
+                          // });
+                          
+                </script>
+
+{% block body -%}
+
+        <div class="titlepage"><div class="maintitlenews">{% trans %} Main data {% endtrans %} </div></div>
+        <div class="wrapper2">
+
+            <div><b>{{ 'Budget name'|trans({}, 'budgets') }}</b> : {{ entity.name }}</div>
+        
+            <div><b>{% trans %} Start date {% endtrans %}</b> : 
+                {{ entity.startDate|date('Y-m-d') }}</div>
+            <div><b>{% trans %} End date {% endtrans %}</b> : 
+                {{ entity.endDate|date('Y-m-d') }}</div>
+            <div><b>{% trans %} Status {% endtrans %}</b> : 
+                {% if entity.active %} {% trans %} Active {% endtrans %} {% else %} {% trans %} Inactive {% endtrans %} {% endif %} </div>
+       </div>
+  
+        <div class="titlepage"><div class="maintitlenews">{{ 'Departments list'|trans({}, 'budgets') }}</div></div>
+        <div class="wrapper">
+<br/><br/>
+ <form  method="post" id="department_budget_form"   >
+    
+         <table  class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Departments'|trans({}, 'budgets') }}</th>
+                <th>{{ 'Department budget'|trans({}, 'budgets') }}</th>
+            </tr>
+        </thead>
+   
+
+        <tbody>	 
+        {% for department in departments %}
+            <tr>
+                 <td>{{ department.name }}</td> 
+                 <td id="department_tr_{{ department.idGroup }}" ><input class="department_budget_input numbersOnly" type="text" id="department_budget_{{ department.idGroup }}_{{ department.idBudget }}" name="department_budget[{{ department.idGroup }}]" value="{{ department.originalValue }}" />
+            </tr>
+            
+        {% endfor %}
+   
+        </tbody>
+          
+       
+           </table> 
+        
+                <input type="submit" name="save_department_budget" id="save_department_budget_btn" value="{% trans %} Save {% endtrans %}" />
+ </form>
+        
+            {#   {{ form(form) }}
+
+
+{{ form(edit_dept_budget_forms) }}
+       {% for department in departments %}
+            {% for key,edit_dept_budget_form in edit_dept_budget_forms[department.id] %}
+                {{ department.name }} -- {{ key }} --  {{form_widget(edit_dept_budget_form.originalValue) }}  
+            {% endfor %}
+        {% endfor %}
+
+        
+        
+        
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('budgets') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('budgets_edit', { 'id': entity.idBudget }) }}">
+                Edit
+            </a>
+        </li>
+  
+    </ul>
+          #}   
+            </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

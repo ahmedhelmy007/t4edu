@@ -1,0 +1,100 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+<script>
+    
+    function checkBeforeSubmit()
+    {
+      if ($("input[type=checkbox]:checked").length === 0) {
+      alert(AssignUserNotChekedACKMSG);
+      return false;
+      }
+       return true; 
+    }
+    
+    function addFields(trname , grade)
+    {
+        
+        if(document.getElementById('userchk_'+trname).checked)
+        {
+            var content ="";
+            
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "{{ path('users_json1') }}",
+              }).done(function( data ) {
+                   $( "#row_"+trname ).append( '<td></td><td>{{ 'Assign role(s)'|trans({}, 'users') }}</td>' );
+                 $.each(data , function(key, val){
+                     if(key == 0)
+                   $( "#row_"+trname ).append( '<td><input type="checkbox" name="role['+trname+'][]" value="'+val['idRole']+'"   required minlength="1"  >'+val['name{{ app.request.getLocale()|capitalize }}']+'</td>' );
+                     else 
+                   $( "#row_"+trname ).append( '<td><input type="checkbox" name="role['+trname+'][]" value="'+val['idRole']+'" >'+val['name{{ app.request.getLocale()|capitalize }}']+'</td>' );
+                  });
+                 //   $( "#row_"+trname ).append( '<td>{{ 'Employee Grade'|trans({}, 'departments') }} </td><td><input type="text"  maxlength="20"  name="grade['+trname+']" required  minlength="1" value="'+grade+'"  ></td>' );
+         }); 
+         
+      
+        }
+        else 
+        {
+        $( "#row_"+trname ).html( "" );
+        }
+    }
+    
+    //---------------------------------------------
+	</script>
+
+        
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews"> {{ 'Assign Users'|trans({}, 'users') }}</div></div>
+    
+    <div class="wrapper2">
+ 
+      {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+ 
+
+{% if search_result != false %}   
+ 
+    <form  method="post" id="commentForm"  onsubmit="return checkBeforeSubmit()"  >
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>&nbsp</th>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Arabic Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'English Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+            </tr>
+        </thead>
+        <tbody>				
+
+            
+{% for key, user in search_result %}
+    <tr>
+        {% if user.UserName in inserted_users %}
+     
+        <td><input type="checkbox"   checked="checked"  disabled="disabled" id="checkedusers" name="checkedusers" /></td>
+        {% else %}
+        <td><input type="checkbox" id="userchk_{{ user.UserName }}" name="users[]" onclick="addFields('{{ user.UserName }}' , {% if inserted_user_grades[user.UserName] is defined %} '{{ inserted_user_grades[user.UserName] }}' {% else %} '' {% endif %} )" value="{{ user.UserName }}" ></td>
+        {% endif %}
+        
+        <td> {{ user.UserName }} </td> 
+        <td> {{ user.FullArabicName }} </td> 
+        <td> {{ user.DisplayName }} </td> 
+        <td> {{ user.Title }}  </td> 
+        <td> {{ user.Email }} </td> 
+    </tr>
+    <tr id="row_{{ user.UserName }}" style="background-color:#f6f6f6" ></tr>
+{% endfor %}
+        </tbody>
+    </table>
+        {% if search_result != 'notdata' %}
+        <input type="submit" name="assignusers" value="{{'Save'|trans}}"/>	
+        {% endif %}  
+	</form>	 
+        
+{% endif %}      
+        </div>    
+
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

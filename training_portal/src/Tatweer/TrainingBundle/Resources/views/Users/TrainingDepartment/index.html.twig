@@ -1,0 +1,55 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+
+    <div class="titlepage"><div class="maintitlenews">{{ 'Users list'|trans({}, 'users') }}</div></div>
+    <div class="wrapper2">
+        
+    <a href="{{ path('member_assign') }}">
+        {% trans %} Add New {% endtrans %} 
+    </a>
+        
+        
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+                <th>{{ 'User roles'|trans({}, 'users') }}</th>
+                <th>{{ 'Actions'|trans({}, 'messages') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+{% if data_result  is defined  %}  
+    {% for key,value in data_result %}
+ 
+          
+           <tr>
+                <td> {{ value.user.UserName }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ value.user.FullArabicName }} {% else %} {{ value.user.DisplayName }} {% endif %}  </td>
+                <td>  {{ value.user.Title }}  </td>
+                <td>  {{ value.user.Email }}  </td>
+                <td> {% for key1,roles in value.roles %} {% if app.request.getLocale() == 'ar' %}  {{ roles.nameAr }} {% else %}  {{ roles.nameEn }} {% endif %}  {% if not loop.last %} , {% endif %}  {% endfor %} </td>
+                <td> 
+                    
+                <a  href="{{ path('trainingmember_edit', { 'userid': value.userid }) }}" >update roles</a>
+
+                <a id="trainingmember_{{ value.userid }}" href="{{ path('trainingmember_delete', { 'id': value.userid }) }}" class="confirmLink" >delete</a>
+                    
+                  </td>
+            </tr> 
+         
+   {% endfor %} 
+{% endif %}  
+
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

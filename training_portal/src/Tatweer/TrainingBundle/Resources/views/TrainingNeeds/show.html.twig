@@ -1,0 +1,572 @@
+{#******************************************************************************
+************************ :::::::IMPORTANT NOTE:::::: ***************************
+********************************************************************************
+                Do not cahnge/remove any element's id or class names
+                cause its used for jquery 
+********************************************************************************
+******************************************************************************#}
+
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+            <script type="text/javascript">
+                    objectives_counter          = 1;
+                    appraisaltrainings_counter  = 1;
+                    additionaltrainings_counter = 1;
+                    suggestedbyhr_counter       = 1;
+            </script>
+            
+{% block body -%}
+     {% if export_pdf  is defined %}  
+         {% include "TatweerTrainingBundle:Forms:pdf_header.html.twig" %}
+     {% endif %} 
+     <div class="titlepage"><div class="maintitlenews">{{ 'TRAINING NEEDS ASSESSMENTS FORM'|trans({}, 'trainingneed' , 'en') }} - {{ 'TRAINING NEEDS ASSESSMENTS FORM'|trans({}, 'trainingneed' , 'ar') }}</div></div>
+     <div class="wrapper2">
+    
+     {% if export_pdf  is not defined %}  
+         
+     {% if not currentActivePeriod %}  
+                {{ 'There are no available active training needs period'|trans({}, 'messages') }} <br/>
+     {% endif %} 
+     
+     {% if not isEvaluated %}
+                {{ 'This employee has no evaluation data you cannot define training needs'|trans({}, 'messages') }} <br/>
+     {% endif %} 
+     
+         <a href="{{ path('_exporttrainingneed', { 'groupid': groupid , 'userid' : userentity.idUser }) }}" target="_blank" >{{ 'Export PDF'|trans({}) }}</a>
+     {% endif %}    
+     
+     
+ 
+    {# user data section #}   
+    {% include "TatweerTrainingBundle:Forms:userinfo.html.twig" %}
+    <form  method="post" id="trainingneed-form" class="trainingneed-form"   >
+    {# form header section #}
+    
+    {# section 2 #}
+    <table width="100%">
+        <tr>
+            <th width="4%" align="center">2</th>
+            <th align="left" width="46%">{{ 'JOB OBJECTIVES'|trans({}, 'trainingneed' , 'en') }}</th>
+            <th align="right" width="46%" dir="rtl">{{ 'JOB OBJECTIVES'|trans({}, 'trainingneed' , 'ar') }}</th>
+            <th width="4%" align="center">2</th>
+        </tr>
+        <tr>
+ 
+            <td align="center" colspan="4" >{{ 'Please write down the top five Job Objectives for the employee and rate his performance to them.'|trans({}, 'trainingneed' , 'en') }} <br/>
+                <span dir="rtl"> {{ 'Please write down the top five Job Objectives for the employee and rate his performance to them.'|trans({}, 'trainingneed' , 'ar') }}</span></td>
+        </tr>
+    </table>
+        
+        
+        <table width="100%"  id="objectives_table" >
+            <tr>
+                <th align="center" colspan="2" width="41%">{{ 'OBJECTIVES'|trans({}, 'trainingneed' , 'en') }}</th>
+                     {% for options in form_options %}
+                     <th width="6%" align="center"> {{options.nameEn}} <br/> {{options.nameAr}}</th>
+                    {% endfor %}
+                <th align="center" colspan="2" width="41%">{{ 'OBJECTIVES'|trans({}, 'trainingneed' , 'ar') }}</th>
+            </tr>
+            {% if form_values %}
+                {% set counter = 1 %}
+                {% for values in form_values %}
+                   {% if values.section == 'objectives' %} 
+                       <input type="hidden" name="inserted_values[objectives][{{ counter }}]" id="inserted_values_{{values.idValue}}" value="{{values.idValue}}" />
+            <tr>
+                <td width="3%" align="center" >{{ counter }} </td>
+                <td width="38%" align="left" >
+                    {% if export_pdf  is defined %}  {{values.valueEn}} {% else %} 
+                    <input type="text"  name="objectives[en][{{ counter }}]" value="{{values.valueEn}}" required />
+                    {% endif %} 
+                </td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[objectives][{{ counter }}]"  required  minlength="1" 
+                            {% if options.idOption == values.selectedOption %}
+                            checked="checked"
+                            {% endif %}
+                            
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td width="38%" align="right" >{% if export_pdf  is defined %}  {{values.valueAr}} {% else %} 
+                    <input type="text"   name="objectives[ar][{{ counter }}]" value="{{values.valueAr}}"  required />
+                    {% endif %}
+                    
+                </td>
+                <td width="3%" align="center">{{ counter }}</td>
+            </tr>
+            {% set counter = counter + 1 %}
+            {% endif %}
+                {% endfor %}
+                    <script type="text/javascript">
+                    objectives_counter = {{ counter|json_encode() }};
+                    </script>
+            {% else %}
+            <tr>
+                <td width="3%" align="center">1</td>
+                <td><input type="text"  name="objectives[en][1]" required /></td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[objectives][1]"  required  minlength="1"
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td><input type="text"   name="objectives[ar][1]"  required /></td>
+                <td width="3%" align="center">1</td>
+            </tr>
+                    <script type="text/javascript">
+                    objectives_counter = 2;
+                    </script>
+            {% endif %}
+        </table>
+    {# end section 2 #}
+    
+    {# section 3 #}
+    <table width="100%">
+        <tr>
+            <th width="4%" align="center">3</th>
+            <th align="left" width="46%">{{ 'TRAINING BASED ON PERFORMANCE EVALUATION'|trans({}, 'trainingneed' , 'en') }}</th>
+            <th align="right" width="46%" dir="rtl">{{ 'TRAINING BASED ON PERFORMANCE EVALUATION'|trans({}, 'trainingneed' , 'ar') }}</th>
+            <th width="4%" align="center">3</th>
+        </tr>
+        <tr>
+ 
+            <td align="center" colspan="4" >{{ 'Please find the suggested training program collected from the annual Performance Evaluation for the year {year}, kindly, rate them and you can add additional programs on Table (4).'|trans({}, 'trainingneed' , 'en')|replace({'{year}': "now"|date("Y")}) }} <br/>
+                <span dir="rtl"> {{ 'Please find the suggested training program collected from the annual Performance Evaluation for the year {year}, kindly, rate them and you can add additional programs on Table (4).'|trans({}, 'trainingneed' , 'ar')|replace({'{year}': "now"|date("Y")}) }}</span></td>
+        </tr>
+    </table>
+        
+        
+        <table width="100%" id="appraisaltrainings_table">
+            <tr>
+                <th align="center" colspan="2" width="41%">{{ 'TRAINING PROGRAMS'|trans({}, 'trainingneed' , 'en') }}</th>
+                     {% for options in form_options %}
+                     <th width="6%" align="center"> {{options.nameEn}} <br/> {{options.nameAr}}</th>
+                    {% endfor %}
+                <th align="center" colspan="2" width="41%">{{ 'TRAINING PROGRAMS'|trans({}, 'trainingneed' , 'ar') }}</th>
+            </tr>
+            {% if form_values %}
+                {% set counter = 1 %}
+                {% for values in form_values %}
+                   {% if values.section == 'appraisal trainings' %} 
+                       <input type="hidden" name="inserted_values[appraisaltrainings][{{ counter }}]" id="inserted_values_{{values.idValue}}" value="{{values.idValue}}" />
+            
+            <tr>
+                <td width="3%" align="center"> {{ counter }}  </td>
+                <td width="38%"  align="left">{% if export_pdf  is defined %}  {{values.valueEn}} {% else %} 
+                    <input type="text"  name="appraisaltrainings[en][{{ counter }}]"  value="{{values.valueEn}}"  required />
+                    {% endif %}
+                </td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[appraisaltrainings][{{ counter }}]"  required  minlength="1"
+                            {% if options.idOption == values.selectedOption %}
+                            checked="checked"
+                            {% endif %}
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td width="38%"  align="right">{% if export_pdf  is defined %}  {{values.valueAr}} {% else %} 
+                    <input type="text"  name="appraisaltrainings[ar][{{ counter }}]"  value="{{values.valueAr}}"  required />
+                    {% endif %}
+                </td>
+                <td width="3%" align="center">{{ counter }}</td>
+            </tr>
+            {% set counter = counter + 1 %}
+            {% endif %}
+            {% endfor %}
+                    <script type="text/javascript">
+                    appraisaltrainings_counter = {{ counter|json_encode() }};
+                    </script>
+                {% else %}
+            <tr>
+                <td width="3%" align="center">1</td>
+                <td><input type="text"  name="appraisaltrainings[en][1]"  required /></td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[appraisaltrainings][1]"  required  minlength="1"
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td><input type="text"  name="appraisaltrainings[ar][1]"  required /></td>
+                <td width="3%" align="center">1</td>
+            </tr>
+                    <script type="text/javascript">
+                    appraisaltrainings_counter = 2;
+                    </script>
+            {% endif %}
+        </table>
+    {# end section 3 #}
+    
+    {# section 4 #}
+    <table width="100%">
+        <tr>
+            <th width="4%" align="center">4</th>
+            <th align="left" width="46%">{{ 'ADDITIONALTRAINING PROGRAMS'|trans({}, 'trainingneed' , 'en') }}</th>
+            <th align="right" width="46%" dir="rtl">{{ 'ADDITIONALTRAINING PROGRAMS'|trans({}, 'trainingneed' , 'ar') }}</th>
+            <th width="4%" align="center">4</th>
+        </tr>
+        <tr>
+ 
+            <td align="center" colspan="4" >{{ 'You may suggest more training programs that were not included in the annual Performance Evaluation for {year}'|trans({}, 'trainingneed' , 'en')|replace({'{year}': "now"|date("Y")}) }} <br/>
+                <span dir="rtl"> {{ 'You may suggest more training programs that were not included in the annual Performance Evaluation for {year}'|trans({}, 'trainingneed' , 'ar')|replace({'{year}': "now"|date("Y")}) }}</span></td>
+        </tr>
+    </table>
+        
+        
+        <table width="100%" id="additionaltrainings_table">
+            <tr>
+                <th align="center" colspan="2" width="41%">{{ 'TRAINING PROGRAMS'|trans({}, 'trainingneed' , 'en') }}</th>
+                     {% for options in form_options %}
+                     <th width="6%" align="center"> {{options.nameEn}} <br/> {{options.nameAr}}</th>
+                    {% endfor %}
+                <th align="center" colspan="2" width="41%">{{ 'TRAINING PROGRAMS'|trans({}, 'trainingneed' , 'ar') }}</th>
+            </tr>
+            
+            {% if form_values %}
+                {% set counter = 1 %}
+                {% for values in form_values %}
+                   {% if values.section == 'additional trainings' %} 
+                       <input type="hidden" name="inserted_values[additionaltrainings][{{ counter }}]" id="inserted_values_{{values.idValue}}" value="{{values.idValue}}" />
+            
+            <tr>
+                <td width="3%" align="center"> {{ counter }}  </td>
+                <td width="38%"  align="left">{% if export_pdf  is defined %}  {{values.valueEn}} {% else %} 
+                    <input type="text" name="additionaltrainings[en][{{ counter }}]"    value="{{values.valueEn}}"  required />
+                    {% endif %}
+                </td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[additionaltrainings][{{ counter }}]"  required  minlength="1"
+                            {% if options.idOption == values.selectedOption %}
+                            checked="checked"
+                            {% endif %}
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td width="38%"  align="right">
+                    {% if export_pdf  is defined %}  {{values.valueAr}} {% else %} 
+                    <input type="text" name="additionaltrainings[ar][{{ counter }}]"   value="{{values.valueAr}}"  required />
+                    {% endif %}
+                </td>
+                <td width="3%" align="center">{{ counter }}</td>
+            </tr>
+            {% set counter = counter + 1 %}
+            {% endif %}
+            {% endfor %}
+                    <script type="text/javascript">
+                    additionaltrainings_counter = {{ counter|json_encode() }};
+                    </script>
+            {% else %}
+            <tr>
+                <td width="3%" align="center">1</td>
+                <td><input type="text" name="additionaltrainings[en][1]"  required /></td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[additionaltrainings][1]"  required  minlength="1"
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td><input type="text" name="additionaltrainings[ar][1]"  required /></td>
+                <td width="3%" align="center">1</td>
+            </tr>  
+                    <script type="text/javascript">
+                    additionaltrainings_counter = 2;
+                    </script>
+            {% endif %}
+            
+            
+        </table>
+    {# end section 4 #}
+    
+    {# signature and approval section #}
+    <table width="100%">
+        <tr>
+            <th width="4%" align="center">5</th>
+            <th align="left">{{ 'MANAGER APPROVAL'|trans({}, 'trainingneed' , 'en') }}</th>
+            <th ></th>
+            <th align="right" dir="rtl" width="20%">{{ 'MANAGER APPROVAL'|trans({}, 'trainingneed' , 'ar') }}</th>
+            
+            <th width="4%" align="center">5</th>
+        </tr>
+        
+        <tr>
+          
+            <td align="left" width="20%" colspan="2">{{ 'Name/Signature/Date'|trans({}, 'trainingneed' , 'en') }} <br/> {{ 'Name/Signature/Date'|trans({}, 'trainingneed' , 'ar') }}</td>
+            <td align="center" dir="rtl" width="20%" >
+            <table width="100%" class="no-border"><tr><td align="left" >/</td><td></td><td align="right" >/</td></tr></table>
+            </td>
+            <td width="60%" colspan="2" dir="rtl"  align="right" >
+                <ul><li>
+                        {{ 'Training Programs are suitable'|trans({}, 'trainingneed' , 'ar') }} {{ 'Training Programs are suitable'|trans({}, 'trainingneed' , 'en') }}
+                    </li><li>
+                {{ 'Training Programs are not suitable'|trans({}, 'trainingneed' , 'ar') }} {{ 'Training Programs are not suitable'|trans({}, 'trainingneed' , 'en') }}
+                    </li></ul>
+                </td>
+        </tr>
+    </table>
+    <table width="100%">
+        <tr><th width="4%" align="center">6</th>
+            <th align="left">{{ 'TRAINING AND DEVELOPMENT'|trans({}, 'evaluation' , 'en') }}</th>
+            <th ></th>
+            <th align="right" dir="rtl" width="20%">{{ 'TRAINING AND DEVELOPMENT'|trans({}, 'evaluation' , 'ar') }}</th>
+            <th width="4%" align="center">6</th>
+        
+        </tr>
+        <tr>
+          
+            <td align="left" width="20%" colspan="2">{{ 'Name/Signature/Date'|trans({}, 'trainingneed' , 'en') }}  <br/>  {{ 'Name/Signature/Date'|trans({}, 'trainingneed' , 'ar') }}</td>
+            <td align="center" dir="rtl" width="20%" >
+            <table width="100%" class="no-border"><tr><td align="left" >/</td><td></td><td align="right" >/</td></tr></table>
+            </td>
+            <td width="60%" colspan="2" dir="rtl"  align="right" >
+                <ul><li>
+                        {{ 'Training Programs are suitable'|trans({}, 'trainingneed' , 'ar') }} {{ 'Training Programs are suitable'|trans({}, 'trainingneed' , 'en') }}
+                    </li><li>
+                {{ 'Training Programs are not suitable'|trans({}, 'trainingneed' , 'ar') }} {{ 'Training Programs are not suitable'|trans({}, 'trainingneed' , 'en') }}
+                    </li></ul>
+                </td>
+        </tr>
+    </table>
+    
+                    
+    
+    {# section 7 #}
+    <table width="100%">
+        <tr>
+            <th width="4%" align="center">4</th>
+            <th align="left" width="46%">{{ 'SUGGESTED TRAINING PROGRAMS (From HR)'|trans({}, 'trainingneed' , 'en') }}</th>
+            <th align="right" width="46%" dir="rtl">{{ 'SUGGESTED TRAINING PROGRAMS (From HR)'|trans({}, 'trainingneed' , 'ar') }}</th>
+            <th width="4%" align="center">4</th>
+        </tr>
+        <tr>
+ 
+            <td align="center" colspan="4" >{{ 'The suggested training program from HR/Training and Development based on the employee Job Objectives and responsibilities.'|trans({}, 'trainingneed' , 'en') }} <br/>
+                <span dir="rtl"> {{ 'The suggested training program from HR/Training and Development based on the employee Job Objectives and responsibilities.'|trans({}, 'trainingneed' , 'ar') }}</span></td>
+        </tr>
+    </table>
+        
+        
+        <table width="100%" id="suggestedbyhr_table">
+            <tr>
+                <th align="center" colspan="2" width="41%">{{ 'TRAINING PROGRAMS'|trans({}, 'trainingneed' , 'en') }}</th>
+                     {% for options in form_options %}
+                     <th width="6%" align="center"> {{options.nameEn}} <br/> {{options.nameAr}}</th>
+                    {% endfor %}
+                <th align="center" colspan="2" width="41%">{{ 'TRAINING PROGRAMS'|trans({}, 'trainingneed' , 'ar') }}</th>
+            </tr>
+            
+            {% if form_values %}
+                {% set counter = 1 %}
+                {% for values in form_values %}
+                   {% if values.section == 'suggested trainings by HR' %} 
+                       <input type="hidden" name="inserted_values[suggestedbyhr][{{ counter }}]" id="inserted_values_{{values.idValue}}" value="{{values.idValue}}" />
+            
+            <tr>
+                <td width="3%" align="center">{{ counter }}   </td>
+                <td width="38%" >
+                    {% if export_pdf  is defined %}  {{values.valueEn}} {% else %} 
+                    <input type="text"  name="suggestedbyhr[en][{{ counter }}]"   value="{{values.valueEn}}"    required />
+                    {% endif %}
+                </td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[suggestedbyhr][{{ counter }}]"  required  minlength="1"
+                            {% if options.idOption == values.selectedOption %}
+                            checked="checked"
+                            {% endif %}
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td width="38%" >
+                    {% if export_pdf  is defined %}  {{values.valueEn}} {% else %} 
+                    <input type="text"  name="suggestedbyhr[ar][{{ counter }}]"    value="{{values.valueEn}}"   required />
+                    {% endif %}
+                </td>
+                <td width="3%" align="center">{{ counter }}</td>
+            </tr>
+            {% set counter = counter + 1 %}
+            {% endif %}
+            {% endfor %}
+                    <script type="text/javascript">
+                    suggestedbyhr_counter = {{ counter|json_encode() }};
+                    </script>
+            {% else %}
+            
+            <tr>
+                <td width="3%" align="center">1</td>
+                <td><input type="text"  name="suggestedbyhr[en][1]"  required /></td>
+                
+                     {% for options in form_options %}
+                     <td width="6%" align="center">
+                         <input type="radio" value="{{options.idOption}}" 
+                            name="e_values[suggestedbyhr][1]"  required  minlength="1"
+                                                      />
+                     </td>
+                    {% endfor %}
+                
+                <td><input type="text"  name="suggestedbyhr[ar][1]"  required /></td>
+                <td width="3%" align="center">1</td>
+            </tr>
+                    <script type="text/javascript">
+                    suggestedbyhr_counter = 2;
+                    </script>
+            {% endif %}
+           
+            
+            
+            
+            
+        </table>
+    {# end section 7 #}        
+                    
+                    
+                    
+                    
+                    
+                    
+    <table width="100%">
+        <tr><th width="4%" align="center">8</th><th align="left">{{ 'HR DEPARTMENT APPROVAL'|trans({}, 'trainingnned' , 'en') }}</th><th align="right" dir="rtl" width="20%">{{ 'HR DEPARTMENT APPROVAL'|trans({}, 'trainingneed' , 'ar') }}</th><th width="4%" align="center">8</th></tr>
+        <tr><td align="left" colspan="2">{{ 'Name/Signature/Date'|trans({}, 'trainingneed' , 'en') }}  <br/> {{ 'Name/Signature/Date'|trans({}, 'trainingneed' , 'ar') }}</td><td align="center" dir="rtl" colspan="2">
+            <table width="100%" class="no-border"><tr><td align="left" >/</td><td></td><td align="right" >/</td></tr></table>
+            </td></tr>
+    </table>
+    
+    <input type="hidden" name="user_id" value="{{userentity.idUser}}" />
+    
+    {% if currentActivePeriod %}
+    <input type="hidden" name="period_id" value="{{currentActivePeriod[0].idPeriod}}" />
+    {% endif %}
+    
+    {% if currentEvaluationId is defined and currentEvaluationId %}
+    <input type="hidden" name="evaluation_id" value="{{currentEvaluationId}}" />
+    {% endif %}
+
+    </form>
+     
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $("#objectives_table").on('click','.addCF',function(){
+        if(objectives_counter < 6)
+        {
+        var $trLast = $('#objectives_table').find("tr:last"),
+        $trNew = $trLast.clone();
+        $trNew = $trNew.find("input:text").val("").end();
+        $trNew = $trNew.find("input:radio").attr('checked',false).end();
+        $trNew = $trNew.find("input[name*='objectives[en]["+(objectives_counter-1)+"]']").attr('name', 'objectives[en]['+objectives_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='objectives[ar]["+(objectives_counter-1)+"]']").attr('name', 'objectives[ar]['+objectives_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='e_values[objectives]["+(objectives_counter-1)+"]']").attr('name', 'e_values[objectives]['+objectives_counter+']' ).end();
+        $trNew = $trNew.find("td:first").html('<a href="javascript:void(0);" class="remCF">Remove</a>').end();
+        $trLast.after($trNew);
+    
+       objectives_counter++ ;
+        }
+    });
+    
+    $("#appraisaltrainings_table").on('click','.addCF',function(){
+        if(appraisaltrainings_counter < 4)
+        {
+        var $trLast = $('#appraisaltrainings_table').find("tr:last"),
+        $trNew = $trLast.clone();
+        $trNew = $trNew.find("input:text").val("").end();
+        $trNew = $trNew.find("input:radio").attr('checked',false).end();
+        $trNew = $trNew.find("input[name*='appraisaltrainings[en]["+(appraisaltrainings_counter-1)+"]']").attr('name', 'appraisaltrainings[en]['+appraisaltrainings_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='appraisaltrainings[ar]["+(appraisaltrainings_counter-1)+"]']").attr('name', 'appraisaltrainings[ar]['+appraisaltrainings_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='e_values[appraisaltrainings]["+(appraisaltrainings_counter-1)+"]']").attr('name', 'e_values[appraisaltrainings]['+appraisaltrainings_counter+']' ).end();
+        $trNew = $trNew.find("td:first").html('<a href="javascript:void(0);" class="remCF">Remove</a>').end();
+        $trLast.after($trNew);
+        
+            appraisaltrainings_counter++ ;
+        }
+    });
+    
+    $("#additionaltrainings_table").on('click','.addCF',function(){
+        if(additionaltrainings_counter < 4)
+        {
+        var $trLast = $('#additionaltrainings_table').find("tr:last"),
+        $trNew = $trLast.clone();
+        $trNew = $trNew.find("input:text").val("").end();
+        $trNew = $trNew.find("input:radio").attr('checked',false).end();
+        $trNew = $trNew.find("input[name*='additionaltrainings[en]["+(additionaltrainings_counter-1)+"]']").attr('name', 'additionaltrainings[en]['+additionaltrainings_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='additionaltrainings[ar]["+(additionaltrainings_counter-1)+"]']").attr('name', 'additionaltrainings[ar]['+additionaltrainings_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='e_values[additionaltrainings]["+(additionaltrainings_counter-1)+"]']").attr('name', 'e_values[additionaltrainings]['+additionaltrainings_counter+']' ).end();
+        $trNew = $trNew.find("td:first").html('<a href="javascript:void(0);" class="remCF">Remove</a>').end();
+        $trLast.after($trNew);
+        
+
+        additionaltrainings_counter++ ;
+        }
+    });
+    
+    $("#suggestedbyhr_table").on('click','.addCF',function(){
+        if(suggestedbyhr_counter < 4)
+        {
+        var $trLast = $('#suggestedbyhr_table').find("tr:last"),
+        $trNew = $trLast.clone();
+        $trNew = $trNew.find("input:text").val("").end();
+        $trNew = $trNew.find("input:radio").attr('checked',false).end();
+        $trNew = $trNew.find("input[name*='suggestedbyhr[en]["+(suggestedbyhr_counter-1)+"]']").attr('name', 'suggestedbyhr[en]['+suggestedbyhr_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='suggestedbyhr[ar]["+(suggestedbyhr_counter-1)+"]']").attr('name', 'suggestedbyhr[ar]['+suggestedbyhr_counter+']' ).end();
+        $trNew = $trNew.find("input[name*='e_values[suggestedbyhr]["+(suggestedbyhr_counter-1)+"]']").attr('name', 'e_values[suggestedbyhr]['+suggestedbyhr_counter+']' ).end();
+        $trNew = $trNew.find("td:first").html('<a href="javascript:void(0);" class="remCF">Remove</a>').end();
+        $trLast.after($trNew);
+        
+        suggestedbyhr_counter++ ;
+        }
+    });
+    
+    // REMOVE ----------------------------------------------
+    $("#objectives_table").on('click','.remCF',function(){
+        $(this).parent().parent().remove();
+        objectives_counter-- ;
+    });
+    $("#appraisaltrainings_table").on('click','.remCF',function(){
+        $(this).parent().parent().remove();
+        appraisaltrainings_counter-- ;
+    });
+    $("#additionaltrainings_table").on('click','.remCF',function(){
+        $(this).parent().parent().remove();
+        additionaltrainings_counter-- ;
+    });
+     $("#suggestedbyhr_table").on('click','.remCF',function(){
+        $(this).parent().parent().remove();
+        suggestedbyhr_counter-- ;
+    });
+});
+
+ 
+$("#trainingneed-form input:radio").attr('disabled',true);   
+$("#trainingneed-form input:text").attr('disabled',true);   
+ 
+    
+    
+</script>
+
+
+
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

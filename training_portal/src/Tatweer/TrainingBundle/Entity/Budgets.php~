@@ -1,0 +1,173 @@
+<?php
+
+namespace Tatweer\TrainingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Budgets
+ *
+ * @ORM\Table(name="budgets")
+ * @ORM\Entity(repositoryClass="Tatweer\TrainingBundle\Entity\BudgetsRepository")
+ * @ORM\Entity
+ */
+class Budgets
+{
+    /**
+     * @var smallint
+     *
+     * @ORM\Column(name="id_budget", type="smallint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idBudget;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="start_date", type="date", nullable=true)
+     */
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="date", nullable=true)
+     */
+    private $endDate;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="deleted", type="boolean", nullable=true)
+     */
+    private $deleted;
+
+
+
+    /**
+     * Get id
+     *
+     * @return boolean 
+     */
+    public function getId()
+    {
+        return $this->idBudget;
+    }
+
+    /**
+     * Get idBudget
+     *
+     * @return boolean 
+     */
+    public function getIdBudget()
+    {
+        return $this->idBudget;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Budgets
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return Budgets
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     * @return Budgets
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Budgets
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+    
+    /**
+     * Override PHP magic function __toString() to return the current object field "name"
+     */
+    public function __toString(){
+        return (string)$this->getName();
+    }
+}

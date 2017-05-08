@@ -1,0 +1,42 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <h1>Groups</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Createddate</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Modifieddate</th>
+                <td>{{ entity.modifiedDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('groups') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('groups_edit', { 'id': entity.idGroup }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

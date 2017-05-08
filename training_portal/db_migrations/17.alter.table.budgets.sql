@@ -1,0 +1,1 @@
+ALTER TABLE `budgets` CHANGE `deleted` `deleted` TINYINT( 4 ) NOT NULL DEFAULT '0';

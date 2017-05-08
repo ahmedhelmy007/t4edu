@@ -1,0 +1,69 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+
+
+        <div class="titlepage"><div class="maintitlenews">{{ 'Evaluation period main data'|trans({}, 'periods') }}</div></div>
+        <div class="wrapper2">
+            
+            
+        <table   class="records_list" width="100%" >
+            <tbody>
+                <tr>
+                    <th>{{ 'Period name'|trans({}, 'periods') }}</th>
+                    <td>{{ entity.name }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %} Start date {% endtrans %}</th>
+                    <td>{{ entity.startDate|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %} End date {% endtrans %}</th>
+                    <td>{{ entity.endDate|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'Evaluation duration in months'|trans({}, 'periods') }}</th>
+                    <td>{{ entity.durationInMoths }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'Reminder date'|trans({}, 'periods') }}</th>
+                    <td>{{ entity.reminderDate|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %} Status {% endtrans %}</th>
+                    <td>{% if entity.active %} {% trans %} Active {% endtrans %} {% else %} {% trans %} Inactive {% endtrans %} {% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        
+        <div class="titlepage"><div class="maintitlenews">{{ 'Training needs period'|trans({}, 'periods') }}</div></div>
+        <div class="wrapper2">
+ 
+        <table    class="records_list"  width="100%" >
+            <tbody>
+                <tr>
+                    <th>{{ 'Training needs start date'|trans({}, 'periods') }}</th>
+                    <td>{{ entity.trainingNeedsStartDate|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'Training needs end date'|trans({}, 'periods') }}</th>
+                    <td>{{ entity.trainingNeedsEndDate|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %} Status {% endtrans %}</th>
+                    <td>{% if entity.trainingNeedsActive %} {% trans %} Active {% endtrans %} {% else %} {% trans %} Inactive {% endtrans %} {% endif %}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'Reminder date'|trans({}, 'periods') }}</th>
+                    <td>{{ entity.trainingNeedsReminderDate|date('Y-m-d') }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+       {# <a href="{{ path('') }}">{% trans %} Back {% endtrans %}</a> #}
+
+    </div>
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

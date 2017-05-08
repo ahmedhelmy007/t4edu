@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Service Staff Training</source>
+                <target>خدمة تدريب الموظفين</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Is a gesture of services for the development company for educational services implementing programs project King Abdullah for the development of public education, which aims to provide educational support academic staff and raise their achievement through training and explain scientific concepts and technology with a select group of qualified trainers. The service began in its pilot phase to provide support to staff this year 1435-1436.</source>
+                <target>
+                    <![CDATA[
+خدمة " <strong>تدريب الموظفين</strong>" هي بادرة خدمات لشركة تطوير للخدمات التعليمية المنفذة لبرامج مشروع الملك عبدالله لتطوير التعليم العام، وهي تهدف إلى تقديم الدعم التعليمي الأكاديمي لموظفيها ورفع مستواهم التحصيلي من خلال التدريب وشرح المفاهيم العلمية والتقنية مع نخبة من المدربين الأكفاء .  
+وقد بدأت الخدمة في مرحلتها التجريبية بتقديم الدعم للموظفين هذا العام 1435-1436 هـ .
+                     ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>You can request the service through training individually, as also welcome your comments and suggestions on the development and optimization of service</source>
+                <target>ويمكنك من خلال الخدمة طلب تدريب فردي، كما أيضاً نرحب بآرائكم ومقترحاتكم حول تطوير الخدمة وتجويدها</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>here</source>
+                <target>من هنا</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

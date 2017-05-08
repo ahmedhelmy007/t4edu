@@ -1,0 +1,14 @@
+## CccCcc.orm.yml 
+Acme\DemoBundle\Entity\CccCcc: 
+    type: entity 
+    table: ccc_ccc
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+            strategy: AUTO
+    oneToMany:
+        aaaBbbCccCollection:
+            targetEntity: AaaBbbCcc
+            mappedBy: cccCcc

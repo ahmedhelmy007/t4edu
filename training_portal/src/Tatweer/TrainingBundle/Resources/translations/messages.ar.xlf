@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>WELCOME</source>
+                <target>مرحبا بك</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Employees Training Portal</source>
+                <target>نظام تدريب الموظفين</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Edit</source>
+                <target>تعديل</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Delete</source>
+                <target>حذف</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>View details</source>
+                <target>استعراض التفاصيل</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Start date</source>
+                <target>تاريخ البداية</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>End date</source>
+                <target>تاريخ النهاية</target>
+            </trans-unit>
+
+            <trans-unit id="8">
+                <source>Add New</source>
+                <target>إضافة جديد</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Update</source>
+                <target>تحديث</target>
+            </trans-unit>
+            
+            <trans-unit id="10">
+                <source>View</source>
+                <target>استعراض</target>
+            </trans-unit>
+            
+            <trans-unit id="11">
+                <source>Delete</source>
+                <target>حذف</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Assign new users</source>
+                <target>إسناد مستخدمين</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>There are no created items</source>
+                <target>لا يوجد بيانات</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Main data</source>
+                <target>البيانات الأساسية</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Status</source>
+                <target>الحالة</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Active</source>
+                <target>مفعل</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Inactive</source>
+                <target>غير مفعل</target>
+            </trans-unit>
+
+            <trans-unit id="18">
+                <source>Create</source>
+                <target>إنشاء</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Back</source>
+                <target>رجوع</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Actions</source>
+                <target>الإجراءات</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Do you want to delete the item?</source>
+                <target>هل تريد حذف العنصر؟</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Item successfully added</source>
+                <target>تمت الإضافة بنجاح</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Item successfully edited</source>
+                <target>تم التعديل بنجاح</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Item successfully deleted</source>
+                <target>تم الحذف بنجاح</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>There are no available active evaluation period</source>
+                <target>لا يوجد فترة تقييم حالية مفعلة</target>
+            </trans-unit>
+            
+            <trans-unit id="26">
+                <source>Export PDF</source>
+                <target>PDF تصدير  </target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Save</source>
+                <target>حفظ</target>
+            </trans-unit>    
+            <trans-unit id="28">
+                <source>Send back</source>
+                <target>اعادة الطلب</target>
+            </trans-unit>    
+            <trans-unit id="29">
+                <source>Approve</source>
+                <target>موافق</target>
+            </trans-unit>    
+            <trans-unit id="30">
+                <source>Reject</source>
+                <target>مرفوض</target>
+            </trans-unit>       
+            <trans-unit id="31">
+                <source>Send to employee</source>
+                <target>ارسل للموظف</target>
+            </trans-unit>  
+            <trans-unit id="32">
+                <source>There are no available active training needs period</source>
+                <target>لا يوجد فترة تحديد احتياجات تدريبية حالية مفعلة</target>
+            </trans-unit>  
+            <trans-unit id="33">
+                <source>This employee has no evaluation data you cannot define training needs</source>
+                <target>لا يمكنك تحديد المتطلبات التدريبية لهذا المستخدم لا يوجد له بيانات تقييم</target>
+            </trans-unit> 
+            <trans-unit id="34">
+                <source>Accept</source>
+                <target>موافق</target>
+            </trans-unit>  
+            <trans-unit id="35">
+                <source>Are you sure you want to delete this data?</source>
+                <target>هل انت متأكد من الاستمرار بحذف البيانات المختاره ؟</target>
+            </trans-unit>  
+            <trans-unit id="36">
+                <source>Selected data has opened training requests, you could not delete it</source>
+                <target>لا يمكن حذف البيانات المختارة حيث يوجد بها طلبات تدريب لم يبت فيها</target>
+            </trans-unit>  
+            <trans-unit id="37">
+                <source>Search</source>
+                <target>بحث</target>
+            </trans-unit>  
+           <trans-unit id="38">
+                <source>Please select at least one user</source>
+                <target>يجب اختيار مستخدم واحد كحد أدنى</target>
+            </trans-unit>  
+            <trans-unit id="39">
+                <source>Assign to</source>
+                <target>اسناد الطلب</target>
+            </trans-unit>  
+            <trans-unit id="40">
+                <source>Select to assign request</source>
+                <target>اختر لاسناد الطلب</target>
+            </trans-unit>  
+            <trans-unit id="41">
+                <source>Select</source>
+                <target>اختر</target>
+            </trans-unit>  
+            <trans-unit id="42">
+                <source>Training requests have been deducted from the selected budget, you could not delete it</source>
+                <target>لا يمكن حذف الميزانية المختارة حيث تم خصم طلبات تدريب فيها</target>
+            </trans-unit> 
+            <trans-unit id="43">
+                <source>Days</source>
+                <target>أيام</target>
+            </trans-unit>  
+            <trans-unit id="44">
+                <source>Add</source>
+                <target>أضف</target>
+            </trans-unit>  
+            <trans-unit id="45">
+                <source>Remove</source>
+                <target>ازالة</target>
+            </trans-unit>  
+            <trans-unit id="46">
+                <source>Login</source>
+                <target>تسجيل الدخول</target>
+            </trans-unit>  
+            <trans-unit id="47">
+                <source>Username</source>
+                <target>اسم المستخدم</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Months</source>
+                <target>شهر</target>
+            </trans-unit>  
+            <trans-unit id="49">
+                <source>Send to moderator</source>
+                <target>ارسال للمدير المباشر</target>
+            </trans-unit>  
+            <trans-unit id="50">
+                <source>Select budget</source>
+                <target>اختر ميزانية</target>
+            </trans-unit>  
+            <trans-unit id="51">
+                <source>Send back to employee</source>
+                <target>إعادة ارساله للموظف</target>
+            </trans-unit>  
+            
+            
+        </body>
+    </file>
+</xliff>
+
+ 

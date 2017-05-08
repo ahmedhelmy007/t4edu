@@ -1,0 +1,71 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Users list'|trans({}, 'users') }}</div></div>
+    <div class="wrapper2">
+        {% if note is defined and note is not null %} <p>{{ note }} </p> {% endif %}
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+                <th>{{ 'Actions'|trans({}, 'messages') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+{% if data_result  is defined  %}  
+    {% for key1,value1 in data_result %}
+     {% for key,value in value1 %}
+        {% if  value.idGroup is not null and  value.idGroup is not empty  %}  
+        
+        {% if value.users  is defined  %}  
+          {% for key1,user in value.users %}
+           <tr>
+                <td> {{ user.UserName }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ user.FullArabicName }} {% else %} {{ user.DisplayName }} {% endif %}  </td>
+                <td>  {{ user.Title }}  </td>
+                <td>  {{ user.Email }}  </td>
+                <td>
+                <ul>
+
+                     <a href="{{ path('_showevaluation', {'groupid': value.idGroup , 'userid': user.idUser }) }}">evaluation</a> 
+                     
+                     
+                     {% if viewer  is defined and viewer == TRUE   %}   
+                     <a href="{{ path('_showtrainingneed', {'groupid': value.idGroup , 'userid': user.idUser }) }}">training need</a> 
+                     {% else %}
+                     <a href="{{ path('_requesttrainingneed', {'groupid': value.idGroup , 'userid': user.idUser }) }}">request training need</a> 
+                     {% endif %}
+                     
+
+                     
+                    {% if hasTrainingDetails is defined and hasTrainingDetails %}
+                     <a href="{{ path('_showtrainingneedsactions', {'groupid': value.idGroup , 'userid': user.idUser }) }}">Training needs actions</a>
+                     <a href="{{ path('_usertrainingdetails', {'groupid': value.idGroup , 'userid': user.idUser }) }}">Training needs details</a>
+                     
+                     {% else %}
+                     <a href="{{ path('_trainingneedsactions', {'groupid': value.idGroup , 'userid': user.idUser }) }}">Training needs actions</a>  
+                    {% endif %} 
+                    
+                </ul>
+                </td>
+            </tr> 
+         {% endfor %}
+        {% endif %}
+        
+        {% endif %}
+    {% endfor %}
+   {% endfor %} 
+{% endif %}  
+
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Budgets list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idbudget</th>
+                <th>Name</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Deleted</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('budgets_show', { 'id': entity.idBudget }) }}">{{ entity.idBudget }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.startDate %}{{ entity.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.endDate %}{{ entity.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.deleted }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('budgets_show', { 'id': entity.idBudget }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('budgets_edit', { 'id': entity.idBudget }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('budgets_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

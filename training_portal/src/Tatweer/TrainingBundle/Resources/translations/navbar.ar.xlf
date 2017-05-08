@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Request individual training</source>
+                <target>طلب تدريب فردي</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Evaluation Network</source>
+                <target>شبكة التقييم</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Dates Of my Trainig Approved</source>
+                <target>مواعيد تدريباتي المعتمدة</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Home</source>
+                <target>الصفحة الرئيسية</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Departments</source>
+                <target>الإدارات</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Training expenses classes</source>
+                <target>ادارة التكاليف</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Periods</source>
+                <target>الفترات</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Budgets</source>
+                <target>الميزانيات</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Evaluation</source>
+                <target>التقييم</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Training needs managment</source>
+                <target>ادارة الاحتياجات التدريبية</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Follow Up Requests</source>
+                <target>متابعة طلبات التدريب</target>
+            </trans-unit>
+            
+            <trans-unit id="12">
+                <source>My training needs</source>
+                <target>احتياجاتي التدريبية</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>HR Follow Up Requests</source>
+                <target>متابعة طلبات التدريب لل HR</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>HR Training details</source>
+                <target>تفاصيل التدريب لل HR</target>
+            </trans-unit>
+            
+            <trans-unit id="15">
+                <source>Training details managment</source>
+                <target>ادارة تفاصيل التدريب</target>
+            </trans-unit>
+            
+            <trans-unit id="16">
+                <source>My Training details</source>
+                <target>تفاصيل تدريباتي</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="17">
+                <source>Training department members</source>
+                <target>ادارة موظفي التدريب</target>
+            </trans-unit>
+            
+            <trans-unit id="18">
+                <source>Manage Individuals Training Requests</source>
+                <target>ادارة طلبات التدريب الفردي</target>
+            </trans-unit>
+            
+            <trans-unit id="19">
+                <source>Preferences</source>
+                <target>اعدادات</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Request training</source>
+                <target>طلب تدريب</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Individual training requests</source>
+                <target>طلبات التدريب الفردية</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Follow up Individual requests</source>
+                <target>متابعة طلبات التدريب الفردية</target>
+            </trans-unit>
+            
+            <trans-unit id="23">
+                <source>Training evaluation</source>
+                <target>تقييم التدريب</target>
+            </trans-unit>
+                        
+        </body>
+    </file>
+</xliff>

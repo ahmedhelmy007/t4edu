@@ -1,0 +1,80 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+     <div class="titlepage"><div class="maintitlenews">{{ 'Edit user'|trans({}, 'users' ) }}</div></div>
+     <div class="wrapper2">
+    <form  method="post"  id="form1" >
+
+        
+        <label>{{ 'Employee roles'|trans({}, 'users') }}</label>
+        {% for roles in userRoles %}
+            
+          
+            <span>
+                <input type="checkbox" value="{{roles.idRole}}" 
+                name="userroles[]"  class="checkbox"
+                {% if roles.userHasPermission %}
+                checked="checked"
+                {% endif %}
+                {% if loop.index == 1 %}  required minlength="1" {% endif %}
+                /> {% if app.request.getLocale() == 'ar' %} {{ roles.nameAr }} {% else %} {{ roles.nameEn }} {% endif %} 
+            </span>
+                             
+                                     
+             
+            
+        {% endfor %}
+        <label for="userroles[]" class="error"></label> 
+        <br/>
+        
+        
+        
+        
+        
+        
+            <input type="submit" value="{{ 'Update'|trans({}) }}" name="update_assign" />
+            
+            
+    </form>
+      
+     </div>
+            
+            
+            
+            
+            
+ 
+{# http://stackoverflow.com/questions/9466293/symfony2-forms-generating-checkboxes      #}
+     
+
+   {# {% for role in edit_form.roleUserGroup %}
+    <li>
+        {{ form_label(role, loop.index) }}
+        {{ form_widget(role) }}
+    </li>
+    {% endfor %}#}
+    
+    
+   {# {{ form(edit_form, {'attr': {'novalidate': 'novalidate'}}) }} #}
+    
+  {#   
+{% for index, player in edit_form.roleUserGroup %}
+   
+        {{ form_row(player.role, { 'label' : 'Your email address' }) }}
+
+{% spaceless %}
+    <label><input type="checkbox" {{ block('widget_attributes') }}{% if player.role.value is defined %} value="{{ player.role.value }}"{% endif %} checked="checked" /></label>
+{% endspaceless %}
+{% endfor %}
+  #}
+
+       {# <ul class="record_actions">
+    <li>
+        <a href="{{ path('') }}">
+            Back to the list
+        </a>
+    </li>
+ 
+</ul>#}
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

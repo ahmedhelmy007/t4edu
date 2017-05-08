@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Training expenses classes edit</source>
+                <target>تعديل تكاليف التدريب</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Training expenses classes</source>
+                <target>تكاليف التدريب</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Training expenses classes creation</source>
+                <target>انشاء تكاليف تدريب</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Training expenses classes view</source>
+                <target>استعراض تكاليف تدريب</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Name</source>
+                <target>الإسم</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Status</source>
+                <target>الحالة</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Active</source>
+                <target>مفعل</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Inactive</source>
+                <target>غير مفعل</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Select</source>
+                <target>اختر</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Training expenses classes list</source>
+                <target>قائمة تكاليف التدريب</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

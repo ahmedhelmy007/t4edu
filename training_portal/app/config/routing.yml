@@ -1,0 +1,4 @@
+tatweer_training:
+    resource: "@TatweerTrainingBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/
+

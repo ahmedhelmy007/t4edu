@@ -1,0 +1,149 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    
+    <div class="titlepage"><div class="maintitlenews">
+            {{ 'TRAINING EVALUATION FORM'|trans({}, 'trainingevaluation', 'en') }} -  {{ 'TRAINING EVALUATION FORM'|trans({}, 'trainingevaluation', 'ar') }} 
+        </div></div>
+    <div class="wrapper2">
+        {% include "TatweerTrainingBundle:Forms:userinfo.html.twig" %}
+        
+        {% include "TatweerTrainingBundle:TrainingEvaluations:coursedata.html.twig" %}
+        
+    <table width="100%">
+        <tr>
+        <th width="4%"  align="center">3</th>
+        <th colspan="2"  width="46%" align="left" >{{ 'EVALUATION'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <th colspan="2" width="46%" align="right" dir="rtl" > {{ 'EVALUATION'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        <th width="4%"  align="center">3</th>
+        </tr>
+        <tr>
+            <td colspan="6"  align="center" >
+            {{ 'Please choose the appropriate number that reflects your opinion, (1) Poor – (5) Excellent'|trans({}, 'trainingevaluation' , 'en') }} <br/>
+            {{ 'Please choose the appropriate number that reflects your opinion, (1) Poor – (5) Excellent'|trans({}, 'trainingevaluation' , 'ar') }}
+            </td>
+        </tr>
+    </table>
+    <form  method="post" id="evaluationForm" >
+         
+    <table width="100%">
+        <tr>
+        <th width="40%" colspan="2" align="left" >{{ 'Evaluation Scale'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <th width="4%"  align="center">1</th>
+        <th width="4%"  align="center">2</th>
+        <th width="4%"  align="center">3</th>
+        <th width="4%"  align="center">4</th>
+        <th width="4%"  align="center">5</th>
+        <th width="40%" colspan="2"  align="right" dir="rtl" > {{ 'Evaluation Scale'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        </tr>
+  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+    {% set section_counter = 1 %}
+    {% for sections in form_sections %}
+        <tr>
+            <th width="4%" align="center">{{ section_counter }}</th>
+            <th align="left" width="36%" >{{ sections.nameEn }}</th>
+                        <th width="4%" colspan="5"></th>
+            <th align="right" width="36%" dir="rtl" >{{ sections.nameAr }}</th>
+            <th width="4%" align="center">{{ section_counter }}</th>
+        </tr>
+
+        
+ 
+         {% set counter = 1 %}
+            {% for criterias in form_criterias %}
+                
+                 {% if criterias.section == sections.idSection %}
+                  
+                  <tr>
+                
+                    <td align="left" width="45%" colspan="2">{{ criterias.nameEn }}</td>
+                    {% for options in form_options %}
+                        {% if options.section == sections.idSection %}
+                            <td align="center" width="4%"><input type="radio" value="{{options.idOption}}" 
+                                                      name="e_values[{{criterias.idCriteria}}]"  required  minlength="1"
+                                                      
+                                                      {% if  criterias.selectedOption  is defined  %}
+                                                          {% if criterias.selectedOption == options.idOption%} 
+                                                              checked="checked"
+                                                          {% endif %}
+                                                      {% endif %}
+                                                      
+                                                      
+                                                      />
+
+                            
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                    <td align="right" dir="rtl" width="45%" colspan="2">{{ criterias.nameAr }}</td>
+                  
+                  </tr>
+                   {% set counter = counter + 1 %}
+                {% endif %}
+                {% endfor %}
+                
+                 {% set section_counter = section_counter + 1 %}
+    {% endfor %}
+    </table>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+             
+
+    
+    <table width="100%">
+        <tr>
+        <th width="4%"  align="center">4</th>
+        <th colspan="2"  width="46%" align="left" >{{ 'COMMENTS'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <th colspan="2" width="46%" align="right" dir="rtl" > {{ 'COMMENTS'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        <th width="4%"  align="center">4</th>
+        </tr>
+        <tr><td colspan="6"><textarea id="comment" name="comment" style="width: 99%; height: 100px;" ></textarea></td></tr>
+    </table>
+        
+    <table width="100%">
+        <tr>
+        <th width="4%"  align="center">5</th>
+        <th colspan="2"  width="46%" align="left" >{{ 'SIGNATURE'|trans({}, 'trainingevaluation' , 'en') }}</th> 
+        <th colspan="2" width="46%" align="right" dir="rtl" > {{ 'SIGNATURE'|trans({}, 'trainingevaluation' , 'ar') }}</th>
+        <th width="4%"  align="center">5</th>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+               {{ 'Name/Signature /Date'|trans({}, 'trainingevaluation' , 'en') }}<br/>
+               {{ 'Name/Signature /Date'|trans({}, 'trainingevaluation' , 'ar') }}
+            </td>
+            <td colspan="4" > &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  / &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+        </tr>
+    </table>
+            
+            
+{% if export_pdf  is not defined %}
+    <input type="submit" value="{{ 'Save'|trans({}) }}" name="save_evaluation" />
+{% endif %}
+    </form>
+            
+    </div>
+    
+{% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

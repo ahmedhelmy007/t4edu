@@ -1,0 +1,1 @@
+ALTER TABLE `training_needs_actions_log` CHANGE `forwarded_to_user` `forwarded_to_user` INT( 10 ) UNSIGNED NULL DEFAULT NULL ;

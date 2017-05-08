@@ -1,0 +1,29 @@
+  </div>
+<!--END CONTENT-->
+
+</div><!--END <div id="wrapper" > in navbar.html.twig  -->
+ {% if export_pdf  is not defined %}  
+<!--FIRST FOOTER-->
+<div class="footer">
+<div class="allcopyright">
+  <div class="copylinks">
+      <div class="reserved">{{ 'All Rights Reserved'|trans({}, 'footer') }} <strong> {{ 'Development Corporation Educational Services'|trans({}, 'footer') }} </strong>  © 2014</div>
+     <div class="linkfooter">
+              <ul>
+              <li><a href="#">{{ 'Contact Us'|trans({}, 'footer') }}</a></li>
+              <li><a href="#">{{ 'For Managment Traning'|trans({}, 'footer') }}</a></li>
+              <li><a href="#">{{ 'Privacy Policy'|trans({}, 'footer') }}</a></li>
+              </ul>
+         </div>
+  
+  </div>
+  <div class="logos"> 
+   <a href="#"> <img src="{{ asset('bundles/tatweertraining/images/'~ app.request.getLocale()  ~'/t4edu_logo.png') }}"  /></a>
+   <a href="#"> <img src="{{ asset('bundles/tatweertraining/images/'~ app.request.getLocale()  ~'/tatweer_logo.png') }}"  /></a>
+   </div>
+</div>
+
+</div>
+ {% endif %}
+ </body>
+</html>

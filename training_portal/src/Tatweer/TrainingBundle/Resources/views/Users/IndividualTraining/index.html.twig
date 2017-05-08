@@ -1,0 +1,52 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+
+    <div class="titlepage"><div class="maintitlenews">{{ 'Users list'|trans({}, 'users') }}</div></div>
+    <div class="wrapper2">
+        
+ 
+        
+    <form  method="post">  
+    <table  class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+{% if data_result  is defined  %}  
+    {% for key,value in data_result %}
+ 
+          
+           <tr>
+                <td>
+                  
+                    <input type="checkbox"  name="have_self_request[{{ value.userid }}]" {% if value.ableToRequestTraining == 1 %}  checked="checked" {% endif %} />
+                </td>
+                <td>  {{ value.user.UserName }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ value.user.FullArabicName }} {% else %} {{ value.user.DisplayName }} {% endif %}  </td>
+                <td>  {{ value.user.Title }}  </td>
+                <td>  {{ value.user.Email }}  </td>
+                <input type="hidden" name="users[{{ value.userid }}]" value="{{ value.userid }}" />
+            </tr> 
+         
+   {% endfor %} 
+{% endif %}  
+
+        </tbody>
+    </table>
+
+<input type="submit" name="save_indivisual_requests" value="{% trans %} Save {% endtrans %}" />
+    </form>
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

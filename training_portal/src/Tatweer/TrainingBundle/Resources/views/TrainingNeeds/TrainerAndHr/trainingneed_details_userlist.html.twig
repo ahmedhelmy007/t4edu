@@ -1,0 +1,53 @@
+{% include "TatweerTrainingBundle::header.html.twig" %}
+
+{% block body -%}
+    <div class="titlepage"><div class="maintitlenews">{{ 'Users list'|trans({}, 'users') }}</div></div>
+    <div class="wrapper2">
+        {% if note is defined and note is not null %} <p>{{ note }} </p> {% endif %}
+    <table class="records_list" id="mydataTable">
+        <thead>
+            <tr>
+                <th>{{ 'Domain user name'|trans({}, 'users') }}</th>
+                <th>{{ 'Fullname'|trans({}, 'users') }}</th>
+                <th>{{ 'Employee Title'|trans({}, 'users') }}</th>
+                <th>{{ 'Mail'|trans({}, 'users') }}</th>
+                <th>{{ 'Actions'|trans({}, 'messages') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+
+        {% if data_result  is defined  %}  
+          {% for key,user in data_result %}
+           <tr>
+                <td> {{ user.UserName }}  </td>
+                <td>  {% if app.request.getLocale() == 'ar' %} {{ user.FullArabicName }} {% else %} {{ user.DisplayName }} {% endif %}  </td>
+                <td>  {{ user.Title }}  </td>
+                <td>  {{ user.Email }}  </td>
+                <td>
+                <ul>
+                     <a href="{{ path('_showevaluation', {'groupid': user.idGroup , 'userid': user.idUser }) }}">evaluation</a> 
+                     
+                     <a href="{{ path('_showtrainingneed', {'groupid': user.idGroup , 'userid': user.idUser }) }}">training need</a> 
+
+                     <a href="{{ path('_showtrainingneedsactions', {'groupid': user.idGroup , 'userid': user.idUser }) }}">view training needs actions</a>
+                      
+                     <a href="{{ path('_usertrainingdetails', {'groupid': user.idGroup , 'userid': user.idUser }) }}">Training needs details</a>
+                     
+                     
+                </ul>
+                </td>
+            </tr> 
+         {% endfor %}
+        {% endif %}
+        
+ 
+
+        </tbody>
+    </table>
+
+</div>
+    {% endblock %}
+{% include "TatweerTrainingBundle::footer.html.twig" %}

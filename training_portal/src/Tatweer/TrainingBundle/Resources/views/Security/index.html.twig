@@ -1,0 +1,10 @@
+{% extends "AcmeDemoBundle:Secured:layout.html.twig" %}
+{% block content %}
+
+    Hello resource secured for <strong>users</strong> only.
+
+    <br /><br /><br />Only admin will see the following link:
+    {% if app.user and is_granted('ROLE_ADMIN') %}
+        <a href="...">Delete</a>
+    {% endif %}
+{% endblock %}

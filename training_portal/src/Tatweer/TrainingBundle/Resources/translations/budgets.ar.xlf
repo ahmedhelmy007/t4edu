@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Budgets list</source>
+                <target>الميزانيات</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Budget name</source>
+                <target>الميزانية</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Create new budget</source>
+                <target>إنشاء ميزانية جديدة</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Departments list</source>
+                <target>الإدارات</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Original Value</source>
+                <target>القيمة الاصلية</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Remaining Value</source>
+                <target>القيمة المتبقة</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>There are no budgets created yet</source>
+                <target>لا توجد ميزانيات منشأة في النظام بعد.</target>
+            </trans-unit>
+
+            <trans-unit id="8">
+                <source>Start date</source>
+                <target>تاريخ البداية</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>End date</source>
+                <target>تاريخ النهاية</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Active</source>
+                <target>مفعل</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Inactive</source>
+                <target>غير مفعل</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Status</source>
+                <target>الحالة</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Edit budget</source>
+                <target>تحديث ميزانية</target>
+            </trans-unit>
+            
+
+            
+            <trans-unit id="14">
+                <source>Name</source>
+                <target>الإسم</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Departments</source>
+                <target>الإدارات</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Department budget</source>
+                <target>الميزانية</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

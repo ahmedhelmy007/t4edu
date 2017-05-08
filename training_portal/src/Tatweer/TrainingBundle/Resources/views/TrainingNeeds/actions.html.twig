@@ -1,0 +1,82 @@
+
+{% block body -%}
+
+{% if allowedActions %}
+<div class="titlepage"><div class="maintitlenews">{{ 'Comment'|trans({}, 'trainingneed' ) }} </div></div>
+<div class="wrapper2">
+
+    <textarea name="comment"  id="comment"  cols="100" rows="10" ></textarea>
+{% if trainingneed_id %}
+<input type="hidden" name="trainingneed_id" id="" value="{{ trainingneed_id }}" />   
+{% endif %} 
+<br/>
+
+
+{% if 3 in allowedActions %}
+<input type="submit" name="sendback" id="sendback_btn"    value="{{ 'Send back'|trans({}, 'messages' ) }}" />
+{% endif %}
+
+{% if 1 in allowedActions %}
+
+
+{% if departmentBudgetData is defined and departmentBudgetData != false %}
+<select name="selected_budget" id="selected_budget">
+    <option value="0" >{{ 'Select budget'|trans({}, 'messages' ) }}</option>
+        {% for key,value in departmentBudgetData %}
+            <option value="{{value.idDeptBudget}}">{{ value.name }}</option> 
+        {% endfor %}
+</select>
+        
+        {% for key,value in departmentBudgetData %}
+            <input type="hidden" id="original_{{value.idDeptBudget}}" value="{{value.originalValue}}" /> 
+            <input type="hidden" id="remaining_{{value.idDeptBudget}}" value="{{value.remainingValue}}" /> 
+        {% endfor %}
+        <span id="departments_budget" ></span>
+        {% if totalSelectedCost is defined and totalSelectedCost != FALSE %}
+         
+         <input type="hidden" id="totalSelectedCost" value="{{totalSelectedCost}}" /> 
+        {% endif %} 
+        
+        
+<input type="submit" name="approve" id="hr_approve_btn" value="{{ 'Approve'|trans({}, 'messages' ) }}" />        
+{% else %}
+
+<input type="submit" name="approve" id="approve_btn" value="{{ 'Approve'|trans({}, 'messages' ) }}" />    
+{% endif %}
+{% endif %}
+
+{% if 6 in allowedActions %}
+<input type="submit" name="accept" id="accept_btn" value="{{ 'Accept'|trans({}, 'messages' ) }}" />
+{% endif %}
+
+{% if 7 in allowedActions %}
+<input type="submit" name="save" id="save_btn" value="{{ 'Save'|trans({}, 'messages' ) }}" />
+{% endif %}
+
+{% if 2 in allowedActions %}
+<input type="submit" name="reject" id="reject_btn"    value="{{ 'Reject'|trans({}, 'messages' ) }}" />
+{% endif %}
+
+{% if 4 in allowedActions %}
+<input type="submit" name="sendtoemployee" id="sendtoemployee_btn"  value="{{ 'Send to employee'|trans({}, 'messages' ) }}" />
+{% endif %}
+
+
+{% if 5 in allowedActions %}
+
+<select name="training_specialist" id="training_specialist">
+    <option value="0" >{{ 'Select to assign request'|trans({}, 'messages' ) }}</option>
+    {% if trainingSpecialistList %}
+        {% for key,value in trainingSpecialistList %}
+            <option value="{{value.idUser}}">{% if app.request.getLocale() == 'ar' %} {{ value.FullArabicName }} {% else %} {{ value.DisplayName }} {% endif %}</option> 
+        {% endfor %}
+    {% endif %}
+</select>
+<input type="submit" name="assignto" id="assignto_btn"     value="{{ 'Assign to'|trans({}, 'messages' ) }}" />
+{% endif %}
+{% endif %}
+
+ 
+</div>
+
+    {% endblock %}
